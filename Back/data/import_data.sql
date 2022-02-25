@@ -25,7 +25,7 @@ INSERT INTO "category" ("id", "name", "color", "image") VALUES
 (11, 'Noctambule', '#FF69B4', '/src/Doc/Image-Cat/noctambule.svg'),
 (12, 'Autre', '#00BFFF', '/src/Doc/Image-Cat/autre.svg');
 
-INSERT INTO "user_has_event" ("user_id", "event_id", "comment") VALUES
+INSERT INTO "event_has_user" ("user_id", "event_id", "comment") VALUES
 (3, 3, 'Voici mon numéro : 06 78 88 88 88, les participants peuvent me contacter pour voir ensemble les modalités'),
 (1, 3, 'Ok super m''essage envoyé ! J''attends ton retour! ');
 
