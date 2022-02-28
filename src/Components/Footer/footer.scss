@@ -1,0 +1,9 @@
+@use 'src/styles/vars';
+
+.footer{
+
+    height: 4*vars.$gutter;
+
+    font-family: vars.$font-txt;
+    background: vars.$secondary-bg;
+}
