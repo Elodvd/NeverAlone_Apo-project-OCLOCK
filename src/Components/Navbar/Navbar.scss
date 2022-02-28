@@ -1,13 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Comforter&display=swap');
-
+@use 'src/styles/vars';
 
 .navbar {
-    font-family: 'Abril Fatface', sans-serif;
+    font-family: vars.$font-title;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background: rgb(238, 255, 238);
+    background: vars.$primary-bg;
 }
 
 .logo {
@@ -15,7 +14,7 @@
 }
 
 .logo-span {
-    color: green;
+    color: vars.$font-secondary;
 }
 
 .navbar .menu-btn {
