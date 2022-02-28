@@ -6,6 +6,7 @@ import Home from '../Home/Home';
 import SignInForm from '../SignInForm/SignInForm';
 import LogInForm from '../LogInForm/LogInForm';
 import Footer from '../Footer/Footer';
+import Error404 from '../Error404/Error404';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignInForm />} />
           <Route path="/login" element={<LogInForm />} />
+          <Route path="*" element ={<Error404/>} />
       </Routes>
       < Footer/>
     </div>
