@@ -9,11 +9,13 @@ class User extends Model {
 
 User.init(
   {
-    firstname: DataTypes.STRING,
-    lastname: DataTypes.STRING,
+    first_name: DataTypes.STRING,
+    last_name: DataTypes.STRING,
     pseudo: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
+    postal_code: DataTypes.STRING,
+    image: DataTypes.STRING,
     role: DataTypes.STRING,
   },
   {
