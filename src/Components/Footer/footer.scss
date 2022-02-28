@@ -1,9 +1,19 @@
 @use 'src/styles/vars';
 
 .footer{
-
     height: 4*vars.$gutter;
-
     font-family: vars.$font-txt;
     background: vars.$secondary-bg;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact{
+    display: flex;
+}
+
+.rs{
+   display: flex;
+   justify-content: space-between;
 }
