@@ -29,7 +29,7 @@ const SignInForm = () => (
         </div>
 
         <div className="signin-form-group">
-        <p className="signin-alert">Indiquer votre date de <span className="green">naissance</span></p>
+        <p className="signin-alert">Indiquez votre date de <span className="green">naissance</span></p>
           <input type="date" className="signin-input" id="date" name="date" aria-describedby="dateHelp"
             placeholder="Votre pseudo" />
         </div>
