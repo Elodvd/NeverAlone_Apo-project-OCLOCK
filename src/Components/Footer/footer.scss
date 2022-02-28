@@ -11,9 +11,9 @@
 
 .contact{
     display: flex;
+    align-items: flex-start;
 }
 
-.rs{
-   display: flex;
-   justify-content: space-between;
+.logo-item{
+    margin-right: vars.$gutter;
 }
