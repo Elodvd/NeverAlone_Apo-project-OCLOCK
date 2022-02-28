@@ -5,14 +5,15 @@
     font-family: vars.$font-txt;
     background: vars.$secondary-bg;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
 .contact{
     display: flex;
+    align-items: flex-start;
 }
 
-.rs-item{
-    
+.logo-item{
+    margin-right: vars.$gutter;
 }

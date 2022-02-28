@@ -9,16 +9,22 @@ const Footer = () => (
   
     <div className="footer">
         <div className="contact">
-            <img src={contact} alt ="Lien adresse de contact"/>
+            <img src={contact} alt ="Lien adresse de contact" className="logo-item"/>
             <p>Contactez-nous</p>
         </div>
         <div>
             <p>Copyright © 2022 NeverAlone</p>
         </div>
         <div className="rs">
-            <img className="rs-item" src={fb} alt ="Facebook page"/>
-            <img className="rs-item" src={twitter} alt ="Tweeter page"/>
-            <img className="rs-item" src={instagram} alt ="Instagram page"/>           
+        <a href="https://www.facebook.com">
+            <img className="logo-item" src={fb} alt ="Facebook page" />
+        </a>
+        <a href="https://www.twitter.com"> 
+            <img className="logo-item" src={twitter} alt ="Tweeter page"/>
+        </a>
+        <a href="https://www.instagram.com"> 
+            <img className="logo-item" src={instagram} alt ="Instagram page"/>  
+        </a>         
         </div>
     </div>
   
