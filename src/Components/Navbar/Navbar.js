@@ -6,6 +6,7 @@ import Hamburger from 'hamburger-react';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isConnected, setIsConnected] = useState(false);
 
     const handleCloseModal = (event) => {
         console.log(event);
@@ -32,23 +33,57 @@ const Navbar = () => {
 
             {isOpen && (
                 <div className="modal-nav">
-                    <div className="btn-container">
-                        <NavLink
+
+                        {
+                            isConnected ? 
+                                <div className="btn-container">
+                                    <NavLink
+                                        onClick={handleCloseModal}
+                                        className="sign-btn sign-up-btn"
+                                        to="/signin"
+                                    >
+                                        <span className="logo-span">M</span>on Profil
+                                    </NavLink>
+
+                                    <NavLink
+                                        onClick={handleCloseModal}
+                                        className="sign-btn sign-in-btn"
+                                        to="/login"
+                                    >
+                                        <span className="logo-span">E</span>venements
+                                    </NavLink>
+
+                                    <NavLink
+                                        onClick={handleCloseModal}
+                                        className="sign-btn sign-in-btn"
+                                        to="/login"
+                                    >
+                                        <span className="logo-span">S</span>e déconnecter
+                                    </NavLink>
+                                </div>
+
+                            :
+                            <div className="btn-container">
+                            <NavLink
                             onClick={handleCloseModal}
                             className="sign-btn sign-up-btn"
                             to="/signin"
-                        >
-                            <span className="logo-span">S'</span>inscrire
-                        </NavLink>
+                            >
+                                <span className="logo-span">S'</span>inscrire
+                            </NavLink>
 
-                        <NavLink
-                            onClick={handleCloseModal}
-                            className="sign-btn sign-in-btn"
-                            to="/login"
-                        >
-                            <span className="logo-span">S</span>e connecter{' '}
-                        </NavLink>
-                    </div>
+                            <NavLink
+                                onClick={handleCloseModal}
+                                className="sign-btn sign-in-btn"
+                                to="/login"
+                            >
+                                <span className="logo-span">S</span>e connecter{' '}
+                            </NavLink>
+                            </div>
+                        }
+
+                        
+                    
                 </div>
             )}
         </nav>
