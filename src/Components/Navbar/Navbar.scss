@@ -1,0 +1,72 @@
+@use 'src/styles/vars';
+
+.navbar {
+    font-family: vars.$font-title;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: vars.$primary-bg;
+}
+
+.logo {
+    font-size: 40px;
+}
+
+.logo-span {
+    color: vars.$font-secondary;
+}
+
+.navbar .menu-btn {
+    border-radius: 5px;
+    border: none;
+    min-width: 50px;
+    min-height: 50px;
+    text-align: center;
+    background-color: white;
+    border: 1.5px solid black;
+    color: black;
+    font-size: 40px;
+}
+
+.modal-nav {
+    position: relative;
+}
+
+
+.btn-container {    
+    position: absolute;
+    right: 130%;
+    background-color: white;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border: 1.5px solid black;
+    border-radius: 4px;
+    padding: 0.5rem 1.5rem;
+}
+
+.sign-in-btn {
+    font-size: 25px;
+    white-space: nowrap;
+    margin: 0.25rem;
+    cursor: pointer;
+    padding: 00.25rem;
+}
+
+
+.sign-up-btn {
+    font-size: 25px;
+    margin: 0.25rem;
+    cursor: pointer;
+    padding: 00.25rem;
+}
+
+
+
+
+@media only screen and (max-width : 320px) {
+    /* Styles pour cette Media Queries */
+    } 
