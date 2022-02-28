@@ -1,10 +1,11 @@
 import './error404.scss';
 import React from 'react';
+import error404 from '../../Doc/error404.svg';
 
 const Error404 = () => (
   
     <div className="error404">
-      <h1 className="error404-title"> PAGE ERROR 404</h1>
+      <img src={error404} alt ="erreur 404" className="error404-img"/>
     </div>
   
 )
