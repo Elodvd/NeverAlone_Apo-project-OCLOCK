@@ -2,59 +2,58 @@ import './Navbar.scss';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
+import Hamburger from 'hamburger-react';
 
 const Navbar = () => {
-
     const [isOpen, setIsOpen] = useState(false);
 
     const handleClick = (event) => {
         event.preventDefault();
         setIsOpen(!isOpen);
-    }
+    };
 
     const handleCloseModal = (event) => {
         console.log(event);
         setIsOpen(false);
-    }
+    };
 
-  return (
+    const closeModal = document.querySelector('.hamburger-react');
 
-    <nav className="navbar">  
-        <NavLink className="logo" to="/"> Never <span className="logo-span">Alone</span> </NavLink>
+    document.addEventListener('mousedown', (event) => {
+        closeModal && setIsOpen(false);
+    });
 
-        { isOpen ?
-        
-            <div className="modal-nav">
+    return (
+        <nav className="navbar">
+            <NavLink className="logo" to="/">
+                {' '}
+                Never <span className="logo-span">Alone</span>{' '}
+            </NavLink>
+            <Hamburger rounded toggled={isOpen} toggle={setIsOpen} />
 
-                <div  className="btn-container">
+            {isOpen && (
+                <div className="modal-nav">
+                    <div className="btn-container">
+                        <NavLink
+                            onClick={handleCloseModal}
+                            className="sign-up-btn"
+                            to="/signin"
+                        >
+                            <span className="logo-span">S'</span>inscrire
+                        </NavLink>
 
-                    <NavLink onClick={handleCloseModal} className="sign-up-btn" to="/signin"><span className="logo-span">S'</span>inscrire</NavLink>
-                    
-                    <NavLink onClick={handleCloseModal} className="sign-in-btn" to="/login"><span className="logo-span">S</span>e connecter </NavLink>
-
-                    
+                        <NavLink
+                            onClick={handleCloseModal}
+                            className="sign-in-btn"
+                            to="/login"
+                        >
+                            <span className="logo-span">S</span>e connecter{' '}
+                        </NavLink>
+                    </div>
                 </div>
-                    
-                <button 
-                    onClick={handleClick}
-                    className="menu-btn"
-                >
-                    =
-                </button> 
-            </div>
-            
-            :
-            <button 
-            onClick={handleClick}
-            className="menu-btn"
-            >
-            =
-            </button> 
-        }
-
-
-    </nav>
-  );
-}
+            )}
+        </nav>
+    );
+};
 
 export default Navbar;
