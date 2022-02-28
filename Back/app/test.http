@@ -30,13 +30,3 @@ title=nouveau titre pour l'évenement 1
 ### supprimer un évènements
 DELETE {{ endpoint }}/evenements/7
 
-
-################################
-###          CATEGORIES          ###
-################################
-
-### récupération des noms
-GET {{ endpoint }}/tags
-
-### récupération d'un nom
-GET {{ endpoint }}/tags/1
