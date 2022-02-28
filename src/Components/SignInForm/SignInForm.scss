@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+@use 'src/styles/vars';
 
 
 .signin {
@@ -31,14 +30,14 @@
         margin: 1rem;
         padding: 1rem 0.5rem;
         border: 1px solid black;
-        font-size: 16x;
+        font-size: 1rem;
         border-radius: 4px;
         width: 100%;
         font-weight: lighter;
     }
 
     &-input::placeholder {
-        font-family: 'Montserrat';
+        font-family: vars.$font-txt;
         color: grey;
         font-size: 16px;
         font-weight: 300;
@@ -62,7 +61,7 @@
         border: 1px solid black;
         border-radius: 4px;
         padding: 1rem 4rem;
-        background-color: green;
+        background-color: vars.$font-secondary;
         color: white;
         min-width: 200px;
         font-size: 20px;
@@ -70,5 +69,5 @@
 }
 
 .green {
-    color: green;
+    color: vars.$font-secondary;
 }
