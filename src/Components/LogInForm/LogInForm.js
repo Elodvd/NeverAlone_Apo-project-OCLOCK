@@ -23,7 +23,7 @@ const LogInForm = () => {
     event.preventDefault();
     SetEmailValue("");
     SetPasswordValue("");
-    navigate("/");
+    navigate("/events");
   }
 
   const handleRemember = (event) => {
