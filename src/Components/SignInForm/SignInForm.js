@@ -109,11 +109,7 @@ const SignInForm = () => {
 
         <div className="signin-form-group">
 
-          <p className="signin-alert">
-            Indiquez votre date de 
-              <span className="green">
-                naissance
-              </span>
+          <p className="signin-alert">Indiquez votre date de <span className="green"> naissance</span>
           </p>
 
           <input
