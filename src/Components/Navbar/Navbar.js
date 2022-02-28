@@ -17,11 +17,17 @@ const Navbar = () => {
         setIsOpen(false);
     };
 
-    const closeModal = document.querySelector('.hamburger-react');
+    // const closeModal = document.querySelector('.sign-up-btn');
 
-    document.addEventListener('mousedown', (event) => {
-        closeModal && setIsOpen(false);
-    });
+    // document.addEventListener('mousedown', (event) => {
+
+    //     if(closeModal){
+    //         setIsOpen(true);
+    //     } else {
+    //         setIsOpen(false)
+    //     }
+        
+    // });
 
     return (
         <nav className="navbar">
