@@ -5,7 +5,7 @@
     font-family: vars.$font-txt;
     background: vars.$secondary-bg;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -13,7 +13,6 @@
     display: flex;
 }
 
-.rs{
-   display: flex;
-   justify-content: space-between;
+.rs-item{
+    
 }

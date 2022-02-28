@@ -16,9 +16,9 @@ const Footer = () => (
             <p>Copyright © 2022 NeverAlone</p>
         </div>
         <div className="rs">
-            <img src={fb} alt ="Facebook page"/>
-            <img src={twitter} alt ="Tweeter page"/>
-            <img src={instagram} alt ="Instagram page"/>           
+            <img className="rs-item" src={fb} alt ="Facebook page"/>
+            <img className="rs-item" src={twitter} alt ="Tweeter page"/>
+            <img className="rs-item" src={instagram} alt ="Instagram page"/>           
         </div>
     </div>
   
