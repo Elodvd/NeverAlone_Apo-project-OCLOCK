@@ -4,7 +4,10 @@
 
 body {
     font-family: vars.$font-txt;
-    min-height: 100vh ;
     background: vars.$primary-bg;
+}
+
+#root {
+    height: 100%;
 }
 
