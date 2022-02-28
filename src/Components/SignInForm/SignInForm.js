@@ -52,7 +52,7 @@ const SignInForm = () => {
     SetEmailValue("");
     SetPasswordValue("");
     SetConfirmValue("");
-    navigate("/");
+    navigate("/login");
   }
 
   return (
