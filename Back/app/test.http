@@ -10,23 +10,32 @@ GET {{ endpoint }}/route404
 
 ### récupération des évenements
 
-GET {{ endpoint }}/evenements
+GET {{ endpoint }}/events
 
 ### récupération d'un évenements
-GET {{ endpoint }}/evenenements/1
+GET {{ endpoint }}/events/1
 
 ### ajouter un évenement
-POST {{ endpoint }}/lists
+POST {{ endpoint }}/events
 content-type: application/x-www-form-urlencoded
 
 title=evenement à ajouter
 
 ### modifier un évènement
-PATCH {{ endpoint }}/evenements/1
+PATCH {{ endpoint }}/events/1
 content-type: application/x-www-form-urlencoded
 
 title=nouveau titre pour l'évenement 1
 
 ### supprimer un évènements
-DELETE {{ endpoint }}/evenements/7
+DELETE {{ endpoint }}/events/7
 
+################################
+###          signin        ###
+################################
+
+### ajouter une connexion
+POST {{ endpoint }}/signin
+content-type: application/x-www-form-urlencoded
+
+first_name=connexion à ajouter
