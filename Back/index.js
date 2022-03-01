@@ -13,10 +13,8 @@ app.use(express.json()); // config de base pour récupération de caractères
 app.use(express.urlencoded({extended:true}));
 
 const user= {
-  id: 42,
-  name: 'Jean bon',
   email : 'jb@gmail.com',
-  admin: true,
+  password : 'testmp'
 };
 
 
