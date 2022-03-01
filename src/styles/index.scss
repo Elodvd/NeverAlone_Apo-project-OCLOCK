@@ -1,13 +1,13 @@
 @use 'reset';
 @use 'src/styles/vars';
 
-
 body {
     font-family: vars.$font-txt;
     background: vars.$primary-bg;
 }
 
+// technique pour coller le footer en bas de page avec le display
+// flex de app et le margin top auto sur le footer
 #root {
     height: 100%;
 }
-
