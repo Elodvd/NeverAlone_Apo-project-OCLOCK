@@ -11,7 +11,7 @@ Event.belongsTo(User, {
 
 //Un utilisateur peut créer plusieurs evenements *****
 User.hasMany(Event, {
-  as: 'events',
+  as: 'user_events',
   foreignKey: 'user_id',
 });
 
@@ -41,7 +41,7 @@ Event.belongsToMany(Category, {
 
 //Une catégorie peut detenir plusieurs evenements *****
 Category.belongsToMany(Event, {
-  as: 'events',
+  as: 'category_events',
   through: 'events_has_tag',
   foreignKey: 'category_id',
   otherKey: 'event_id',
