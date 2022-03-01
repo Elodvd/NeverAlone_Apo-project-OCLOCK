@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import React from 'react';
 
 const SignInForm = () => {
+//formulaire de sign in
 
+//valeur de base des inputs
   const [lastNameValue, SetLastNameValue] = useState("");
   const [firstNameValue, SetFirstNameValue] = useState("");
   const [pseudoValue, SetPseudoValue] = useState(""); 
@@ -13,9 +15,11 @@ const SignInForm = () => {
   const [passwordValue, SetPasswordValue] = useState("");
   const [confirmValue, SetConfirmValue] = useState("");
   
-
+  //utile pour la redirection des pages
   const navigate = useNavigate();
 
+
+  //gerer les onChange des inputs et les inserer dans le state
   const handleLastName = (event) => {
     SetLastNameValue(event.target.value);
   }

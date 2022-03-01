@@ -31,11 +31,11 @@ const Navbar = () => {
             </NavLink>
             <Hamburger duration={.6} rounded toggled={isOpen} toggle={setIsOpen} />
 
-            {isOpen && (
+            {isOpen && ( //si on clique sur la modale ca ouvre ceci
                 <div className="modal-nav">
 
                         {
-                            isConnected ? 
+                            isConnected ? // si l'user est connecté on affiche ces liens/boutons
                                 <div className="btn-container">
                                     <NavLink
                                         onClick={handleCloseModal}
@@ -62,13 +62,13 @@ const Navbar = () => {
                                     </NavLink>
                                 </div>
 
-                            :
+                            : // sinon on affiche ces boutons/liens la
                             <div className="btn-container">
-                            <NavLink
-                            onClick={handleCloseModal}
-                            className="sign-btn sign-up-btn"
-                            to="/signin"
-                            >
+                                <NavLink
+                                    onClick={handleCloseModal}
+                                    className="sign-btn sign-up-btn"
+                                    to="/signin"
+                                >
                                 <span className="logo-span">S'</span>inscrire
                             </NavLink>
 
