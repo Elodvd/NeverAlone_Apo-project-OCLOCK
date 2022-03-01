@@ -1,6 +1,8 @@
 import './ListEvent.scss';
 import React from 'react';
 
+// composant principale de la page /evenements
+
 const ListEvent = () => (
   
     <div className="listevent">

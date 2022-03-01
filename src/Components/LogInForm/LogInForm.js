@@ -3,13 +3,17 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const LogInForm = () => {
+//formulaire de login
 
+const LogInForm = () => { 
+  //valeur de base des inputs
   const [emailValue, SetEmailValue] = useState("");
   const [passwordValue, SetPasswordValue] = useState("");
   const [rememberValue, SetRememberValue] = useState(false);
 
   const navigate = useNavigate();
+
+  //gerer les onChange des inputs et les inserer dans le state
 
   const handleEmail = (event) => {
     SetEmailValue(event.target.value);
@@ -43,10 +47,11 @@ const LogInForm = () => {
 
 
       <form 
-      onSubmit={handleSubmit}
-      action="/login" 
-      method="POST" 
-      className="login-form">
+        onSubmit={handleSubmit}
+        action="/login" 
+        method="POST" 
+        className="login-form"
+      >
 
 
         <div className="login-form-group">
@@ -72,6 +77,8 @@ const LogInForm = () => {
           name="password" 
           placeholder="Votre mot de passe" />
         </div>
+
+        {/* checkbox se souvenir de moi */}
 
         <div className="login-form-remember">
           <input 

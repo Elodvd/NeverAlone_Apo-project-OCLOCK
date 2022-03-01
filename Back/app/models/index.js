@@ -20,7 +20,7 @@ Event.belongsToMany(User, {
 Event.belongsToMany(Tag, {
   as: 'tags',
   through: 'event_has_tag',
-});
+}); 
 
 Tag.belongsToMany(Event, {
   as: 'events',
