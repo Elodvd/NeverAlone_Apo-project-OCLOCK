@@ -1,4 +1,5 @@
 const { User } = require('../models');
+const jwt = require('jsonwebtoken');
 //const emailValidator = require('email-validator');
 //const bcrypt = require('bcryptjs');
 
@@ -25,8 +26,14 @@ const userController = {
       }   
        
       
-       return res.status(200).json({ message: 'tu es connecté' });
-      //on genere le token ici !
+      res.status(200).json({
+        userId: user.id,
+        token: jwt.sign(
+          { user_id: user.id },
+          process.env.ACCESS_TOKEN_SECRET,
+          { expiresIn: '24h' }
+        )
+      });
       
     } catch (err) {
       console.trace(err);

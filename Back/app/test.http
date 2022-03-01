@@ -38,4 +38,4 @@ DELETE {{ endpoint }}/events/7
 POST {{ endpoint }}/login
 content-type: application/x-www-form-urlencoded
 
-email=test@test.test&password=password
+email=raf@raf.raf&password=rafifou
