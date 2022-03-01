@@ -24,10 +24,7 @@ const userController = {
         return res.status(401)
       }
   
-      // si tout va bien, on met l'utilisateur en session...
-      req.session.user = user;
-      //... mais on supprime son mdp !
-      delete req.session.user.password;
+      //on genere le token ici !
       
     } catch (err) {
       console.trace(err);

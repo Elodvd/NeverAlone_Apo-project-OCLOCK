@@ -16,11 +16,10 @@ User.init(
     password: DataTypes.STRING,
     postal_code: DataTypes.STRING,
     image: DataTypes.STRING,
-    role: DataTypes.STRING,
   },
   {
     sequelize,
-    tableName: 'user',
+    tableName: "user",
   }
 );
 
