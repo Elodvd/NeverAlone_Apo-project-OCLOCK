@@ -19,7 +19,7 @@ User.init(
   },
   {
     sequelize,
-    tableName: "user",
+    tableName: 'user',
   }
 );
 

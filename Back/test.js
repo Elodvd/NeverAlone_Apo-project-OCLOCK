@@ -8,7 +8,7 @@ const Category = require('./app/models/category');
 
 User.findOne({
   where: {
-    email: "far@far.far"
+    email: "raf@raf.raf"
   }
 }).then(user => {
   console.log(user)

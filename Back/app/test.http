@@ -1,5 +1,5 @@
 ### On peut définir des variables de cette façon
-@endpoint = http://localhost:3000
+@endpoint = http://localhost:3001
 
 ################################
 ###          evenements          ###
@@ -31,11 +31,11 @@ title=nouveau titre pour l'évenement 1
 DELETE {{ endpoint }}/events/7
 
 ################################
-###          signin        ###
+###          login        ###
 ################################
 
-### ajouter une connexion
-POST {{ endpoint }}/signin
+### se connecter
+POST {{ endpoint }}/login
 content-type: application/x-www-form-urlencoded
 
-first_name=connexion à ajouter
+email=test@test.test&password=password

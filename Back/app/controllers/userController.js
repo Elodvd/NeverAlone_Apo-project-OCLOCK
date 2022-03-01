@@ -1,29 +1,31 @@
 const { User } = require('../models');
 //const emailValidator = require('email-validator');
-const bcrypt = require('bcrypt');
+//const bcrypt = require('bcryptjs');
 
 const userController = {
 
-  loginAction: async (req, res) => {
+  async loginAction (req, res) {
+
     try {
-      //    console.log(req.body);
       // on tente de récupérer l'utilisateur qui possède l'email donné
       const user = await User.findOne({
         where: {
           email: req.body.email
         }
+        
       });
-      
+
       if (!user) {
-        return res.status(401)
+        return res.status(401).json({ error: 'Utilisateur non trouvé !' });
       }
-  
+      
       // Si on a un utilisateur, on teste si le mot de passe est valide
-      const validPwd = await bcrypt.compare(req.body.password, user.password);
-      if (!validPwd) {
-        return res.status(401)
-      }
-  
+      if(req.body.password !== user.password){
+        return res.status(401).json({ error: 'Mot de passe incorrect !' });
+      }   
+       
+      
+       return res.status(200).json({ message: 'tu es connecté' });
       //on genere le token ici !
       
     } catch (err) {
