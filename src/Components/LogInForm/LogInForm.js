@@ -2,10 +2,18 @@ import './LogInForm.scss';
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 //formulaire de login
-
 const LogInForm = () => {
+    // gestion appel API & recuperation token
+    const token = localStorage.getItem('token');
+    // config de base d'axios
+    const instance = axios.create({
+        baseURL: 'http://localhost:3001',
+        headers: { Authorization: 'Bearer ' + token },
+    });
+
     //valeur de base des inputs
     const [emailValue, SetEmailValue] = useState('');
     const [passwordValue, SetPasswordValue] = useState('');
@@ -14,7 +22,6 @@ const LogInForm = () => {
     const navigate = useNavigate();
 
     //gerer les onChange des inputs et les inserer dans le state
-
     const handleEmail = (event) => {
         SetEmailValue(event.target.value);
     };
@@ -27,6 +34,24 @@ const LogInForm = () => {
         event.preventDefault();
         SetEmailValue('');
         SetPasswordValue('');
+        instance
+            .post('/login', {
+                email: emailValue,
+                password: passwordValue,
+            })
+            // on affiche la data dans la console
+            .then(function (response) {
+                console.log(response);
+                return response.data;
+            })
+            // Ici on stock en front le token dans le local storage
+            .then((data) => {
+                localStorage.setItem('token', data.token);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
         navigate('/events');
     };
 
@@ -65,7 +90,6 @@ const LogInForm = () => {
                         placeholder="Votre e-mail"
                     />
                 </div>
-
                 <div className="login-form-group">
                     <input
                         onChange={handlePassword}
@@ -77,9 +101,7 @@ const LogInForm = () => {
                         placeholder="Votre mot de passe"
                     />
                 </div>
-
                 {/* checkbox se souvenir de moi */}
-
                 <div className="login-form-remember">
                     <input
                         onChange={handleRemember}
@@ -92,7 +114,6 @@ const LogInForm = () => {
                         Se souvenir de<span className="green"> moi</span>
                     </p>
                 </div>
-
                 <div className="login-form-group">
                     <button className="login-button">C'est parti !</button>
                 </div>
