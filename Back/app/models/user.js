@@ -3,7 +3,7 @@ const sequelize = require('../client');
 
 class User extends Model {
   get fullname() {
-    return this.firstname + ' ' + this.lastname;
+    return this.first_name + ' ' + this.last_name;
   }
 }
 
@@ -16,11 +16,10 @@ User.init(
     password: DataTypes.STRING,
     postal_code: DataTypes.STRING,
     image: DataTypes.STRING,
-    role: DataTypes.STRING,
   },
   {
     sequelize,
-    tableName: 'user',
+    tableName: "user",
   }
 );
 

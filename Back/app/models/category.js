@@ -1,9 +1,9 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../client');
 
-class Tag extends Model {}
+class Category extends Model {}
 
-Tag.init(
+Category.init(
   {
     name: {
       type: DataTypes.STRING,
@@ -15,8 +15,8 @@ Tag.init(
   },
   {
     sequelize,
-    tableName: 'tag',
+    tableName: 'category',
   }
 );
 
-module.exports = Tag;
+module.exports = Category;
