@@ -19,11 +19,10 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/signin" element={<SignInForm />} />
                 <Route path="/login" element={<LogInForm />} />
-                <Route path="*" element={<Error404 />} />
                 <Route path="/events" element={<ListEvent />} />
+                <Route path="/createevent" element={<EventForm />} />
+                <Route path="*" element={<Error404 />} />
             </Routes>
-
-<EventForm />
 
             <Footer />
         </div>
