@@ -44,31 +44,86 @@ const EventForm = () => {
         <form>
             <div>
                 <label for="title">Titre</label>
-                <input id="title" {...inputTitle} />
+                <input 
+                    id="title" {...inputTitle} 
+                    type="text"
+                    className="event-input"
+                    name="title"
+                    aria-describedby="titleHelp"
+                    placeholder="Le Titre de l'évènement"
+                />
             </div>
             <div>
                 <label for="description">Description</label>
-                <input id="description" {...inputDescription} />
+                <input 
+                    id="description" {...inputDescription} 
+                    type="text"
+                    className="event-input"
+                    name="description"
+                    aria-describedby="descriptionHelp"
+                    placeholder="Détaillez l'évènement en quelques lignes"
+                />
             </div>
             <div>
                 <label for="date">Date et Heure</label>
-                <input id="date" {...inputDate} />
+                <input 
+                    id="date" {...inputDate} 
+                    type="datetime"
+                    className="event-input"
+                    name="date"
+                    aria-describedby="dateHelp"
+                    placeholder="Date et heure de l'évènement"
+                />
             </div>
             <div>
                 <label for="capacity">Capacité</label>
-                <input id="capacity" {...inputCapacity} />
+                <input 
+                    id="capacity" {...inputCapacity} 
+                    type="number" min="2"
+                    className="event-input"
+                    name="capacity"
+                    aria-describedby="capacityHelp"
+                    placeholder="Nombre maximum de participants"
+                />
             </div>
             <div>
-                <label for="price">Prix</label>
-                <input id="price" {...inputPrice} />
+                <input 
+                    id="price" {...inputPrice} 
+                    type="radio" 
+                    className="event-input"
+                    name="gratuit"
+                    value="gratuit"
+                    aria-describedby="gratuitHelp"
+                />GRATUIT
+                <input 
+                    id="price" {...inputPrice} 
+                    type="radio" 
+                    className="event-input"
+                    name="gratuit"
+                    value="gratuit"
+                    aria-describedby="gratuitHelp"
+                />PAYANT
             </div>
             <div>
                 <label for="adress">Adresse</label>
-                <input id="adress" {...inputAdress} />
+                <input 
+                    id="adress" {...inputAdress} 
+                    type="text"
+                    className="event-input"
+                    name="adress"
+                    aria-describedby="adressHelp"
+                    placeholder="L'adresse de l'évènement"
+                />
             </div>
             <div>
                 <label for="image">Importer une Image</label>
-                <input id="image" {...inputImage} />
+                <input 
+                    id="image" {...inputImage} 
+                    type="file"
+                    className="event-input"
+                    name="image"
+                    aria-describedby="imageHelp"
+                />
             </div>
         </form></>
 
