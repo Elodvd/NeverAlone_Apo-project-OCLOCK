@@ -2,22 +2,16 @@ import './LogInForm.scss';
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { loginRequest } from '../../requests/loginRequest';
+import { setBearerToken } from '../../requests';
 
 //formulaire de login
 const LogInForm = () => {
-    // gestion appel API & recuperation token
-    const token = localStorage.getItem('token');
-    // config de base d'axios
-    const instance = axios.create({
-        baseURL: 'http://localhost:3001',
-        headers: { Authorization: token },
-    });
-
     //valeur de base des inputs
     const [emailValue, SetEmailValue] = useState('');
     const [passwordValue, SetPasswordValue] = useState('');
     const [rememberValue, SetRememberValue] = useState(false);
+    const [isConnected, SetIsConnected] = useState(false);
 
     const navigate = useNavigate();
 
@@ -30,28 +24,21 @@ const LogInForm = () => {
         SetPasswordValue(event.target.value);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        SetEmailValue('');
-        SetPasswordValue('');
-        instance
-            .post('/login', {
-                email: emailValue,
-                password: passwordValue,
-            })
-            // on affiche la data dans la console
-            .then(function (response) {
-                console.log(response);
-            })
-            // Ici on stock en front le token dans le local storage
-            .then((data) => {
-                localStorage.setItem('token', data.token);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        const response = await loginRequest(emailValue, passwordValue);
 
-        navigate('/events');
+        if(response.status === 200){
+            SetIsConnected(true);
+            setBearerToken(response.data.token);
+            console.log(response);
+            SetEmailValue('');
+            SetPasswordValue('');
+            if(isConnected){
+                navigate('/events');
+            }           
+        }        
+        
     };
 
     const handleRemember = (event) => {
