@@ -9,6 +9,8 @@ import ListEvent from '../ListEvent/ListEvent';
 import Footer from '../Footer/Footer';
 import Error404 from '../Error404/Error404';
 
+import EventForm from '../EventForm/EventForm';
+
 function App() {
     return (
         <div className="app">
@@ -20,6 +22,9 @@ function App() {
                 <Route path="*" element={<Error404 />} />
                 <Route path="/events" element={<ListEvent />} />
             </Routes>
+
+<EventForm />
+
             <Footer />
         </div>
     );

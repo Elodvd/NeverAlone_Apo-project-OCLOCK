@@ -1,6 +1,6 @@
 import './eventForm.scss';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import React from 'react';
 
 function useControlledInput(defaultInputValue = ""){
@@ -17,38 +17,66 @@ function useControlledInput(defaultInputValue = ""){
 //formulaire de création d'un évènement
 const EventForm = () => {
 
-    const [titleValue, SetTitleValue] = useControlledInput('');
-    const [descriptionValue, SetDescriptionValue] = useControlledInput('');
-    const [dateValue, SetDateValue] = useControlledInput('');
-    const [capacityValue, SetCapacityValue] = useControlledInput('');
-    const [priceValue, SetPriceValue] =useControlledInput('GRATUIT');
-    const [adressValue, SetAdressValue] = useControlledInput('');
-    const [imageValue, SetImageValue] = useControlledInput('');
+    const [inputTitle, SetTitleValue] = useControlledInput('');
+    const [inputDescription, SetDescriptionValue] = useControlledInput('');
+    const [inputDate, SetDateValue] = useControlledInput('');
+    const [inputCapacity, SetCapacityValue] = useControlledInput('');
+    const [inputPrice, SetPriceValue] =useControlledInput('GRATUIT');
+    const [inputAdress, SetAdressValue] = useControlledInput('');
+    const [inputImage, SetImageValue] = useControlledInput('');
 
  
     const handleSubmit = (event) => {
         event.preventDefault();
-        SetLastNameValue('');
-        SetFirstNameValue('');
-        SetPseudoValue('');
-        SetEmailValue('');
-        SetPasswordValue('');
-        SetConfirmValue('');
-        navigate('/login');
+        SetTitleValue('');
+        SetDescriptionValue('');
+        SetDateValue('');
+        SetCapacityValue('');
+        SetPriceValue('');
+        SetAdressValue('');
+        SetImageValue ('');
     };
 
     return (
-        <div className="signin">
-            <h1 className="signin-title">
-                {' '}
-                S'inscrire sur Never <span className="green">Alone</span>{' '}
-            </h1>
+        <><div className="event">
+            <h1>Créer un <span className="green">E</span>vènement </h1>
+        </div>
+        <form>
+            <div>
+                <label for="title">Titre</label>
+                <input id="title" {...inputTitle} />
+            </div>
+            <div>
+                <label for="description">Description</label>
+                <input id="description" {...inputDescription} />
+            </div>
+            <div>
+                <label for="date">Date et Heure</label>
+                <input id="date" {...inputDate} />
+            </div>
+            <div>
+                <label for="capacity">Capacité</label>
+                <input id="capacity" {...inputCapacity} />
+            </div>
+            <div>
+                <label for="price">Prix</label>
+                <input id="price" {...inputPrice} />
+            </div>
+            <div>
+                <label for="adress">Adresse</label>
+                <input id="adress" {...inputAdress} />
+            </div>
+            <div>
+                <label for="image">Importer une Image</label>
+                <input id="image" {...inputImage} />
+            </div>
+        </form></>
 
-            <h2 className="signin-subtitle">
-                <span className="green">Inscrivez</span> vous pour participer
-                aux évènements !
-            </h2>
+    )
 
+
+        /*
+        
             <form
                 onSubmit={handleSubmit}
                 action="/signup"
@@ -160,7 +188,10 @@ const EventForm = () => {
                 </div>
             </form>
         </div>
-    );
+    ); 
+    */
 };
 
-export default SignInForm;
+
+
+export default EventForm; 
