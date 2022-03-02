@@ -29,12 +29,17 @@ const userController = {
             
 
             res.status(200).json({
+                user,
                 token: jwt.sign(
+                    
                     { user_id: user.id },
                     process.env.ACCESS_TOKEN_SECRET,
                     { expiresIn: '24h' }
                 ),
             });
+
+            
+
         } catch (err) {
             console.trace(err);
             res.status(500).send(err.message);
