@@ -26,8 +26,9 @@ const userController = {
                     .json({ error: 'Mot de passe incorrect !' });
             }
 
+            
+
             res.status(200).json({
-                user: user,
                 token: jwt.sign(
                     { user_id: user.id },
                     process.env.ACCESS_TOKEN_SECRET,
