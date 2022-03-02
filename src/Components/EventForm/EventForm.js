@@ -1,51 +1,44 @@
 import './eventForm.scss';
 import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import React from 'react';
 
-function useControlledInput(defaultInputValue = ""){
-    const [value, setValue] = useState(defaultInputValue);
-    const handleChange = (event) => {
-        setValue(event.target.value);
-    }
-    return [
-         {value, onChange: handleChange},
-        value
-    ];
+function useControlledInput (initialValue) {
+    const [value, setValue] = useState(initialValue);
+
+    function handleChange(e){
+        setValue(e.target.value);
+    }    
+    return [value, handleChange];
 }
 
 //formulaire de création d'un évènement
-const EventForm = () => {
+const EventForm = () => {  
+const [title, setTitle] = useControlledInput('');
+const [description, setDescription] = useControlledInput('');
+const [date, setDate] = useControlledInput('');
+const [capacity, setCapacity] = useControlledInput('');
+const [price, setPrice] = useControlledInput('');
+const [adress, setAdress] = useControlledInput('');
+const [image, setImage] = useControlledInput('');
 
-    const [inputTitle, SetTitleValue] = useControlledInput('');
-    const [inputDescription, SetDescriptionValue] = useControlledInput('');
-    const [inputDate, SetDateValue] = useControlledInput('');
-    const [inputCapacity, SetCapacityValue] = useControlledInput('');
-    const [inputPrice, SetPriceValue] =useControlledInput('GRATUIT');
-    const [inputAdress, SetAdressValue] = useControlledInput('');
-    const [inputImage, SetImageValue] = useControlledInput('');
-
- 
-    const handleSubmit = (event) => {
+    function handleSubmit(event) {
         event.preventDefault();
-        SetTitleValue('');
-        SetDescriptionValue('');
-        SetDateValue('');
-        SetCapacityValue('');
-        SetPriceValue('');
-        SetAdressValue('');
-        SetImageValue ('');
+        console.log(title, description)
     };
 
     return (
         <><div className="event">
             <h1>Créer un <span className="green">E</span>vènement </h1>
         </div>
-        <form>
+        <form
+            onSubmit={handleSubmit}
+        >
             <div>
                 <label for="title">Titre</label>
                 <input 
-                    id="title" {...inputTitle} 
+                    value={title}
+                    onChange={setTitle}
+                    id="title" 
                     type="text"
                     className="event-input"
                     name="title"
@@ -56,7 +49,9 @@ const EventForm = () => {
             <div>
                 <label for="description">Description</label>
                 <input 
-                    id="description" {...inputDescription} 
+                    value={description}
+                    onChange={setDescription}
+                    id="description" 
                     type="text"
                     className="event-input"
                     name="description"
@@ -67,7 +62,9 @@ const EventForm = () => {
             <div>
                 <label for="date">Date et Heure</label>
                 <input 
-                    id="date" {...inputDate} 
+                    value={date}
+                    onChange={setDate}
+                    id="date" 
                     type="datetime"
                     className="event-input"
                     name="date"
@@ -78,7 +75,9 @@ const EventForm = () => {
             <div>
                 <label for="capacity">Capacité</label>
                 <input 
-                    id="capacity" {...inputCapacity} 
+                    value={capacity}
+                    onChange={setCapacity}
+                    id="capacity" 
                     type="number" min="2"
                     className="event-input"
                     name="capacity"
@@ -87,27 +86,36 @@ const EventForm = () => {
                 />
             </div>
             <div>
+                <label for="price">Prix</label>
                 <input 
-                    id="price" {...inputPrice} 
+                    value={price}
+                    onChange={setPrice}
+                    id="price" 
                     type="radio" 
                     className="event-input"
                     name="gratuit"
                     value="gratuit"
-                    aria-describedby="gratuitHelp"
+                    aria-describedby="freeHelp"
+                  //  onClick={()=> setPrice('GRATUIT')}
                 />GRATUIT
                 <input 
-                    id="price" {...inputPrice} 
+                    value={price}
+                    onChange={setPrice}
+                    id="price" 
                     type="radio" 
                     className="event-input"
-                    name="gratuit"
-                    value="gratuit"
-                    aria-describedby="gratuitHelp"
+                    name="payant"
+                    value="payant"
+                    aria-describedby="notfreeHelp"
+                  //  onClick={()=> setPrice('PAYANT')}
                 />PAYANT
             </div>
             <div>
                 <label for="adress">Adresse</label>
                 <input 
-                    id="adress" {...inputAdress} 
+                    value={adress}
+                    onChange={setAdress}
+                    id="adress" 
                     type="text"
                     className="event-input"
                     name="adress"
@@ -118,7 +126,9 @@ const EventForm = () => {
             <div>
                 <label for="image">Importer une Image</label>
                 <input 
-                    id="image" {...inputImage} 
+                    value={image}
+                    onChange={setImage}
+                    id="image" 
                     type="file"
                     className="event-input"
                     name="image"
@@ -126,127 +136,7 @@ const EventForm = () => {
                 />
             </div>
         </form></>
-
     )
-
-
-        /*
-        
-            <form
-                onSubmit={handleSubmit}
-                action="/signup"
-                method="POST"
-                className="signin-form"
-            >
-                <div className="signin-form-group">
-                    <input
-                        value={lastNameValue}
-                        onChange={handleLastName}
-                        type="text"
-                        className="signin-input"
-                        id="lastname"
-                        name="lastname"
-                        aria-describedby="lastnameHelp"
-                        placeholder="Votre nom"
-                    />
-                </div>
-
-                <div className="signin-form-group">
-                    <input
-                        type="text"
-                        value={firstNameValue}
-                        onChange={handleFirstName}
-                        className="signin-input"
-                        id="firstname"
-                        name="firstname"
-                        aria-describedby="firstnameHelp"
-                        placeholder="Votre prénom"
-                    />
-                </div>
-
-                <div className="signin-form-group">
-                    <input
-                        value={pseudoValue}
-                        onChange={handlePseudo}
-                        type="text"
-                        className="signin-input"
-                        id="pseudo"
-                        name="pseudo"
-                        aria-describedby="pseudoHelp"
-                        placeholder="Votre pseudo"
-                    />
-                </div>
-
-                <div className="signin-form-group">
-                    <p className="signin-alert">
-                        Indiquez votre date de{' '}
-                        <span className="green"> naissance</span>
-                    </p>
-
-                    <input
-                        onChange={handleDate}
-                        value={dateValue}
-                        type="date"
-                        className="signin-input"
-                        id="date"
-                        name="date"
-                        aria-describedby="dateHelp"
-                        placeholder="Votre pseudo"
-                    />
-                </div>
-
-                <div className="signin-form-group">
-                    <input
-                        onChange={handleEmail}
-                        value={emailValue}
-                        type="email"
-                        className="signin-input"
-                        id="email"
-                        name="email"
-                        aria-describedby="emailHelp"
-                        placeholder="Votre e-mail"
-                    />
-                    <p className="signin-alert">
-                        <span className="green">Nous</span> ne partagerons
-                        jamais votre e-mail.
-                    </p>
-                </div>
-
-                <div className="signin-form-group">
-                    <input
-                        onChange={handlePassword}
-                        value={passwordValue}
-                        type="password"
-                        className="signin-input"
-                        id="password"
-                        name="password"
-                        placeholder="Votre mot de passe"
-                    />
-                </div>
-
-                <div className="signin-form-group">
-                    <input
-                        onChange={handleConfirm}
-                        value={confirmValue}
-                        type="password"
-                        className="signin-input"
-                        id="passwordConfirm"
-                        name="passwordConfirm"
-                        placeholder="Confirmez votre mot de passe"
-                    />
-                </div>
-
-                <div className="signin-form-group">
-                    <button className="signin-button" type="submit">
-                        Je m'inscris
-                    </button>
-                </div>
-            </form>
-        </div>
-    ); 
-    */
 };
-
-
-
 export default EventForm; 
+
