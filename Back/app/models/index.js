@@ -3,19 +3,19 @@ const Event = require('./event');
 const Category = require('./category');
 const User = require('./user');
 
-//Un evenement peut etre crée par un seul utilisateur ***
+//an event can be created by a user
 Event.belongsTo(User, {
-  as: 'user',
+  as: 'author',
   foreignKey: 'user_id',
 });
 
-//Un utilisateur peut créer plusieurs evenements *****
+//an user can created many events
 User.hasMany(Event, {
-  as: 'user_events',
+  as: 'eventList',
   foreignKey: 'user_id',
 });
 
-//Un evenement peut être rejoint par plusieurs utilisateurs***
+//an event can be joined by many users
 Event.belongsToMany(User, {
   as: 'users',
   through: 'event_has_user',
@@ -23,7 +23,7 @@ Event.belongsToMany(User, {
   otherKey: 'user_id',
 });
 
-//Un utilisateur rejoint plusieurs evenements ****
+//an user can join many events
 User.belongsToMany(Event, {
   as: 'events',
   through: 'event_has_user',
@@ -31,17 +31,17 @@ User.belongsToMany(Event, {
   otherKey: 'event_id',
 });
 
-//Un evenement peut avoir plusieurs catégories *****
-Event.belongsToMany(Category, {
-  as: 'categorys',
+//an event belongs to a category
+Event.belongsTo(Category, {
+  as: 'category',
   through: 'event_has_tag',
   foreignKey: 'event_id', // le nom de la clef de Event dans la table de liaison
-  otherKey: 'category_id', // le nom de la clef de "l'autre" (donc Tag)
+  otherKey: 'category_id', // le nom de la clef de "l'autre" (donc Category)
 });
 
-//Une catégorie peut detenir plusieurs evenements *****
-Category.belongsToMany(Event, {
-  as: 'category_events',
+//an category can have many events
+Category.hasMany(Event, {
+  as: 'eventVarious',
   through: 'events_has_tag',
   foreignKey: 'category_id',
   otherKey: 'event_id',

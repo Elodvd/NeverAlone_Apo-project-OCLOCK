@@ -14,6 +14,7 @@ User.init(
     pseudo: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
+    birthday: DataTypes.DATEONLY,
     postal_code: DataTypes.STRING,
     image: DataTypes.STRING,
   },
