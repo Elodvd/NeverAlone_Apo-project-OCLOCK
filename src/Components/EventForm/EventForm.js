@@ -25,12 +25,12 @@ const EventForm = ({onSubmit}) => {
 
     return (
         <><div className="event">
-            <h1>Créer un <span className="green">E</span>vènement </h1>
+            <h1 className="event-title">Créer un <span className="green">E</span>vènement </h1>
         </div>
         <form
             onSubmit={handleSubmit}
         >
-            <div>
+            <div className="event-form-group">
                 <label for="title">Titre</label>
                 <input 
                     id="title" 
@@ -42,11 +42,11 @@ const EventForm = ({onSubmit}) => {
                     {...inputProps}
                 />
             </div>
-            <div>
+            <div className="event-form-group">
                 <label for="description">Description</label>
                 <input 
                     id="description" 
-                    type="text"
+                    type="textarea"
                     className="event-input"
                     name="description"
                     aria-describedby="descriptionHelp"
@@ -54,11 +54,11 @@ const EventForm = ({onSubmit}) => {
                     {...inputProps}
                 />
             </div>
-            <div>
+            <div className="event-form-group">
                 <label for="date">Date et Heure</label>
                 <input 
                     id="date" 
-                    type="datetime"
+                    type="datetime-local"
                     className="event-input"
                     name="date"
                     aria-describedby="dateHelp"
@@ -66,7 +66,7 @@ const EventForm = ({onSubmit}) => {
                     {...inputProps}
                 />
             </div>
-            <div>
+            <div className="event-form-group">
                 <label for="capacity">Capacité</label>
                 <input 
                     id="capacity" 
@@ -78,7 +78,7 @@ const EventForm = ({onSubmit}) => {
                     {...inputProps}
                 />
             </div>
-            <div>
+            <div className="event-form-radio">
                 <input 
                     id="price" 
                     type="radio" 
@@ -100,7 +100,7 @@ const EventForm = ({onSubmit}) => {
                     // onClick={()=> setPrice('PAYANT')}
                 />PAYANT
             </div>
-            <div>
+            <div className="event-form-group">
                 <label for="adress">Adresse</label>
                 <input 
                     id="adress" 
@@ -112,17 +112,23 @@ const EventForm = ({onSubmit}) => {
                     {...inputProps}
                 />
             </div>
-            <div>
-                <label for="image">Importer une Image</label>
-                <input 
+            <div className="event-form-group">
+                <label for="image" className='importimage'>     
+                    <input 
                     id="image" 
-                    type="file"
-                    className="event-input"
+                    type="file" 
                     name="image"
                     aria-describedby="imageHelp"
-                    {...inputProps}
-                />
+                     />
+                    <span>Importez une image</span>
+                </label>
             </div>
+
+            <div className="event-form-group">
+                    <button className="event-button" type="submit">
+                        Je créé un évènement
+                    </button>
+                </div>
         </form></>
     )
 };

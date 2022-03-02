@@ -48,6 +48,12 @@
         width: 100%;
         margin: 0.25rem auto;
     }
+    &-form-radio {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        margin: 2rem auto;
+    }
 
     &-alert {
         font-size: 14px;
@@ -69,3 +75,19 @@
 .green {
     color: vars.$font-secondary;
 }
+
+
+label.importimage input[type="file"] {
+    position: absolute;
+    top: -1000px;
+  }
+.importimage {
+    cursor: pointer;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin: 5px;
+    background: #dddddd;
+    display: inline-block;
+  }
+  
