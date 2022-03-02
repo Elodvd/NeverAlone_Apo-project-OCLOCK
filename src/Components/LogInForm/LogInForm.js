@@ -11,7 +11,7 @@ const LogInForm = () => {
     // config de base d'axios
     const instance = axios.create({
         baseURL: 'http://localhost:3001',
-        headers: { Authorization: 'Bearer ' + token },
+        headers: { Authorization: token },
     });
 
     //valeur de base des inputs
@@ -42,7 +42,6 @@ const LogInForm = () => {
             // on affiche la data dans la console
             .then(function (response) {
                 console.log(response);
-                return response.data;
             })
             // Ici on stock en front le token dans le local storage
             .then((data) => {
