@@ -9,7 +9,7 @@ const Home = () => (
 
         <div className="home-presentation">
             
-            <a className="home-button"> Lance toi !</a>
+            <a href="/signin" className="home-button"> Lance toi !</a>
             <img src={home} alt="sport" className="home-havingfun" />
             
             
@@ -18,7 +18,7 @@ const Home = () => (
         </div>
 
         <h2 className="home-subtitle"> Ce que nous faisons </h2>
-        <p className="home-content">Nous aidons les personnes à trouver et créer tout types évènements près de chez eux.</p>
+        <p className="home-content">Nous aidons les personnes à trouver et créer tout types d'évènements près de chez eux.</p>
 
         <div className="home-card">
             <img src={sport} alt="sport" className="home-img" />
@@ -34,7 +34,7 @@ const Home = () => (
             <div className="home-decoration">
             “
             </div>
-            <p className="home-description"> " Never Alone est incontestablement une très belle applications, on y retrouve son bonheur, les gens que j'ai pu rencontrer sont très agreable, un grand merci à l'équipe de Never Alone " </p>
+            <p className="home-description"> "Never Alone est incontestablement une très belle application, on y retrouve son bonheur, les gens que j'ai pu rencontrer sont très agreable, un grand merci à l'équipe de Never Alone"</p>
             <div>
             <img src={etoile} alt="etoile" className="home-star" />
             <img src={etoile} alt="etoile" className="home-star" />
@@ -43,7 +43,7 @@ const Home = () => (
             <img src={etoile} alt="etoile" className="home-star" />
             </div>
             
-            <p className="home-author"> Luko de Toulouse</p>
+            <p className="home-author"> Luko C. de Toulouse</p>
         </div>
 
     </div>
