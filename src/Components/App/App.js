@@ -10,8 +10,6 @@ import Footer from '../Footer/Footer';
 import Error404 from '../Error404/Error404';
 import EventForm from '../EventForm/EventForm';
 import Profil from '../Profil/Profil';
-import EventForm from '../EventForm/EventForm';
-import Profil from '../Profil/Profil';
 
 function App() {
     return (
@@ -25,7 +23,7 @@ function App() {
                 <Route path="/createevent" element={<EventForm />} />
                 <Route path="*" element={<Error404 />} />
                 <Route path="/profil" element={<Profil />} />
-                <Route path="/profil" element={<Profil />} />
+    
             </Routes>
 
             <Footer />
