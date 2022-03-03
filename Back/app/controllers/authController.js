@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const emailValidator = require('email-validator');
 const bcrypt = require('bcrypt');
 
-const userController = {
+const authController = {
 
   async signinAction(req, res) {
     try {
@@ -98,4 +98,4 @@ const userController = {
   },
 };
 
-module.exports = userController;
+module.exports = authController;
