@@ -4,27 +4,29 @@ import React from 'react';
 
 // composant principale de la page /evenements
 
-const Profil = () => (
+const Profil = ({ userData }) => {
+
+    return(
     <div className="profil">
-        <h1 className="profil-title"> Rihanna-du-93</h1>
+        <h1 className="profil-title"> {userData.pseudo}</h1>
         <img src={avatar} alt="sport" className="profil-image" />
 
         <div className="profil-informations">
             <div className="profil-content">
                 <p className="profil-color">Mon prénom :</p>
-                <p>Rihanna</p>
+                <p>{userData.first_name}</p>
             </div>
             <div className="profil-content">
                 <p className="profil-color">Mon nom :</p>
-                <p>Stones</p>
+                <p>{userData.last_name}</p>
             </div>
             <div className="profil-content">
                 <p className="profil-color">Ma date de naissance :</p>
-                <p>15/02/1987</p>
+                <p>{userData.birthday}</p>
             </div>
             <div className="profil-content">
                 <p className="profil-color">Mon email :</p>
-                <p>test@test.test</p>
+                <p>{userData.email}</p>
             </div>
         </div>
         <div className="profil-btn-group">
@@ -32,6 +34,7 @@ const Profil = () => (
             <button className="profil-btn profil-btn-red">Supprimer mon profil</button>
         </div>
     </div>
-);
+    )
+};
 
 export default Profil;

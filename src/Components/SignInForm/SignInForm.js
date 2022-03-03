@@ -72,7 +72,7 @@ const SignInForm = () => {
 
             <form
                 onSubmit={handleSubmit}
-                action="/signup"
+                action="/signin"
                 method="POST"
                 className="signin-form"
             >
