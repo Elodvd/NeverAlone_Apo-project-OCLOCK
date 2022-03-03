@@ -1,6 +1,7 @@
 import './SignInForm.scss';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { signinRequest } from '../../requests/signinRequest';
 import React from 'react';
 
 const SignInForm = () => {
@@ -47,15 +48,23 @@ const SignInForm = () => {
         SetConfirmValue(event.target.value);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        SetLastNameValue('');
-        SetFirstNameValue('');
-        SetPseudoValue('');
-        SetEmailValue('');
-        SetPasswordValue('');
-        SetConfirmValue('');
-        navigate('/login');
+
+        const response = await signinRequest(lastNameValue, firstNameValue, pseudoValue, dateValue, emailValue, passwordValue, confirmValue);
+
+        if(response.status === 200){
+            SetLastNameValue('');
+            SetFirstNameValue('');
+            SetPseudoValue('');
+            SetEmailValue('');
+            SetPasswordValue('');
+            SetConfirmValue('');
+            alert('utilisateur crée');
+            navigate('/login');
+        }
+
+        
     };
 
     return (
