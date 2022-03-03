@@ -32,15 +32,15 @@ User.belongsToMany(Event, {
 });
 
 //an event belongs to a category
-Event.belongsTo(Category, {
-  as: 'category',
+Event.belongsToMany(Category, {
+  as: 'categorys',
   through: 'event_has_tag',
   foreignKey: 'event_id', // le nom de la clef de Event dans la table de liaison
   otherKey: 'category_id', // le nom de la clef de "l'autre" (donc Category)
 });
 
 //an category can have many events
-Category.hasMany(Event, {
+Category.belongsToMany(Event, {
   as: 'eventVarious',
   through: 'events_has_tag',
   foreignKey: 'category_id',
