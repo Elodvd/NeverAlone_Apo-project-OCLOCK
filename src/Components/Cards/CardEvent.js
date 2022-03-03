@@ -4,10 +4,10 @@ import './card.scss';
 const CardEvent = ({ image, title, description, author }) => {
     return (
         <div className="card">
-            <img src={image} alt="sport" className="home-img" />
-            <p className="home-content">{title}</p>
-            <p className="home-description"> {description} </p>
-            <p className="home-author"> {author}</p>
+            <img src={image} alt="sport" className="card-img" />
+            <p className="card-title">{title}</p>
+            <p className="card-description"> {description} </p>
+            <p className="card-author"> {author}</p>
         </div>
     );
 };

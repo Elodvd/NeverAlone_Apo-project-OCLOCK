@@ -29,8 +29,7 @@ const Home = () => (
         <p className="home-content">
             Que disent nos utilisateurs à propos de nous ?
         </p>
-        <CardNotice/>
-
+        <CardNotice />
     </div>
 );
 
