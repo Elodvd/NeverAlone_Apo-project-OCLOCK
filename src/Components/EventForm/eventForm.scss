@@ -12,12 +12,17 @@
         font-size: 40px;
         margin: 2rem;
     }
+    &-label{
+        font-size: 17px;
+        font-weight: bold;
+        font-family: vars.$font-txt;
+    }
 
     &-subtitle {
         text-align: center;
         margin: 0.5rem 2rem;
     }
-
+    
     &-form {
         width: 90%;
         margin: auto 4rem;
