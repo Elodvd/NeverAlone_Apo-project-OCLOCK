@@ -24,12 +24,16 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/signin" element={<SignInForm />} />
                 <Route path="/login" element={<LogInForm handleSetIsConnected={SetIsConnected} />} />
-                { 
-                    isConnected && <Route path="/events" element={<ListEvent />} />
+                {
+                    isConnected && 
+                    <>
+                        <Route path="/events" element={<ListEvent />} />,
+                        <Route path="/add-event" element={<EventForm />} />,
+                        <Route path="/profil" element={<Profil />} />
+                    </>
                 }
-                <Route path="/createevent" element={<EventForm />} />
                 <Route path="*" element={<Error404 />} />
-                <Route path="/profil" element={<Profil />} />
+                
     
             </Routes>
 
