@@ -59,7 +59,7 @@ const EventForm = ({onSubmit}) => {
             onSubmit={handleSubmit}
         >
             <div className="event-form-group">
-                <label for="title">Titre</label>
+                <label for="title" className="event-label">Titre</label>
                 <input 
                     value={titleValue}
                     onChange={handleTitle}
@@ -68,11 +68,11 @@ const EventForm = ({onSubmit}) => {
                     className="event-input"
                     name="title"
                     aria-describedby="titleHelp"
-                    placeholder="Le Titre de l'évènement"
+                    placeholder="ex : Match de tennis en double Lyon 3"
                 />
             </div>
             <div className="event-form-group">
-                <label for="description">Description</label>
+                <label for="description" className="event-label">Description</label>
                 <textarea 
                     value={descriptionValue}
                     onChange={handleDescription}
@@ -81,11 +81,11 @@ const EventForm = ({onSubmit}) => {
                     className="event-input"
                     name="description"
                     aria-describedby="descriptionHelp"
-                    placeholder="Détaillez l'évènement en quelques lignes"
+                    placeholder="Détaillez l'évènement et donnez un maximum d'informations pour les autres utilisateurs"
                 />
             </div>
             <div className="event-form-group">
-                <label for="date">Date et Heure</label>
+                <label for="date" className="event-label">Date et Heure de l'évènement</label>
                 <input 
                     value={dateValue}
                     onChange={handleDate}
@@ -98,7 +98,7 @@ const EventForm = ({onSubmit}) => {
                 />
             </div>
             <div className="event-form-group">
-                <label for="capacity">Nombre maximum de participants</label>
+                <label for="capacity" className="event-label">Nombre maximum de participants</label>
                 <input 
                     value={capacityValue}
                      onChange={handleCapacity}
@@ -107,7 +107,7 @@ const EventForm = ({onSubmit}) => {
                     className="event-input"
                     name="capacity"
                     aria-describedby="capacityHelp"
-                    placeholder="Nombre maximum de participants"
+                    placeholder="2"
                 />
             </div>
             <div className="event-form-radio">
@@ -116,24 +116,25 @@ const EventForm = ({onSubmit}) => {
                      onChange={handlePrice}
                     id="price" 
                     type="radio" 
-                    className="event-input"
                     name="price"
                     value="gratuit"
                     aria-describedby="freeHelp"
-                />GRATUIT
+                />
+                <label className="event-form-radio-label">GRATUIT  </label>
                 <input 
                     value={priceValue}
                     onChange={handlePrice}
                     id="price" 
                     type="radio" 
-                    className="event-input"
                     name="price"
                     value="payant"
                     aria-describedby="notfreeHelp"
-                />PAYANT
+                    className="event-form-radio-input"
+                />
+                <label className="event-form-radio-label">PAYANT</label>
             </div>
             <div className="event-form-group">
-                <label for="adress">Adresse</label>
+                <label for="adress" className="event-label">Adresse de l'évènement</label>
                 <input 
                     value={adressValue}
                     onChange={handleAdress}
@@ -142,7 +143,7 @@ const EventForm = ({onSubmit}) => {
                     className="event-input"
                     name="adress"
                     aria-describedby="adressHelp"
-                    placeholder="L'adresse de l'évènement"
+                    placeholder="ex : 10 rue St Marc 69003 Lyon"
                 />
             </div>
             <div className="event-form-group">
