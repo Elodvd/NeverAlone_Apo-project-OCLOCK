@@ -13,30 +13,32 @@ import EventForm from '../EventForm/EventForm';
 import Profil from '../Profil/Profil';
 
 function App() {
-
     const [isConnected, SetIsConnected] = useState(false);
 
     return (
         <div className="app">
-            <Navbar isConnected={isConnected}
-            handleSetIsConnected={SetIsConnected} />
+            <Navbar
+                isConnected={isConnected}
+                handleSetIsConnected={SetIsConnected}
+            />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/signin" element={<SignInForm />} />
-                <Route path="/login" element={<LogInForm handleSetIsConnected={SetIsConnected} />} />
-                {
-                    isConnected && 
+                <Route
+                    path="/login"
+                    element={
+                        <LogInForm handleSetIsConnected={SetIsConnected} />
+                    }
+                />
+                {isConnected && (
                     <>
                         <Route path="/events" element={<ListEvent />} />,
                         <Route path="/add-event" element={<EventForm />} />,
                         <Route path="/profil" element={<Profil />} />
                     </>
-                }
+                )}
                 <Route path="*" element={<Error404 />} />
-                
-    
             </Routes>
-
             <Footer />
         </div>
     );
