@@ -9,7 +9,7 @@ const ListEvent = () => (
     <div className="listevent">
         <h1 className="listevent-title"> Bienvenue "pseudo"</h1>
 
-        <NavLink to="/createevent">
+        <NavLink to="/add-event">
             <button > Créer un nouvel évènement</button>   
         </NavLink>
 

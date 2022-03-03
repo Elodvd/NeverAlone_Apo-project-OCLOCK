@@ -6,12 +6,12 @@ import { loginRequest } from '../../requests/loginRequest';
 import { setBearerToken } from '../../requests';
 
 //formulaire de login
-const LogInForm = () => {
+const LogInForm = ({ handleSetIsConnected }) => {
     //valeur de base des inputs
     const [emailValue, SetEmailValue] = useState('');
     const [passwordValue, SetPasswordValue] = useState('');
     const [rememberValue, SetRememberValue] = useState(false);
-    const [isConnected, SetIsConnected] = useState(false);
+    
 
     const navigate = useNavigate();
 
@@ -29,15 +29,13 @@ const LogInForm = () => {
         const response = await loginRequest(emailValue, passwordValue);
 
         if(response.status === 200){
-            SetIsConnected(true);
+            handleSetIsConnected(true);
             setBearerToken(response.data.token);
-            console.log(response);
+            console.log("data",response);
             SetEmailValue('');
             SetPasswordValue('');
-            if(isConnected){
-                navigate('/events');
-            }           
-        }        
+            navigate('/events');                      
+        } 
         
     };
 
