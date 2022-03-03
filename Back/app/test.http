@@ -9,7 +9,6 @@
 GET {{ endpoint }}/route404
 
 ### récupération des évenements
-
 GET {{ endpoint }}/events
 
 ### récupération d'un évenements
@@ -28,7 +27,7 @@ content-type: application/x-www-form-urlencoded
 title=nouveau titre pour l'évenement 1
 
 ### supprimer un évènements
-DELETE {{ endpoint }}/events/7
+DELETE {{ endpoint }}/events/2
 
 ################################
 ###          login        ###
@@ -39,3 +38,34 @@ POST {{ endpoint }}/login
 content-type: application/x-www-form-urlencoded
 
 email=raf@raf.raf&password=rafifou
+
+################################
+###          Signin        ###
+################################
+
+### s'inscrire
+POST {{ endpoint }}/signin
+content-type: application/x-www-form-urlencoded
+
+email=test@raf.raf&password=foujs
+
+
+################################
+###          Profil     ###
+################################
+
+### récupération des profils
+GET {{ endpoint }}/profil
+
+### récupération d'un profil
+GET {{ endpoint }}/profil/1
+
+### modifier un profil
+PATCH {{ endpoint }}/profil/1
+content-type: application/x-www-form-urlencoded
+
+first_name=nouveau nom pour le profil1
+
+### supprimer un profil
+DELETE {{ endpoint }}/profil/2
+
