@@ -6,7 +6,10 @@ import { loginRequest } from '../../requests/loginRequest';
 import { setBearerToken } from '../../requests';
 
 //formulaire de login
-const LogInForm = ({ handleSetIsConnected }) => {
+const LogInForm = ({ 
+    handleSetIsConnected,
+    handleSetUserData,
+ }) => {
     //valeur de base des inputs
     const [emailValue, SetEmailValue] = useState('');
     const [passwordValue, SetPasswordValue] = useState('');
@@ -31,7 +34,7 @@ const LogInForm = ({ handleSetIsConnected }) => {
         if(response.status === 200){
             handleSetIsConnected(true);
             setBearerToken(response.data.token);
-            console.log("data",response);
+            handleSetUserData(response.data.user);
             SetEmailValue('');
             SetPasswordValue('');
             navigate('/events');                      

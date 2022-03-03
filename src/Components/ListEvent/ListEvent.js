@@ -4,10 +4,12 @@ import { NavLink } from 'react-router-dom';
 
 // composant principale de la page /evenements
 
-const ListEvent = () => (
+const ListEvent = ({ userData }) => {
+
+    return(
 
     <div className="listevent">
-        <h1 className="listevent-title"> Bienvenue "pseudo"</h1>
+        <h1 className="listevent-title"> Bienvenue {userData.first_name}</h1>
 
         <NavLink to="/add-event">
             <button > Créer un nouvel évènement</button>   
@@ -16,7 +18,8 @@ const ListEvent = () => (
         
 
     </div>
-);
+    )
+};
 
 export default ListEvent;
 
