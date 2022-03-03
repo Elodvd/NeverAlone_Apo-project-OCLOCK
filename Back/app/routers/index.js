@@ -1,5 +1,5 @@
 const express = require('express');
-const authController = require('../controllers/authController');
+const userController = require('../controllers/userController');
 const mainController = require('../controllers/mainController');
 const profilController = require('../controllers/profilController');
 const errorController = require('../controllers/errorController');
@@ -11,10 +11,10 @@ const router = express.Router();
 router.get('/', mainController.getHomePage);
 
 //login path
-router.post('/login', authController.loginAction);
+router.post('/login', userController.loginAction);
 
 //signin path
-router.post('/signin', authController.signinAction);
+router.post('/signin', userController.signinAction);
 
 //profil path
 router.get('/profil', profilController.getAll);

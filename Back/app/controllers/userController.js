@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const emailValidator = require('email-validator');
 const bcrypt = require('bcrypt');
 
-const authController = {
+const userController = {
 
   async signinAction(req, res) {
     try {
@@ -39,10 +39,13 @@ const authController = {
 
       // we will created the user
       const newUser = new User({
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
+        first_name: req.body.firstname,
+        last_name: req.body.lastname,
+        pseudo: req.body.pseudo,
         email: req.body.email,
-        password: encryptedPassword
+        password: encryptedPassword,
+        birthday : req.body.birthday,
+        image: req.body.image
       });
 
       //we are waiting for the user to be registered
@@ -98,4 +101,4 @@ const authController = {
   },
 };
 
-module.exports = authController;
+module.exports = userController;
