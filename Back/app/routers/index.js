@@ -19,10 +19,10 @@ router.post('/signin', userController.signinAction);
 router.get('/profil', profilController.getAll);
 
 //route pour le profil d'un utilisateur
-router.route
-    .get('/profil/:id', profilController.getOne)
-    .post('/profil/:id', profilController.update)
-    .delete('/profil/:id', profilController.delete);
+router.route('/profil/:id')
+    .get(profilController.getOne)
+    .post(profilController.update)
+    .delete(profilController.delete);
 
 
 router.use(errorController.error);
