@@ -13,7 +13,7 @@
         margin: 2rem;
     }
     &-label{
-        font-size: 17px;
+        font-size: 14px;
         font-weight: bold;
         font-family: vars.$font-txt;
     }
@@ -58,8 +58,12 @@
         align-items: center;
         width: 50%;
         margin: 2rem auto;
+        &-label{
+        font-size: 14px;
+        font-weight: bold;
+        font-family: vars.$font-txt;
+        }
     }
-
     &-alert {
         font-size: 14px;
         text-align: center;

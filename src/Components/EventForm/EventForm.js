@@ -116,21 +116,22 @@ const EventForm = ({onSubmit}) => {
                      onChange={handlePrice}
                     id="price" 
                     type="radio" 
-                    className="event-input"
                     name="price"
                     value="gratuit"
                     aria-describedby="freeHelp"
-                />GRATUIT
+                />
+                <label className="event-form-radio-label">GRATUIT</label>
                 <input 
                     value={priceValue}
                     onChange={handlePrice}
                     id="price" 
                     type="radio" 
-                    className="event-input"
                     name="price"
                     value="payant"
                     aria-describedby="notfreeHelp"
-                />PAYANT
+                    className="event-form-radio-input"
+                />
+                <label className="event-form-radio-label">PAYANT</label>
             </div>
             <div className="event-form-group">
                 <label for="adress" className="event-label">Adresse de l'évènement</label>
