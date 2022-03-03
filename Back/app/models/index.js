@@ -11,7 +11,7 @@ Event.belongsTo(User, {
 
 //an user can created many events
 User.hasMany(Event, {
-  as: 'UserEvent',
+  as: 'UserEvents',
   foreignKey: 'user_id',
 });
 
