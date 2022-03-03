@@ -66,13 +66,16 @@ const userController = {
       }
 
       //if we have a user, we test if password is valid
-      //TODO: verifier bcrypt 
-      // const validPwd = await bcrypt.compare(req.body.password, user.password);
-      // if (!validPwd) {
-      //   return res.render('login', {
-      //     error: "Ce n'est pas le bon mot de passe.",
-      //   });
-      // }
+      
+       const validPwd = await bcrypt.compare(req.body.password, user.password);
+       if (!validPwd) {
+         return res.render('login', {
+           error: "Ce n'est pas le bon mot de passe.",
+         });
+       }
+
+       const newUser = user;
+       delete newUser.password;
 
       res.status(200).json({
         user,
