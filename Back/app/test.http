@@ -1,5 +1,5 @@
 ### On peut définir des variables de cette façon
-@endpoint = http://localhost:3001
+@endpoint = http://localhost:3009
 
 ################################
 ###          evenements          ###
@@ -47,8 +47,7 @@ email=raf@raf.raf&password=rafifou
 POST {{ endpoint }}/signin
 content-type: application/x-www-form-urlencoded
 
-email=test@raf.raf&password=foujs
-
+email=al@allo.allo&firstname=Jean&lastname=Bon&password=jambon&birthday=2000-01-01&image=www.image.fr&pseudo=lalala&passwordConfirm=jambon
 
 ################################
 ###          Profil     ###
@@ -64,7 +63,7 @@ GET {{ endpoint }}/profil/1
 PATCH {{ endpoint }}/profil/1
 content-type: application/x-www-form-urlencoded
 
-first_name=nouveau nom pour le profil1
+Johnny=nouveau nom pour le profil1
 
 ### supprimer un profil
 DELETE {{ endpoint }}/profil/2
