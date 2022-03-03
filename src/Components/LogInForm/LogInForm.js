@@ -2,19 +2,20 @@ import './LogInForm.scss';
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { loginRequest } from '../../requests/loginRequest';
+import { setBearerToken } from '../../requests';
 
 //formulaire de login
-
 const LogInForm = () => {
     //valeur de base des inputs
     const [emailValue, SetEmailValue] = useState('');
     const [passwordValue, SetPasswordValue] = useState('');
     const [rememberValue, SetRememberValue] = useState(false);
+    const [isConnected, SetIsConnected] = useState(false);
 
     const navigate = useNavigate();
 
     //gerer les onChange des inputs et les inserer dans le state
-
     const handleEmail = (event) => {
         SetEmailValue(event.target.value);
     };
@@ -23,11 +24,21 @@ const LogInForm = () => {
         SetPasswordValue(event.target.value);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        SetEmailValue('');
-        SetPasswordValue('');
-        navigate('/events');
+        const response = await loginRequest(emailValue, passwordValue);
+
+        if(response.status === 200){
+            SetIsConnected(true);
+            setBearerToken(response.data.token);
+            console.log(response);
+            SetEmailValue('');
+            SetPasswordValue('');
+            if(isConnected){
+                navigate('/events');
+            }           
+        }        
+        
     };
 
     const handleRemember = (event) => {
@@ -65,7 +76,6 @@ const LogInForm = () => {
                         placeholder="Votre e-mail"
                     />
                 </div>
-
                 <div className="login-form-group">
                     <input
                         onChange={handlePassword}
@@ -77,9 +87,7 @@ const LogInForm = () => {
                         placeholder="Votre mot de passe"
                     />
                 </div>
-
                 {/* checkbox se souvenir de moi */}
-
                 <div className="login-form-remember">
                     <input
                         onChange={handleRemember}
@@ -92,7 +100,6 @@ const LogInForm = () => {
                         Se souvenir de<span className="green"> moi</span>
                     </p>
                 </div>
-
                 <div className="login-form-group">
                     <button className="login-button">C'est parti !</button>
                 </div>

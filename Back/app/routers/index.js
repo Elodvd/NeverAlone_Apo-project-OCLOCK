@@ -4,7 +4,6 @@ const mainController = require('../controllers/mainController');
 const profilController = require('../controllers/profilController');
 const errorController = require('../controllers/errorController');
 
-
 const router = express.Router();
 
 // home path
