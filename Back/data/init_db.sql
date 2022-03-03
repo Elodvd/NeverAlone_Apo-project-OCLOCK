@@ -11,7 +11,7 @@ CREATE TABLE "user" (
     "pseudo" varchar(50) NOT NULL,
     "password" varchar(255) NOT NULL,
     "birthday" date NOT NULL,
-    "postal_code" varchar(5) NOT NULL,
+    "postal_code" varchar(5),
     "image" text ,
     "created_at" timestamptz NOT NULL DEFAULT now(),
     "updated_at" timestamptz

@@ -4,7 +4,6 @@ const emailValidator = require('email-validator');
 const bcrypt = require('bcrypt');
 
 const userController = {
-
   async signinAction(req, res) {
     try {
       // if user already exists
@@ -25,11 +24,9 @@ const userController = {
 
       //if the password and password confirmation do not match
       if (req.body.password !== req.body.passwordConfirm) {
-        return res
-          .status(401)
-          .json({
-            error: 'La confirmation du mot de passe ne correspond pas.',
-          });
+        return res.status(401).json({
+          error: 'La confirmation du mot de passe ne correspond pas.',
+        });
       }
 
       // we will encrypt the password
@@ -49,7 +46,6 @@ const userController = {
 
       //we are waiting for the user to be registered
       await newUser.save();
-      res.redirect('/login');
     } catch (err) {
       console.trace(err);
       res.status(500).send(err.message);
@@ -70,15 +66,15 @@ const userController = {
       }
 
       //if we have a user, we test if password is valid
-      if (req.body.password !== user.password) {
-        return res
-          .status(401)
-          .json({
-            error: "Erreur de saisie de l'identifiant ou du mot de passe",
-          });
+      const validPwd = await bcrypt.compare(req.body.password, user.password);
+      if (!validPwd) {
+        return res.render('login', {
+          error: "Ce n'est pas le bon mot de passe.",
+        });
       }
 
       res.status(200).json({
+        user,
         token: jwt.sign({ user_id: user.id }, process.env.ACCESS_TOKEN_SECRET, {
           expiresIn: '24h',
         }),
@@ -89,11 +85,24 @@ const userController = {
     }
   },
 
-  logout: (req, res) => {
-    req.session.user = false;
-    return res.redirect('/');
-  },
-  
+  //delete a profil
+  /*async deleteAction(req, res, next) {
+    try {
+      const id = parseInt(req.params.id, 10);
+      if (isNaN(id) || id < 1) {
+        return next();
+      }
+      const result = await User.destroy({
+        where: { id },
+      });
+      if (!result) {
+        return res.status(404).json({ error: `le profil n'existe pas` });
+      }
+      res.status(204).json();
+    } catch (err) {
+      next(err);
+    }
+  },*/
 };
 
 module.exports = userController;
