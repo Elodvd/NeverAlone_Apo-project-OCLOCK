@@ -46,6 +46,10 @@ const userController = {
 
       //we are waiting for the user to be registered
       await newUser.save();
+
+      res.status(200).json({
+        message : "tu as crée ton compte"
+      });
     } catch (err) {
       console.trace(err);
       res.status(500).send(err.message);
