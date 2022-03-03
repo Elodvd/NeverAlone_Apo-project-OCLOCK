@@ -3,18 +3,14 @@ import React from 'react';
 import sport from '../../Doc/Image-Cat/sport.svg';
 import etoile from '../../Doc/etoile.png'
 import home from '../../Doc/Image-Cat/home.svg';
+import { NavLink } from 'react-router-dom';
 
 const Home = () => (
     <div className="home">
 
         <div className="home-presentation">
-            
-            <a href="/signin" className="home-button"> Lance toi !</a>
-            <img src={home} alt="sport" className="home-havingfun" />
-            
-            
-            
-            
+            <NavLink to="/signin" className="home-button"> Lance toi !</NavLink>
+            <img src={home} alt="sport" className="home-havingfun" /> 
         </div>
 
         <h2 className="home-subtitle"> Ce que nous faisons </h2>
