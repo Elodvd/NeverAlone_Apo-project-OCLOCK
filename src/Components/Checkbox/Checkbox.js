@@ -1,9 +1,6 @@
 import './checkbox.scss';
 import React from 'react';
 
-
-
-
 const Checkbox = ({ isChecked, label, checkHandler, index }) => {
   return (
     <div>
