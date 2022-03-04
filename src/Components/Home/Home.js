@@ -1,6 +1,5 @@
 import './Home.scss';
 import React from 'react';
-import home from '../../Doc/Image-Cat/home.svg';
 import Button from '../Button/Button';
 import sport from '../../Doc/Image-Cat/sport.svg';
 import CardEvent from '../Cards/CardEvent';
@@ -10,7 +9,6 @@ const Home = () => (
     <div className="home">
         <div className="home-presentation">
             <Button text={'Lance toi !'} route={"/signin"} />
-            {/* <img src={home} alt="sport" className="home-havingfun" /> */}
         </div>
 
         <h2 className="home-subtitle"> Ce que nous faisons </h2>
