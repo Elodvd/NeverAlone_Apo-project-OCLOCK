@@ -1,0 +1,70 @@
+### On peut définir des variables de cette façon
+@endpoint = http://localhost:3001
+
+################################
+###          evenements          ###
+################################
+
+### récupération d'un évenement
+GET {{ endpoint }}/route404
+
+### récupération des évenements
+GET {{ endpoint }}/events
+
+### récupération d'un évenements
+GET {{ endpoint }}/events/1
+
+### ajouter un évenement
+POST {{ endpoint }}/events
+content-type: application/x-www-form-urlencoded
+
+title=evenement à ajouter
+
+### modifier un évènement
+PATCH {{ endpoint }}/events/1
+content-type: application/x-www-form-urlencoded
+
+title=nouveau titre pour l'évenement 1
+
+### supprimer un évènements
+DELETE {{ endpoint }}/events/2
+
+################################
+###          login        ###
+################################
+
+### se connecter
+POST {{ endpoint }}/login
+content-type: application/x-www-form-urlencoded
+
+email=raf@raf.raf&password=rafifou
+
+################################
+###          Signin        ###
+################################
+
+### s'inscrire
+POST {{ endpoint }}/signin
+content-type: application/x-www-form-urlencoded
+
+email=allo@alo.allo&firstname=Jean&lastname=Bon&password=jambon&birthday=2000-01-01&image=www.image.fr&pseudo=lalala&passwordConfirm=jambon
+
+################################
+###          Profil     ###
+################################
+
+### récupération des profils
+GET {{ endpoint }}/profil
+
+### récupération d'un profil
+GET {{ endpoint }}/profil/1
+
+### modifier un profil
+PATCH {{ endpoint }}/profil/1
+content-type: application/x-www-form-urlencoded
+
+Johnny=nouveau nom pour le profil1
+
+### supprimer un profil
+DELETE {{ endpoint }}/profil/2
+

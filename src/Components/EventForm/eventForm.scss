@@ -1,6 +1,6 @@
 @use 'src/styles/vars';
 
-.signin {
+.event {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,12 +12,17 @@
         font-size: 40px;
         margin: 2rem;
     }
+    &-label{
+        font-size: 14px;
+        font-weight: bold;
+        font-family: vars.$font-txt;
+    }
 
     &-subtitle {
         text-align: center;
         margin: 0.5rem 2rem;
     }
-
+    
     &-form {
         width: 90%;
         margin: auto 4rem;
@@ -48,7 +53,17 @@
         width: 100%;
         margin: 0.25rem auto;
     }
-
+    &-form-radio {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        margin: 2rem auto;
+        &-label{
+        font-size: 14px;
+        font-weight: bold;
+        font-family: vars.$font-txt;
+        }
+    }
     &-alert {
         font-size: 14px;
         text-align: center;
@@ -69,3 +84,19 @@
 .green {
     color: vars.$font-secondary;
 }
+
+
+label.importimage input[type="file"] {
+    position: absolute;
+    top: -1000px;
+  }
+.importimage {
+    cursor: pointer;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin: 5px;
+    background: #dddddd;
+    display: inline-block;
+  }
+  
