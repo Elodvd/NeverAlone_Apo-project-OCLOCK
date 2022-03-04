@@ -9,7 +9,7 @@ import CardNotice from '../Cards/CardNotice';
 const Home = () => (
     <div className="home">
         <div className="home-presentation">
-            <Button />
+            <Button text={'Lance toi !'} route={"/signin"} />
             <img src={home} alt="sport" className="home-havingfun" />
         </div>
 
