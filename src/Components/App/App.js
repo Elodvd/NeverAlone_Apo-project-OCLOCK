@@ -13,7 +13,7 @@ import EventForm from '../EventForm/EventForm';
 import Profil from '../Profil/Profil';
 
 function App() {
-    const [isConnected, SetIsConnected] = useState(false);
+    const [isConnected, SetIsConnected] = useState(true);
     const [userData, SetUserData] = useState([]);
 
     return (

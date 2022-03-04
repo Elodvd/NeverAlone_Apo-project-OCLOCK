@@ -1,11 +1,29 @@
 import './eventForm.scss';
 import { useState } from 'react';
 import React from 'react';
+import Checkbox from '../Checkbox/Checkbox';
+
+const allCategories = [
+    { name: "Jeu", checked: false },
+    { name: "Bien-être", checked: false },
+    { name: "Cuisine", checked: false },
+    { name: "Culture", checked: false },
+    { name: "Musique", checked: false },
+    { name: "Manuel", checked: false },
+    { name: "Rencontre", checked: false },
+    { name: "Sport", checked: false },
+    { name: "Plein Air", checked: false },
+    { name: "Voyage", checked: false },
+    { name: "Noctambule", checked: false },
+    { name: "Autre", checked: false },
+  ]
 
 //formulaire de création d'un évènement
 const EventForm = ({ onSubmit }) => {
     const [titleValue, SetTitleValue] = useState('');
     const [descriptionValue, SetDescriptionValue] = useState('');
+    const [categories, setCategories] = useState(allCategories);
+
     const [dateValue, SetDateValue] = useState('');
     const [capacityValue, SetCapacityValue] = useState('');
     const [priceValue, SetPriceValue] = useState('');
@@ -19,7 +37,6 @@ const EventForm = ({ onSubmit }) => {
     const handleDescription = (event) => {
         SetDescriptionValue(event.target.value);
     };
-
     const handleDate = (event) => {
         SetDateValue(event.target.value);
     };
@@ -39,10 +56,21 @@ const EventForm = ({ onSubmit }) => {
         SetImageValue(event.target.value);
     };
 
+    const updateCheckStatus = index => {
+        setCategories(
+          categories.map((categorie, currentIndex) =>
+            currentIndex === index
+              ? { ...categorie, checked: !categorie.checked }
+              : categorie
+          )
+        )
+      }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         SetTitleValue('');
         SetDescriptionValue('');
+        setCategories('');
         SetDateValue('');
         SetCapacityValue('');
         SetAdressValue('');
@@ -87,6 +115,16 @@ const EventForm = ({ onSubmit }) => {
                     placeholder="Détaillez l'évènement et donnez un maximum d'informations pour les autres utilisateurs"
                 />
             </div>
+            {categories.map((categorie, index) => (
+                <Checkbox
+                    key={categorie.name}
+                    isChecked={categorie.checked}
+                    checkHandler={() => updateCheckStatus(index)}
+                    label={categorie.name}
+                    index={index}
+                />
+
+            ))}
             <div className="event-form-group">
                 <label for="date" className="event-label">
                     Date et Heure de l'évènement
