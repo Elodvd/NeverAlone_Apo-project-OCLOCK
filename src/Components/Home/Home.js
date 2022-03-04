@@ -10,7 +10,7 @@ const Home = () => (
     <div className="home">
         <div className="home-presentation">
             <Button text={'Lance toi !'} route={"/signin"} />
-            <img src={home} alt="sport" className="home-havingfun" />
+            {/* <img src={home} alt="sport" className="home-havingfun" /> */}
         </div>
 
         <h2 className="home-subtitle"> Ce que nous faisons </h2>
