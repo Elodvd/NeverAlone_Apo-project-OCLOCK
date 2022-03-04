@@ -1,6 +1,7 @@
 @use 'src/styles/vars';
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
+
 .home {
     display: flex;
     flex-direction: column;
@@ -9,11 +10,16 @@
     margin: auto;
 
     &-presentation {
+        background: no-repeat url('../../Doc/Image-Cat/home.svg'),
+        ;
+        background-position: right 5vw top 0vh;
+        background-size: 50%;
+        height: 25vh;
         margin: 1.5rem auto;
         display: flex;
         width: 90%;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
     }
 
     &-havingfun {
