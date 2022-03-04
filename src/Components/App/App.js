@@ -41,7 +41,7 @@ function App() {
                             userData={userData}
                         />} />
                     </>
-                )}
+                }
                 <Route path="*" element={<Error404 />} />
             </Routes>
             <Footer />
