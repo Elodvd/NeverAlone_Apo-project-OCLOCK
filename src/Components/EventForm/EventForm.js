@@ -52,12 +52,12 @@ const EventForm = ({ onSubmit }) => {
 
     return (
 
-        <><div className="event">
+        <div className="event">
             <h1 className="event-title">Créer un <span className="green">E</span>vènement </h1>
-        </div>
+        
         <form
             onSubmit={handleSubmit}
-        >
+        />
             <div className="event-form-group">
                 <label for="title" className="event-label">Titre</label>
                 <input 
@@ -271,21 +271,21 @@ const EventForm = ({ onSubmit }) => {
                     </button>
                 </div>
             </form>
-        </>
+            </div>
     );
 };
 export default EventForm;
 
-/*
-function useControlledInput (defaultInputValue = '') {
-    const [title, setTitle] = useState(defaultInputValue);
 
-    function handleChange(e){
-        setValue(e.target.value);
-    }    
-    return [
-        {value, onChange : handleChange,
-        },
-    ];
-}
-*/
+// function useControlledInput (defaultInputValue = '') {
+//     const [title, setTitle] = useState(defaultInputValue);
+
+//     function handleChange(e){
+//         setValue(e.target.value);
+//     }    
+//     return [
+//         {value, onChange : handleChange,
+//         },
+//     ];
+// }
+
