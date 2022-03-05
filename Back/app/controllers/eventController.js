@@ -11,7 +11,7 @@ const eventController = {
       next(err);
     }
   },
-  //Recovery of one event
+  //Recovery of one event 
   async getOne(req, res, next) {
     try {
       const id = parseInt(req.params.id, 10);
@@ -28,6 +28,7 @@ const eventController = {
     }
   },
   //Creating an event
+  
   async create(req, res, next) {
     try {
       const event = await Event.create(req.body, {
