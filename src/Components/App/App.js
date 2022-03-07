@@ -16,6 +16,8 @@ function App() {
     const [isConnected, SetIsConnected] = useState(false);
     const [userData, SetUserData] = useState([]);
 
+    const [eventData, SetEventData] = useState([]);
+
     return (
         <div className="app">
             <Navbar
@@ -36,8 +38,13 @@ function App() {
                     <>
                         <Route path="/events" element={<ListEvent
                             userData={userData}
+                            eventData={eventData}
+                            handleSetEventData={SetEventData}
                         />} />,
-                        <Route path="/add-event" element={<EventForm />} />,
+                        <Route path="/add-event" element={<EventForm
+                            handleSetEventData={SetEventData}
+                            eventData={eventData}
+                        />} />,
                         <Route path={`/profil/${userData.id}`} element={<Profil
                             handleSetIsConnected={SetIsConnected}
                             userData={userData}
