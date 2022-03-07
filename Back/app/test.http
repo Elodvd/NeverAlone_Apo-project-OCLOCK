@@ -1,5 +1,7 @@
 ### On peut définir des variables de cette façon
+
 @endpoint = http://localhost:3001
+
 
 ################################
 ###          evenements          ###
@@ -11,14 +13,14 @@ GET {{ endpoint }}/route404
 ### récupération des évenements
 GET {{ endpoint }}/events
 
-### récupération d'un évenements
-GET {{ endpoint }}/events/1
+### récupération d'un évenement
+GET {{ endpoint }}/events/3
 
 ### ajouter un évenement
 POST {{ endpoint }}/events
 content-type: application/x-www-form-urlencoded
 
-title=evenement à ajouter
+title=jouer au foot&description=profiter des joies du foot&date_hour=2022-02-26 18:50:00&capacity=20&price=GRATUIT&adress=11 rue de la liberté 29400 pencran&image=http://&user_id=3
 
 ### modifier un évènement
 PATCH {{ endpoint }}/events/1
@@ -26,8 +28,8 @@ content-type: application/x-www-form-urlencoded
 
 title=nouveau titre pour l'évenement 1
 
-### supprimer un évènements
-DELETE {{ endpoint }}/events/2
+### supprimer un évènement
+DELETE {{ endpoint }}/events/1
 
 ################################
 ###          login        ###
@@ -53,18 +55,6 @@ email=allo@alo.allo&firstname=Jean&lastname=Bon&password=jambon&birthday=2000-01
 ###          Profil     ###
 ################################
 
-### récupération des profils
-GET {{ endpoint }}/profil
-
-### récupération d'un profil
-GET {{ endpoint }}/profil/1
-
-### modifier un profil
-PATCH {{ endpoint }}/profil/1
-content-type: application/x-www-form-urlencoded
-
-Johnny=nouveau nom pour le profil1
-
 ### supprimer un profil
-DELETE {{ endpoint }}/profil/2
+DELETE {{ endpoint }}/profils/2
 
