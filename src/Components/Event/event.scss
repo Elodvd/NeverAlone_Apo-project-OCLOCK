@@ -3,17 +3,21 @@
 
 .cardevent {
     &-container {
+      width: 100%;
       border:2px solid vars.$tertiary-bg;
       border-radius:10px;
-      margin: 2*vars.$gutter 0.5*vars.$gutter ;
+      margin: 4*vars.$gutter 0.5*vars.$gutter ;
       padding: 0.5*vars.$gutter ;
       &-header{
           display: flex;
+          flex-direction: column;
+          justify-content: center;
           margin-bottom: vars.$gutter;
+          margin: auto;
       }
     }
     &-img{
-        width: 70%;
+        width: 90%;
         margin: 0.5rem;
     }
     &-title{
