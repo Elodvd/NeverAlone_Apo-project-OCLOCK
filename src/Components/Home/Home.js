@@ -1,6 +1,5 @@
 import './Home.scss';
 import React from 'react';
-import home from '../../Doc/Image-Cat/home.svg';
 import Button from '../Button/Button';
 import sport from '../../Doc/Image-Cat/sport.svg';
 import CardEvent from '../Cards/CardEvent';
@@ -9,8 +8,7 @@ import CardNotice from '../Cards/CardNotice';
 const Home = () => (
     <div className="home">
         <div className="home-presentation">
-            <Button />
-            <img src={home} alt="sport" className="home-havingfun" />
+            <Button text={'Lance toi !'} route={"/signin"} />
         </div>
 
         <h2 className="home-subtitle"> Ce que nous faisons </h2>
@@ -29,8 +27,7 @@ const Home = () => (
         <p className="home-content">
             Que disent nos utilisateurs à propos de nous ?
         </p>
-        <CardNotice/>
-
+        <CardNotice />
     </div>
 );
 

@@ -1,0 +1,18 @@
+@use 'src/styles/vars';
+
+@mixin btn {
+    margin: auto;
+    background-color: vars.$font-secondary ;
+    color: white;
+    font-size: 20px;
+    padding: 0.75rem 0.5rem;
+    border-radius: 5px;
+}
+
+@mixin tag {
+    border:none;
+    outline:none;
+    margin : 0.5*vars.$gutter;
+    padding: 0.2*vars.$gutter;
+    font-family: vars.$font-txt;
+}
