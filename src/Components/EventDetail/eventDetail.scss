@@ -1,0 +1,54 @@
+@use 'src/styles/vars';
+@import 'src/styles/mixin';
+
+.cardevent {
+    &-container {
+      border:2px solid vars.$tertiary-bg;
+      border-radius:10px;
+      margin: 2*vars.$gutter 0.5*vars.$gutter ;
+      padding: 0.5*vars.$gutter ;
+      &-header{
+          display: flex;
+          margin-bottom: vars.$gutter;
+      }
+    }
+    &-img{
+        width: 70%;
+        margin: 0.5rem;
+    }
+    &-title{
+        font-family: vars.$font-title;
+        font-size: 30px;
+    }
+    &-description{
+        margin: 2*vars.$gutter 0.5*vars.$gutter ;
+        text-align: justify;
+    }
+    &-categories{
+        &-item{
+            @include tag;
+            background-color: vars.$font-tertiary;
+            color:white;   
+        }
+        
+    }
+    &-date{
+
+    }
+    &-adress{
+
+    }
+    &-price{
+        @include tag;
+            background-color: vars.$font-tertiary;
+            color:white;
+    }
+    &-capacity{
+        font-style:italic;
+    }  
+    &-participate{
+        @include btn;
+        font-size: 16px;      
+    }
+
+}
