@@ -25,7 +25,7 @@ router.route('/events/:id')
     .delete(eventController.delete);
 
 //route pour le profil d'un utilisateur
-//router.delete('/profils/:id', userController.deleteAction);
+router.delete('/profils/:id', userController.deleteAction);
 
 
 router.use(errorController.error);

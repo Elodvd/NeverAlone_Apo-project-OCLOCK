@@ -94,23 +94,23 @@ const userController = {
   },
 
   //delete a profil
-  /*async deleteAction(req, res, next) {
+  async deleteAction(req, res, next) {
     try {
-      const id = parseInt(req.params.id, 10);
-      if (isNaN(id) || id < 1) {
-        return next();
-      }
-      const result = await User.destroy({
-        where: { id },
-      });
-      if (!result) {
-        return res.status(404).json({ error: `le profil n'existe pas` });
-      }
-      res.status(204).json();
+        const id = parseInt(req.params.id, 10);
+        if (isNaN(id) || id < 1) {
+            return next();
+        }
+        const result = await User.destroy({
+            where: {id}
+        });
+        if(!result){
+            return res.status(404).json({ error: `Profil doesn't exists` });
+        }
+        res.status(204).json();
     } catch (err) {
-      next(err);
+        next(err);
     }
-  },*/
+  },
 };
 
 module.exports = userController;

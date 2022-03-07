@@ -163,7 +163,7 @@ const EventForm = ({ onSubmit }) => {
                     id="price"
                     type="radio"
                     name="price"
-                    value="gratuit"
+                    value="GRATUIT"
                     aria-describedby="freeHelp"
                 />
                 <label className="event-form-radio-label">GRATUIT </label>
@@ -173,7 +173,7 @@ const EventForm = ({ onSubmit }) => {
                     id="price"
                     type="radio"
                     name="price"
-                    value="payant"
+                    value="PAYANT"
                     aria-describedby="notfreeHelp"
                     className="event-form-radio-input"
                 />

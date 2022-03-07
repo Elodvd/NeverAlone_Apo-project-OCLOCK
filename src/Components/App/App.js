@@ -13,7 +13,7 @@ import EventForm from '../EventForm/EventForm';
 import Profil from '../Profil/Profil';
 
 function App() {
-    const [isConnected, SetIsConnected] = useState(true);
+    const [isConnected, SetIsConnected] = useState(false);
     const [userData, SetUserData] = useState([]);
 
     return (
@@ -21,6 +21,7 @@ function App() {
             <Navbar
                 isConnected={isConnected}
                 handleSetIsConnected={SetIsConnected}
+                userData={userData}
             />
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -37,7 +38,8 @@ function App() {
                             userData={userData}
                         />} />,
                         <Route path="/add-event" element={<EventForm />} />,
-                        <Route path="/profil" element={<Profil
+                        <Route path={`/profil/${userData.id}`} element={<Profil
+                            handleSetIsConnected={SetIsConnected}
                             userData={userData}
                         />} />
                     </>
