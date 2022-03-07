@@ -15,7 +15,7 @@ const Event = () => {
                     <button className='cardevent-categories-item'>Plein Air</button>
                 </div>
             </div>
-            <img src={Sport} alt="image categorie sport" className='cardevent-img'/>
+            <img src={Sport} alt="categorie-sport" className='cardevent-img'/>
                 
             
         </div>

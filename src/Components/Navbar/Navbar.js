@@ -9,6 +9,7 @@ import Hamburger from 'hamburger-react';
 const Navbar = ({ 
     isConnected,
     handleSetIsConnected,
+    userData
 }) => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -54,7 +55,7 @@ const Navbar = ({
                             <NavLink
                                 onClick={handleCloseModal}
                                 className="sign-btn sign-up-btn"
-                                to="/profil"
+                                to={`/profil/${userData.id}`}
                             >
                                 <span className="logo-span">M</span>on Profil
                             </NavLink>

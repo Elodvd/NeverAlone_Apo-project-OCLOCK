@@ -1,11 +1,28 @@
 import './Profil.scss';
 import avatar from '../../Doc/avatar.svg'
 import React from 'react';
+import { deleteProfil } from '../../requests/deleteProfil';
+import { useNavigate } from 'react-router-dom'; 
 
 // composant principale de la page /evenements
 
-const Profil = ({ userData }) => {
+const Profil = ({ userData, handleSetIsConnected }) => {
 
+    const navigate = useNavigate();
+
+    const handleDelete =  async (event) => {
+        event.preventDefault();
+        const response = await deleteProfil(userData.id);
+        if(response.status === 204){
+            handleSetIsConnected(false);
+            alert("utilisateur supprimé");
+            navigate("/");
+        }
+
+    }
+
+
+  
     return(
     <div className="profil">
         <h1 className="profil-title"> {userData.pseudo}</h1>
@@ -29,10 +46,16 @@ const Profil = ({ userData }) => {
                 <p>{userData.email}</p>
             </div>
         </div>
-        <div className="profil-btn-group">
-            <button className="profil-btn">Modifier mon profil</button>
+        <form 
+            className="profil-btn-group"
+            action={`/profils/${userData.id}`}
+            method="DELETE"
+            onSubmit={handleDelete}
+        >
+
             <button className="profil-btn profil-btn-red">Supprimer mon profil</button>
-        </div>
+            
+        </form>
     </div>
     )
 };
