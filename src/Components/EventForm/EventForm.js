@@ -73,7 +73,7 @@ const EventForm = ({ handleSetEventData, eventData }) => {
                 Créer un <span className="green">E</span>vènement{' '}
             </h1>
 
-            <form onSubmit={handleSubmit}> 
+            <form onSubmit={handleSubmit} className="event-form"> 
                 <div className="event-form-group">
                     <label htmlFor="title" className="event-label">
                         Titre
@@ -163,6 +163,7 @@ const EventForm = ({ handleSetEventData, eventData }) => {
 
                 <div className="event-form-radio">
                     <input
+                        className="price"
                         onChange={handlePrice}
                         id="price"
                         type="radio"
@@ -173,12 +174,12 @@ const EventForm = ({ handleSetEventData, eventData }) => {
                     <label className="event-form-radio-label">GRATUIT </label>
                     <input
                         onChange={handlePrice}
+                        className="price"
                         id="price"
                         type="radio"
                         name="price"
                         value="payant"
                         aria-describedby="notfreeHelp"
-                        className="event-form-radio-input"
                     />
                     <label className="event-form-radio-label">PAYANT</label>
                 </div>

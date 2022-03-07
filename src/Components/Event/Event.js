@@ -11,29 +11,30 @@ const Event = ({item}) => {
 
   return (
     <div className='cardevent-container'>
-        <div className='cardevent-container-header'> 
-            <div>
-            <p className='cardevent-title'> {item.title} </p>
+
+        
+            
+            
+            <div className='cardevent-header'>
+                <img src={image} alt={item.category} className="cardevent-img" />
+                
                 <div className='cardevent-categories'>
-                    <button className='cardevent-categories-item'>{item.category}</button>
+                    <button className='cardevent-categories-item'>{item.category.toUpperCase()}</button>
+                    <p className='cardevent-title'> {item.title} </p>    
+                    <h2 className='cardevent-date'>{item.date}</h2>
+                    <p className='cardevent-adress'>{item.adress}</p>
                 </div>
             </div>
 
-            <img src={image} alt={item.category} className="cardevent-img" />
-         
-
-        
-                
             
-        </div>
+              
+            
         
-        <p className='cardevent-description'>{item.description} </p>
         
-        <h2 className='cardevent-date'>{item.date}</h2>
-        <p className='cardevent-adress'>{item.adress}</p>
-        <button className='cardevent-price'>{item.price}</button>
-        <p className='cardevent-capacity'>Places disponibles : {item.capacity}</p>
-        <button className='cardevent-participate'>JE PARTICIPE</button>
+       
+        
+        
+        <button className='cardevent-participate'>EN SAVOIR +</button>
    
       </div>
 
