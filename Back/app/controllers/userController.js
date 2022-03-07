@@ -94,7 +94,7 @@ const userController = {
   },
 
   //delete a profil
-  /*async deleteAction(req, res, next) {
+  async deleteAction(req, res, next) {
     try {
       const id = parseInt(req.params.id, 10);
       if (isNaN(id) || id < 1) {
@@ -110,7 +110,7 @@ const userController = {
     } catch (err) {
       next(err);
     }
-  },*/
+  },
 };
 
 module.exports = userController;

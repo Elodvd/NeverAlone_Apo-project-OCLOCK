@@ -1,6 +1,5 @@
 const { Event } = require('../models');
 
-
 const eventController = {
   //Recovery any events
   async getAll(req, res, next) {
@@ -11,14 +10,16 @@ const eventController = {
       next(err);
     }
   },
-  //Recovery of one event 
+  //Recovery of one event
   async getOne(req, res, next) {
     try {
       const id = parseInt(req.params.id, 10);
       if (isNaN(id) || id < 1) {
         return next();
       }
-      const event = await Event.findByPk(id);
+      const event = await Event.findByPk(id, {
+        include: 'category'
+      });
       if (!event) {
         return res.status(404).json({ error: `L'évenement n'existe pas'` });
       }
@@ -28,7 +29,6 @@ const eventController = {
     }
   },
   //Creating an event
-  
   async create(req, res, next) {
     try {
       const event = await Event.create(req.body, {
@@ -76,6 +76,7 @@ const eventController = {
       next(err);
     }
   },
+
 };
 
 module.exports = eventController;

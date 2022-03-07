@@ -18,14 +18,14 @@ router.post('/signin', userController.signinAction);
 router.route('/events')
     .get(eventController.getAll)
     .post(eventController.create);
-
+    
 router.route('/events/:id')
     .get(eventController.getOne)    
     .patch(eventController.update)
     .delete(eventController.delete);
 
 //route pour le profil d'un utilisateur
-//router.delete('/profils/:id', userController.deleteAction);
+router.delete('/profils/:id', userController.deleteAction);
 
 
 router.use(errorController.error);
