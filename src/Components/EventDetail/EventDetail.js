@@ -1,21 +1,20 @@
 import './eventDetail.scss';
-//import { useState } from 'react';
 import Sport from '../../Doc/Image-Cat/sport.svg';
 
 import React from 'react'
 
-const EventDetail = () => {
+const EventDetail = ({ oneEvent }) => {
 
-const [counterValue, SetCounterValue]=useState(1);
-const [capacityValue, SetCapacityValue]=useState(12);
+// const [counterValue, SetCounterValue] = useState(1);
+// const [capacityValue, SetCapacityValue] = useState(12);
 
-const handleClick ()=>{
-  console.log('DEBUG')
-  if(counterValue< capacityValue){
-  SetCounterValue (counterValue+1);
-  }
-  alert("L'évènement est complet");
-}
+// const handleClick = () =>{
+//   console.log('DEBUG')
+//   if(counterValue< capacityValue){
+//   SetCounterValue (counterValue+1);
+//   }
+//   alert("L'évènement est complet");
+// }
 
   return (
     <div className='cardevent-container'>
@@ -27,7 +26,7 @@ const handleClick ()=>{
                     <button className='cardevent-categories-item'>Plein Air</button>
                 </div>
             </div>
-            <img src={Sport} alt="image categorie sport" className='cardevent-img'/>
+            <img src={Sport} alt="categorie-sport" className='cardevent-img'/>
                 
             
         </div>
@@ -37,11 +36,11 @@ const handleClick ()=>{
         <h2 className='cardevent-date'>Le samedi 06 mars à 10h</h2>
         <p className='cardevent-adress'>Massif de Bavella - Corse</p>
         <button className='cardevent-price'>GRATUIT</button>
-        <p className='cardevent-capacity'>{counter} / 12 personnes </p>
-        <button onClick={handleClick} className='cardevent-participate'>JE PARTICIPE</button>
-   console.log(counterValue);
+        {/* <p className='cardevent-capacity'>{counterValue} / 12 personnes </p> */}
+        {/* <button onClick={handleClick} className='cardevent-participate'>JE PARTICIPE</button> */}
+   {/* console.log(counterValue); */}
       </div>
 
-    )};
+  )};
 
 export default EventDetail;

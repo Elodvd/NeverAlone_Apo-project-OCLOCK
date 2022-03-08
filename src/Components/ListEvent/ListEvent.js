@@ -5,7 +5,7 @@ import Event from '../Event/Event';
 
 // composant principale de la page /evenements
 
-const ListEvent = ({ userData, eventData }) => {
+const ListEvent = ({ userData, eventData, handleSetOneEvent }) => {
 
     const data = eventData;
     console.log(data);
@@ -30,6 +30,7 @@ const ListEvent = ({ userData, eventData }) => {
                     return <Event
                         key={index}
                         item={item}
+                        handleSetOneEvent={handleSetOneEvent}
                     />
                     })
 

@@ -12,12 +12,15 @@ import Error404 from '../Error404/Error404';
 import EventForm from '../EventForm/EventForm';
 import Profil from '../Profil/Profil';
 import { getAllEventsRequest } from '../../requests/getAllEvents';
+import EventDetail from '../EventDetail/EventDetail';
 
 function App() {
     const [isConnected, SetIsConnected] = useState(false);
     const [userData, SetUserData] = useState([]);
 
     const [eventData, SetEventData] = useState([]);
+
+    const [oneEvent, SetOneEvent] = useState([]);
 
     const getAll = async() => {
         const response = await getAllEventsRequest();
@@ -29,6 +32,8 @@ function App() {
     useEffect(() => {
         getAll();        
     },[]);
+
+    console.log(oneEvent);
 
 
 
@@ -54,6 +59,7 @@ function App() {
                             userData={userData}
                             eventData={eventData}
                             handleSetEventData={SetEventData}
+                            handleSetOneEvent={SetOneEvent}
                         />} />,
                         <Route path="/add-event" element={<EventForm
                             handleSetEventData={SetEventData}
@@ -63,6 +69,7 @@ function App() {
                             handleSetIsConnected={SetIsConnected}
                             userData={userData}
                         />} />
+                        <Route path={`/events/${oneEvent.id}`} element={<EventDetail/>} />
                     </>
                 }
                 <Route path="*" element={<Error404 />} />
