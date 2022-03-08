@@ -17,7 +17,7 @@ const Event = ({item}) => {
   return (
     <div className='cardevent-container'>
         
-        <h2 className='cardevent-date'>{item.date}</h2>
+        <h2 className='cardevent-date'>{item.date_hour}</h2>
                 
         <div className='cardevent-header'>
 
@@ -35,7 +35,7 @@ const Event = ({item}) => {
 
                 <p className='cardevent-title'> {item.title} </p>    
                             
-                <p className='cardevent-adress'>{item.adress}</p>
+                <p className='cardevent-adress'>{item.city}</p>
 
             </div>
 

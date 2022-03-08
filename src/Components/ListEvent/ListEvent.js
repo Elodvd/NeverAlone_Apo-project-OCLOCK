@@ -9,6 +9,7 @@ const ListEvent = ({ userData, eventData }) => {
 
     const data = eventData;
     console.log(data);
+    
     return (
         <div className="listevent">
             

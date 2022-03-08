@@ -25,6 +25,7 @@ CREATE TABLE "event" (
     "date_hour" timestamptz NOT NULL,
     "capacity" int NOT NULL, 
     "price" varchar(50) NOT NULL,
+    "city" varchar(50) NOT NULL,
     "adress" varchar(500) NOT NULL,
     "category" varchar(50) NOT NULL,
     "user_id" int NOT NULL REFERENCES "user"("id")ON DELETE CASCADE,
