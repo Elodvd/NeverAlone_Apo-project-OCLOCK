@@ -15,11 +15,15 @@ import { getAllEventsRequest } from '../../requests/getAllEvents';
 import EventDetail from '../EventDetail/EventDetail';
 
 function App() {
+
+    //savoir si on est connecté
     const [isConnected, SetIsConnected] = useState(false);
+    //recuperation de l'information du user
     const [userData, SetUserData] = useState([]);
 
+    // recuperation de la liste de tous les evenements
     const [eventData, SetEventData] = useState([]);
-
+    //recuperation de un seul evenement
     const [oneEvent, SetOneEvent] = useState([]);
 
     const getAll = async() => {
@@ -29,13 +33,10 @@ function App() {
         }
     };
 
+    //au lancement de l'app, on recupere dans le state tous les evenements de notre bdd
     useEffect(() => {
         getAll();        
     },[]);
-
-    console.log(oneEvent);
-
-
 
     return (
         <div className="app">
@@ -64,6 +65,7 @@ function App() {
                         <Route path="/add-event" element={<EventForm
                             handleSetEventData={SetEventData}
                             eventData={eventData}
+                            userData={userData}
                         />} />,
                         <Route path={`/profil/${userData.id}`} element={<Profil
                             handleSetIsConnected={SetIsConnected}

@@ -1,9 +1,11 @@
 import './eventForm.scss';
 import { useState } from 'react';
 import React from 'react';
+import { createEventRequest } from '../../requests/createEvent';
+import { useNavigate } from 'react-router';
 
 //formulaire de création d'un évènement
-const EventForm = ({ handleSetEventData, eventData }) => {
+const EventForm = ({ handleSetEventData, eventData, userData }) => {
     const [titleValue, SetTitleValue] = useState('');
     const [descriptionValue, SetDescriptionValue] = useState('');
     const [categorieValue, SetCategoryValue] = useState('');
@@ -13,10 +15,14 @@ const EventForm = ({ handleSetEventData, eventData }) => {
     const [priceValue, SetPriceValue] = useState('');
     const [adressValue, SetAdressValue] = useState('');
 
+    const user_id = userData.id;
+
+    const navigate = useNavigate();
 
     const handleTitle = (event) => {
         SetTitleValue(event.target.value);
     };
+
 
     const handleDescription = (event) => {
         SetDescriptionValue(event.target.value);
@@ -44,28 +50,45 @@ const EventForm = ({ handleSetEventData, eventData }) => {
         SetCategoryValue(event.target.value);
     }
 
-    const handleSubmit = (event) => {
+    console.log(dateValue);
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        handleSetEventData([...eventData, {
-            title: titleValue,
-            description : descriptionValue,
-            capacity : capacityValue,
-            date : dateValue,
-            adress : adressValue,
-            city : cityValue,
-            price : priceValue,
-            category : categorieValue,
-        }])
 
-        console.log(eventData);
+        const response = await createEventRequest(titleValue, descriptionValue, dateValue, categorieValue, priceValue, adressValue, cityValue, capacityValue, user_id);
 
-        SetTitleValue('');
-        SetDescriptionValue('');
-        SetCategoryValue('');
-        SetDateValue('');
-        SetCapacityValue('');
-        SetAdressValue('');
-        SetPriceValue('');
+        if(response.status === 200){
+            handleSetEventData([...eventData, {
+                id : response.data.id,
+                title: titleValue,
+                description : descriptionValue,
+                capacity : capacityValue,
+                date : dateValue,
+                adress : adressValue,
+                city : cityValue,
+                price : priceValue,
+                category : categorieValue,
+                
+            }])
+
+            SetTitleValue('');
+            SetDescriptionValue('');
+            SetCategoryValue('');
+            SetDateValue('');
+            SetCapacityValue('');
+            SetAdressValue('');
+            SetPriceValue('');
+            SetCityValue('');
+
+            alert("evenement crée");
+
+            navigate('/events');
+        }
+
+        console.log(response);
+        
+
+        
         
     };
 
@@ -78,7 +101,13 @@ const EventForm = ({ handleSetEventData, eventData }) => {
                 Créer un <span className="green">E</span>vènement{' '}
             </h1>
 
-            <form onSubmit={handleSubmit} className="event-form"> 
+            <form onSubmit={handleSubmit}
+            action="/events"
+            method="POST"
+            className="event-form"> 
+
+            <input type="hidden" id="postId" name="user_id" value={user_id}/>
+
                 <div className="event-form-group">
                     <label htmlFor="title" className="event-label">
                         Titre
