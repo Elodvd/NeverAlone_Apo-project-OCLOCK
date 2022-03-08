@@ -1,6 +1,6 @@
 ### On peut définir des variables de cette façon
 
-@endpoint = http://localhost:5500
+@endpoint = http://localhost:3001
 
 
 ################################
@@ -20,7 +20,7 @@ GET {{ endpoint }}/events/3
 POST {{ endpoint }}/events
 content-type: application/x-www-form-urlencoded
 
-date_hour=2022-02-26 18:50:00&capacity=20&price=GRATUIT&adress=11 rue de la liberté 29400 pencran&image=http://&user_id=1&title=FOOTBALL&description=profiter des joies du foot&city=Paris&category=rencontre
+id=6&date_hour=2022-02-26T18:50:00&capacity=20&price=GRATUIT&adress=11 rue de la liberté 29400 pencran&image=http://&user_id=1&title=MUSIQUE&description=profiter des joies du foot&city=Paris&category=culture
 
 ### modifier un évènement
 PATCH {{ endpoint }}/events/1

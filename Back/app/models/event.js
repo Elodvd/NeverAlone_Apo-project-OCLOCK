@@ -7,7 +7,7 @@ Event.init(
   {
     title: DataTypes.STRING,
     description: DataTypes.STRING,
-    date_hour: DataTypes.DATE,
+    date: DataTypes.DATE,
     capacity: DataTypes.INTEGER,
     price: DataTypes.STRING,
     adress: DataTypes.STRING,
