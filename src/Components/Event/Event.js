@@ -17,13 +17,21 @@ const Event = ({ item, handleSetOneEvent }) => {
             navigate(`/events/${response.data.id}`);
         }
     };
+    const dateFormat = (date) => {
+        return (
+            date.slice(0, 10).split('-').reverse().join('/') +
+            ' à ' +
+            date.toLocaleString().slice(11, 16)
+        );
+    };
 
+    const newDate = dateFormat(item.date_hour);
     const image = require(`../../Doc/Image-Cat/${item.category}.svg`);
 
     return (
         <div className="card-container">
             <CardEvent
-                date={item.date_hour}
+                date={newDate}
                 category={item.category.toUpperCase()}
                 route_category={`/events`}
                 img={image}

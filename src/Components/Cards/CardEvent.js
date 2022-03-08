@@ -13,8 +13,9 @@ const CardEvent = ({
     title,
     city,
     handleAction,
-    text_button
+    text_button,
 }) => {
+    
     return (
         <div className="cardevent-container">
             <h2 className="cardevent-date">{date}</h2>
@@ -30,7 +31,9 @@ const CardEvent = ({
                 <p className="cardevent-title"> {title} </p>
                 <p className="cardevent-adress">{city}</p>
             </div>
-            <button onClick={handleAction}>{text_button}</button>
+            <button className="cardevent-button-more" onClick={handleAction}>
+                {text_button}
+            </button>
         </div>
     );
 };

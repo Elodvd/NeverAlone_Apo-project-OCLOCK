@@ -16,13 +16,16 @@ const Home = () => (
             Nous aidons les personnes à trouver et créer tout types d'évènements
             près de chez eux.
         </p>
-        {/* <CardEvent
-            image={sport}
-            title={'Sport en plein air'}
-            description={`"J'organise un cours collectif sportif en plein air à tous ceux
-                        qui souhaitent nous rejoindre, tous niveaux acceptés."`}
-            author={'Margaux M.'}
-        /> */}
+        <CardEvent
+                date={'Vendredi 11 Mars à 18h'}
+                category={'Sport'}
+                route_category={`/`}
+                img={sport}
+                alt={'personnes pratiquant du sport'}
+                title={'Partie de foot amateur'}
+                city={'Lille'}
+                text_button={'En savoir +'}
+            />
         <h2 className="home-subtitle"> Ce qu'il se dit </h2>
         <p className="home-content">
             Que disent nos utilisateurs à propos de nous ?
