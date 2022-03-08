@@ -18,13 +18,16 @@
 
     &-button {
         display: block;
-        margin: 1rem 0 1rem 0;
+        max-width: 40%;
+        margin: auto;
         background-color: vars.$font-tertiary;
+        text-align: center;
     }
     // TODO: mettre le style dans le style card Event directement
     &-img {
         display: block;
-        width: 100%;
+        width: 90%;
+        margin: 1rem auto;
     }
     &-title {
         flex-wrap: wrap;

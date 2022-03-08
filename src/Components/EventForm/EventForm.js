@@ -3,6 +3,7 @@ import { useState } from 'react';
 import React from 'react';
 import { createEventRequest } from '../../requests/createEvent';
 import { useNavigate } from 'react-router';
+import Button from '../Button/Button';
 
 //formulaire de création d'un évènement
 const EventForm = ({ handleSetEventData, eventData, userData }) => {
@@ -22,7 +23,6 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
     const handleTitle = (event) => {
         SetTitleValue(event.target.value);
     };
-
 
     const handleDescription = (event) => {
         SetDescriptionValue(event.target.value);
@@ -48,28 +48,40 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
 
     const handleCategory = (event) => {
         SetCategoryValue(event.target.value);
-    }
+    };
 
     console.log(dateValue);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const response = await createEventRequest(titleValue, descriptionValue, dateValue, categorieValue, priceValue, adressValue, cityValue, capacityValue, user_id);
+        const response = await createEventRequest(
+            titleValue,
+            descriptionValue,
+            dateValue,
+            categorieValue,
+            priceValue,
+            adressValue,
+            cityValue,
+            capacityValue,
+            user_id
+        );
 
-        if(response.status === 200){
-            handleSetEventData([...eventData, {
-                id : response.data.id,
-                title: titleValue,
-                description : descriptionValue,
-                capacity : capacityValue,
-                date : dateValue,
-                adress : adressValue,
-                city : cityValue,
-                price : priceValue,
-                category : categorieValue,
-                
-            }])
+        if (response.status === 200) {
+            handleSetEventData([
+                ...eventData,
+                {
+                    id: response.data.id,
+                    title: titleValue,
+                    description: descriptionValue,
+                    capacity: capacityValue,
+                    date: dateValue,
+                    adress: adressValue,
+                    city: cityValue,
+                    price: priceValue,
+                    category: categorieValue,
+                },
+            ]);
 
             SetTitleValue('');
             SetDescriptionValue('');
@@ -80,20 +92,13 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
             SetPriceValue('');
             SetCityValue('');
 
-            alert("evenement crée");
+            alert('evenement crée');
 
             navigate('/events');
         }
 
         console.log(response);
-        
-
-        
-        
     };
-
-
-    
 
     return (
         <div className="event">
@@ -101,12 +106,18 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
                 Créer un <span className="green">E</span>vènement{' '}
             </h1>
 
-            <form onSubmit={handleSubmit}
-            action="/events"
-            method="POST"
-            className="event-form"> 
-
-            <input type="hidden" id="postId" name="user_id" value={user_id}/>
+            <form
+                onSubmit={handleSubmit}
+                action="/events"
+                method="POST"
+                className="event-form"
+            >
+                <input
+                    type="hidden"
+                    id="postId"
+                    name="user_id"
+                    value={user_id}
+                />
 
                 <div className="event-form-group">
                     <label htmlFor="title" className="event-label">
@@ -120,7 +131,7 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
                         className="event-input"
                         name="title"
                         aria-describedby="titleHelp"
-                        placeholder="ex : Match de tennis en double Lyon 3"
+                        placeholder="Match de tennis"
                     />
                 </div>
 
@@ -139,27 +150,30 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
                         placeholder="Détaillez l'évènement et donnez un maximum d'informations pour les autres utilisateurs"
                     />
                 </div>
-            
+
                 <div className="event-form-group">
-                    <label htmlFor="category-select">Choisis une catégorie</label>
-                        <select 
+                    <label htmlFor="category-select">
+                        Choisis une catégorie
+                    </label>
+                    <select
                         onChange={handleCategory}
-                        name="category" 
-                        id="category-select">
-                            <option value="">--Please choose an option--</option>
-                            <option value="autre">Autre</option>
-                            <option value="bienetre">Bien-Etre</option>
-                            <option value="cuisine">Cuisine</option>
-                            <option value="culture">Culture</option>
-                            <option value="jeu">Jeu</option>
-                            <option value="manuel">Manuel</option>
-                            <option value="musique">Musique</option>
-                            <option value="noctambule">Noctambule</option>
-                            <option value="plein-air">Plein Air</option>
-                            <option value="rencontre">Rencontre</option>
-                            <option value="sport">Sport</option>
-                            <option value="voyage">Voyage</option>
-                        </select>
+                        name="category"
+                        id="category-select"
+                    >
+                        <option value="">--Please choose an option--</option>
+                        <option value="autre">Autre</option>
+                        <option value="bienetre">Bien-Etre</option>
+                        <option value="cuisine">Cuisine</option>
+                        <option value="culture">Culture</option>
+                        <option value="jeu">Jeu</option>
+                        <option value="manuel">Manuel</option>
+                        <option value="musique">Musique</option>
+                        <option value="noctambule">Noctambule</option>
+                        <option value="plein-air">Plein Air</option>
+                        <option value="rencontre">Rencontre</option>
+                        <option value="sport">Sport</option>
+                        <option value="voyage">Voyage</option>
+                    </select>
                 </div>
 
                 <div className="event-form-group">
@@ -196,26 +210,30 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
                 </div>
 
                 <div className="event-form-radio">
-                    <input
-                        className="price"
-                        onChange={handlePrice}
-                        id="price"
-                        type="radio"
-                        name="price"
-                        value="gratuit"
-                        aria-describedby="freeHelp"
-                    />
-                    <label className="event-form-radio-label">GRATUIT </label>
-                    <input
-                        onChange={handlePrice}
-                        className="price"
-                        id="price"
-                        type="radio"
-                        name="price"
-                        value="payant"
-                        aria-describedby="notfreeHelp"
-                    />
-                    <label className="event-form-radio-label">PAYANT</label>
+                    <label className="event-form-radio-label">
+                        GRATUIT
+                        <input
+                            className="price"
+                            onChange={handlePrice}
+                            id="price"
+                            type="radio"
+                            name="price"
+                            value="gratuit"
+                            aria-describedby="freeHelp"
+                        />
+                    </label>
+                    <label className="event-form-radio-label">
+                        PAYANT
+                        <input
+                            onChange={handlePrice}
+                            className="price"
+                            id="price"
+                            type="radio"
+                            name="price"
+                            value="payant"
+                            aria-describedby="notfreeHelp"
+                        />
+                    </label>
                 </div>
 
                 <div className="event-form-group">
@@ -232,9 +250,6 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
                         aria-describedby="adressHelp"
                         placeholder="ex : 10 rue St Marc"
                     />
-
-                    
-                
                 </div>
 
                 <div className="event-form-group">
@@ -251,10 +266,12 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
                         placeholder="Lyon, Paris, Toulouse"
                     />
                 </div>
-
-                <button>Valider</button>
+                <Button
+                    route={'/events'}
+                    text={'Valider'}
+                    className={'event-button'}
+                />
             </form>
-            
         </div>
     );
 };

@@ -20,7 +20,7 @@ const Event = ({ item, handleSetOneEvent }) => {
     const dateFormat = (date) => {
         return (
             date.slice(0, 10).split('-').reverse().join('/') +
-            ' à ' +
+            ' - ' +
             date.toLocaleString().slice(11, 16)
         );
     };
