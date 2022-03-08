@@ -10,7 +10,11 @@
     margin: auto;
 
     &-presentation{
-        display: flex;
+        background: no-repeat url('../../Doc/Image-Cat/home.svg'),
+        no-repeat url('../../Doc/Image-Cat/ellipse-33.svg');
+        background-position: right 5vw top 0vh;
+        background-size: 50%;
+        min-height: 26vh;
         width: 90%;
         align-items: center;
         justify-content: center;

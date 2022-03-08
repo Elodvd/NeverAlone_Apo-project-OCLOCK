@@ -4,13 +4,11 @@ import Button from '../Button/Button';
 import sport from '../../Doc/Image-Cat/sport.svg';
 import CardEvent from '../Cards/CardEvent';
 import CardNotice from '../Cards/CardNotice';
-import home from '../../Doc/Image-Cat/home.svg'
 
 const Home = () => (
     <div className="home">
         <div className="home-presentation">
             <Button text={'Lance toi !'} route={"/signin"} />
-            <img src={home} alt="sport" className="home-havingfun" />
         </div>
 
         <h2 className="home-subtitle"> Ce que nous faisons </h2>
