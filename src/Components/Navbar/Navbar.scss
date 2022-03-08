@@ -5,16 +5,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 1rem;
     background: vars.$primary-bg;
-}
 
-.logo {
-    font-size: 40px;
-}
+    &-left {
+        display: flex;
+        align-items: center;
+    }
 
-.logo-span {
-    color: vars.$font-secondary;
+    &-title {
+        padding-top: 0.5rem;
+        font-size: 40px;
+        & span {
+            color: vars.$font-secondary;
+        }
+    }
 }
 
 .navbar .menu-btn {

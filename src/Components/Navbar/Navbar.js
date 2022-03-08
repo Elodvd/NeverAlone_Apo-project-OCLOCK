@@ -1,18 +1,14 @@
-import './Navbar.scss';
+import React from 'react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { removeBearerToken } from '../../requests';
-import React from 'react';
+import logo from '../../Doc/Image-Cat/logo.svg';
 // package pour menu burger
 import Hamburger from 'hamburger-react';
+import './Navbar.scss';
 
-const Navbar = ({ 
-    isConnected,
-    handleSetIsConnected,
-    userData
-}) => {
+const Navbar = ({ isConnected, handleSetIsConnected, userData }) => {
     const [isOpen, setIsOpen] = useState(false);
-
 
     const handleCloseModal = (event) => {
         console.log(event);
@@ -37,16 +33,24 @@ const Navbar = ({
 
     return (
         <nav className="navbar">
-            <NavLink className="logo" to="/">
-                {' '}
-                Never <span className="logo-span">Alone</span>{' '}
-            </NavLink>
-            <Hamburger
-                rounded
-                duration={0.6}
-                toggled={isOpen}
-                toggle={setIsOpen}
-            />
+            <div className="navbar-left">
+                <img
+                    src={logo}
+                    className="navbar-logo"
+                    alt="logo en forme de fusée"
+                />
+                <NavLink className="navbar-title" to="/">
+                    Never <span>Alone</span>{' '}
+                </NavLink>
+            </div>
+            <div className="navbar-right">
+                <Hamburger
+                    rounded
+                    duration={0.6}
+                    toggled={isOpen}
+                    toggle={setIsOpen}
+                />
+            </div>
 
             {isOpen && ( //si on clique sur la modale ca ouvre ceci
                 <div className="modal-nav">
