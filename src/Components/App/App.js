@@ -69,7 +69,9 @@ function App() {
                             handleSetIsConnected={SetIsConnected}
                             userData={userData}
                         />} />
-                        <Route path={`/events/${oneEvent.id}`} element={<EventDetail/>} />
+                        <Route path={`/events/${oneEvent.id}`} element={<EventDetail
+                            oneEvent={oneEvent}
+                        />} />
                     </>
                 }
                 <Route path="*" element={<Error404 />} />
