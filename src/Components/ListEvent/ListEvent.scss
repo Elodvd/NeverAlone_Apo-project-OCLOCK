@@ -7,9 +7,15 @@
     align-items: center;
     flex-wrap: wrap;
     text-align: center;
+    margin: auto;
+    width: 90%;
 
     &-title {
         font-size: 40px;
         margin: 2rem;
     }
+}
+
+.card-event {
+    display: block;
 }
