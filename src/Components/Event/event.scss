@@ -1,84 +1,8 @@
 @use 'src/styles/vars';
 @import 'src/styles/mixin';
 
-.cardevent {
-    &-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 10rem;
-        max-width: 90%;
-        background-color: #cfe4d2;
-        border-radius: 6px;
-        margin: 2rem auto;
-        text-align: center;
-        padding: 1rem 0.5rem;
-      
-    }
 
-    &-image{
-        margin: auto;
-        width: 50%;
-    }
-
-    &-header{
-        display: flex;
-        margin: auto;
-    }
-
-    &-img{
-        margin: 0.2rem;
-        width: 90%;
-    }
-    &-title{
-        flex-wrap: wrap;
-        font-family: vars.$font-title;
-        font-size: 30px;
-        margin: 0.2rem;
-    }
-    &-description{
-        margin: 2*vars.$gutter 0.5*vars.$gutter ;
-        text-align: justify;
-    }
-    &-categories{
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        &-item{
-            @include tag;
-            background-color: vars.$font-tertiary;
-            color:white;
-            border-radius: 5px; 
-        }
-        
-    }
-    &-date{
-        margin: 0 0 0.8rem 0;
-        font-size: 22px;
-    }
-    &-adress{
-        margin: 0.2rem;
-        flex-wrap: wrap;
-    }
-    &-price{
-        @include tag;
-            background-color: vars.$font-tertiary;
-            color:white;
-    }
-    &-capacity{
-        flex-wrap: wrap;
-        font-style:italic;
-    }  
-    &-participate{
-
-       
-        @include btn;
-        padding: 0.5rem 1rem;
-        font-size: 16px; 
-        margin-top: 1rem;     
-    }
-
+.card-container {
+    width: 100vw;
+    padding: 1.5rem;
 }

@@ -1,0 +1,77 @@
+@use 'src/styles/vars';
+@import 'src/styles/mixin';
+
+.cardevent {
+    &-container {
+        text-align: center;
+        min-height: 10rem;
+        background-color: #cfe4d2;
+        border-radius: 6px;
+        text-align: center;
+        padding: 1rem 0.5rem;
+    }
+
+    &-image {
+        margin: auto;
+        width: 50%;
+    }
+
+    &-button {
+        display: block;
+        margin: 1rem 0 1rem 0;
+        background-color: vars.$font-tertiary;
+    }
+    // TODO: mettre le style dans le style card Event directement
+    &-img {
+        display: block;
+        width: 100%;
+    }
+    &-title {
+        flex-wrap: wrap;
+        font-family: vars.$font-title;
+        font-size: 30px;
+        margin: 0.2rem;
+    }
+    &-description {
+        margin: 2 * vars.$gutter 0.5 * vars.$gutter;
+        text-align: justify;
+    }
+    &-categories {
+        display: flex;
+        flex-direction: column;
+        &-item {
+            height: 2rem;
+            padding-top: 0.5rem;
+        }
+    }
+    &-date {
+        margin: 0 0 0.8rem 0;
+        font-size: 22px;
+    }
+    &-adress {
+        font-size: 1.2rem;
+        margin: .7rem;
+        color: vars.$font-secondary;
+        font-weight: bold
+    }
+    &-price {
+        @include tag;
+        background-color: vars.$font-tertiary;
+        color: white;
+    }
+    &-capacity {
+        flex-wrap: wrap;
+        font-style: italic;
+    }
+    &-participate {
+        @include btn;
+        padding: 0.5rem 1rem;
+        font-size: 16px;
+        margin-top: 1rem;
+    }
+    &-button-more{
+        @include btn;
+        border: none;
+        padding: .5rem;
+    }
+}

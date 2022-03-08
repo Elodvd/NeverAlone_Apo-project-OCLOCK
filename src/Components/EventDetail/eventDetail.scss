@@ -1,7 +1,7 @@
 @use 'src/styles/vars';
 @import 'src/styles/mixin';
 
-.cardevent {
+.event {
     &-container {
       border:2px solid vars.$tertiary-bg;
       border-radius:10px;
