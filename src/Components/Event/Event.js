@@ -1,18 +1,27 @@
 import './event.scss';
-//import { useState } from 'react';
+import React from 'react';
+import { getOneEventRequest } from '../../requests/getOneEvent';
+import { useNavigate } from 'react-router-dom';
 
+const Event = ({
+  item,
+  handleSetOneEvent
+}) => {
 
+  const navigate = useNavigate();
 
-import React from 'react'
-
-const Event = ({item}) => {
+  const handleClick = async(event) => {
+    console.log("j'ai cliqué")
+    event.preventDefault();
+    const response = await getOneEventRequest(item.id);
+     if(response.status === 200){
+      handleSetOneEvent(response.data);
+      navigate(`/events/${response.data.id}`)
+   }
+    
+  }
 
   const image = require(`../../Doc/Image-Cat/${item.category}.svg`);
-
-  const dateFormater = (date) => {
-    let [yy, mm, dd, hh, MM] = date.split("-");
-    return [dd, mm, yy, hh, MM].join("-");
-  }
 
   return (
     <div className='cardevent-container'>
@@ -41,9 +50,9 @@ const Event = ({item}) => {
 
         </div>
 
-            
-        <button className='cardevent-participate'>EN SAVOIR +</button>
-   
+        
+        <button onClick={handleClick}> En savoir +</button>
+        
     </div>
 
   )};
