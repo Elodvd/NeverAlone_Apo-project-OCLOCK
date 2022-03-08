@@ -6,7 +6,7 @@ const Event = require('./app/models/event');
 const Category = require('./app/models/category');
 
 
-Event.findAll().then(event => {
+Event.findByPk(1).then(event => {
   console.log(event)
 })
 

@@ -17,9 +17,7 @@ const eventController = {
       if (isNaN(id) || id < 1) {
         return next();
       }
-      const event = await Event.findByPk(id, {
-        include: 'category'
-      });
+      const event = await Event.findByPk(id);
       if (!event) {
         return res.status(404).json({ error: `L'évenement n'existe pas'` });
       }
