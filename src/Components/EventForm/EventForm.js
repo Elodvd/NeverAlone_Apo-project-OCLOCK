@@ -107,7 +107,6 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
             </h1>
 
             <form
-                onSubmit={handleSubmit}
                 action="/events"
                 method="POST"
                 className="event-form"
@@ -267,6 +266,7 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
                     />
                 </div>
                 <Button
+                    action={handleSubmit}
                     route={'/events'}
                     text={'Valider'}
                     className={'event-button'}
