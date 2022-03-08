@@ -11,14 +11,13 @@ const ListEvent = ({ userData, eventData }) => {
     console.log(data);
     return (
         <div className="listevent">
+            
+            
+            <Button text={'Créer un nouvel évènement'} route={'/add-event'} />
+
             <h1 className="listevent-title">
                 Bienvenue {userData.first_name}
             </h1>
-
-            <Button text={'Créer un nouvel évènement'} route={'/add-event'} />
-
-
-            
 
             <div className="card-event">
             {               
