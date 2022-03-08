@@ -9,17 +9,11 @@
     justify-content: center;
     margin: auto;
 
-    &-presentation {
-        background: no-repeat url('../../Doc/Image-Cat/home.svg'),
-        ;
-        background-position: right 5vw top 0vh;
-        background-size: 50%;
-        height: 25vh;
-        margin: 1.5rem auto;
+    &-presentation{
         display: flex;
         width: 90%;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     &-havingfun {
