@@ -5,16 +5,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 1rem;
     background: vars.$primary-bg;
-}
 
-.logo {
-    font-size: 40px;
-}
+    &-left {
+        display: flex;
+        align-items: center;
+    }
 
-.logo-span {
-    color: vars.$font-secondary;
+    &-title {
+        padding-top: 0.5rem;
+        font-size: 40px;
+        & span {
+            color: vars.$font-secondary;
+        }
+    }
 }
 
 .navbar .menu-btn {
@@ -107,5 +112,22 @@
         box-shadow: 1px -1px 16px 4px #cfe4d2;
         border-radius: 4px;
         padding: 0.5rem 1.5rem;
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    .navbar {
+        &-title{
+            font-size: 4rem;
+        }
+        &-left {
+            width: 40%;
+        }
+
+        &-left img{
+            width: 10%;
+            height: 10%;
+        }
+       
     }
 }

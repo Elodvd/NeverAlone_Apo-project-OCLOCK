@@ -1,31 +1,36 @@
 @use 'src/styles/vars';
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
-
 .home {
+    padding: 1rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin: auto;
+    flex-wrap: wrap;
+    flex-direction: column;
 
-    &-presentation{
-        display: flex;
-        width: 90%;
-        align-items: center;
-        justify-content: center;
+    &-presentation {
+        width: 100%;
+        background: no-repeat url('../../Doc/Image-Cat/home.svg'),
+            no-repeat url('../../Doc/Image-Cat/ellipse-33.svg');
+        background-position: right 0vw top 0vh;
+        background-size: 50%;
+        min-height: 30vh;
     }
-
-    &-havingfun {
-        margin: auto;
-        width: 50%;
+    & h1 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        max-width: 50%;
+        & span {
+            color: vars.$font-secondary;
+        }
     }
 
     &-subtitle {
+        text-align: center;
         font-size: 20px;
         font-weight: 400;
         color: vars.$font-secondary;
-        margin-top: 2rem;
+        margin-top: 1.5rem;
         margin-bottom: 1rem;
     }
 
@@ -33,7 +38,129 @@
         font-size: 20px;
         font-weight: 800;
         text-align: center;
-        margin: 1rem auto;
+        margin: auto;
         width: 80%;
+    }
+}
+
+@media only screen and (min-width: 500px) {
+    .home {
+        &-presentation {
+            min-height: 40vh;
+            background-size: 50%;
+            background-position: right 2vw top 2vh;
+        }
+        & h1 {
+            font-size: 2.2rem;
+            margin-bottom: 4rem;
+            margin-top: 2rem;
+            max-width: 50%;
+            & span {
+                color: vars.$font-secondary;
+            }
+        }
+    }
+    .home .home-button {
+        margin-left: 1.5rem;
+        font-size: 1.3rem;
+    }
+}
+@media only screen and (min-width: 630px) {
+    .home {
+        &-presentation {
+            min-height: 50vh;
+            background-size: 50%;
+            background-position: right 2vw top 2vh;
+        }
+        & h1 {
+            font-size: 2.7rem;
+            margin-bottom: 4rem;
+            margin-top: 4rem;
+            max-width: 50%;
+            & span {
+                color: vars.$font-secondary;
+            }
+        }
+    }
+    .home .home-button {
+        margin-left: 2rem;
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (min-width: 750px) {
+    .home {
+        &-presentation {
+            min-height: 70vh;
+            background-size: 55%;
+        }
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .home {
+        &-presentation {
+            min-height: 90vh;
+        }
+
+        & h1 {
+            font-size: 3rem;
+            margin-bottom: 6rem;
+            margin-top: 6rem;
+            & span {
+                color: vars.$font-secondary;
+            }
+        }
+        .home .home-button {
+            margin-left: 2.5rem;
+            font-size: 1.7rem;
+        }
+    }
+}
+@media only screen and (min-width: 1100px) {
+    .home {
+        &-presentation {
+            background-size: 40%;
+            min-height: 90vh;
+        }
+
+        & h1 {
+            font-size: 4rem;
+            margin-bottom: 5rem;
+            margin-top: 5rem;
+            margin-left: 1rem;
+            max-width: 55%;
+            & span {
+                color: vars.$font-secondary;
+            }
+        }
+    }
+    .home .home-button {
+        margin-left: 5vw;
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (min-width: 1335px) {
+    .home {
+        &-presentation {
+            background-size: 45%;
+            min-height: 100vh;
+        }
+
+        & h1 {
+            font-size: 6.5rem;
+            margin-bottom: 10rem;
+            margin-top: 10rem;
+            margin-left: 4rem;
+            max-width: 55%;
+            & span {
+                color: vars.$font-secondary;
+            }
+        }
+    }
+    .home .home-button {
+        margin-left: 12vw;
+        font-size: 2.6rem;
     }
 }
