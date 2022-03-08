@@ -5,10 +5,7 @@ class Event extends Model {}
 
 Event.init(
   {
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    title: DataTypes.STRING,
     description: DataTypes.STRING,
     date_hour: DataTypes.DATE,
     capacity: DataTypes.INTEGER,
