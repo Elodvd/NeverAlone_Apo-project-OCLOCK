@@ -25,7 +25,7 @@ const Event = ({ item, handleSetOneEvent }) => {
         );
     };
 
-    const newDate = dateFormat(item.date_hour);
+    const newDate = dateFormat(item.date);
     const image = require(`../../Doc/Image-Cat/${item.category}.svg`);
 
     return (
