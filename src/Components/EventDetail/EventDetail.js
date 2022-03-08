@@ -18,24 +18,24 @@ const EventDetail = ({ oneEvent }) => {
 const image = require(`../../Doc/Image-Cat/${oneEvent.category}.svg`);
 
   return (
-    <div className='cardevent-container'>
-        <div className='cardevent-container-header'> 
+    <div className='event-container'>
+        <div className='event-container-header'> 
             <div>
-            <p className='cardevent-title'>{oneEvent.title}</p>
-                <div className='cardevent-categories'>
-                    <button className='cardevent-categories-item'>{oneEvent.category}</button>
+            <p className='event-title'>{oneEvent.title}</p>
+                <div className='event-categories'>
+                    <button className='event-categories-item'>{oneEvent.category}</button>
                 </div>
             </div>
-            <img src={image} alt="categorie-sport" className='cardevent-img'/>
+            <img src={image} alt="categorie-sport" className='event-img'/>
                 
             
         </div>
         
-        <p className='cardevent-description'>{oneEvent.description}</p>
+        <p className='event-description'>{oneEvent.description}</p>
         
-        <h2 className='cardevent-date'>{oneEvent.date_hours}</h2>
-        <p className='cardevent-adress'>{oneEvent.adress}, {oneEvent.city}</p>
-        <button className='cardevent-price'>{oneEvent.price}</button>
+        <h2 className='event-date'>{oneEvent.date_hours}</h2>
+        <p className='event-adress'>{oneEvent.adress}, {oneEvent.city}</p>
+        <button className='event-price'>{oneEvent.price}</button>
         {/* <p className='cardevent-capacity'>{counterValue} / 12 personnes </p> */}
         {/* <button onClick={handleClick} className='cardevent-participate'>JE PARTICIPE</button> */}
    {/* console.log(counterValue); */}
