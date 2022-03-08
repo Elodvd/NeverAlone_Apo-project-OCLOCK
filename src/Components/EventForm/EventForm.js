@@ -7,7 +7,7 @@ const EventForm = ({ handleSetEventData, eventData }) => {
     const [titleValue, SetTitleValue] = useState('');
     const [descriptionValue, SetDescriptionValue] = useState('');
     const [categorieValue, SetCategoryValue] = useState('');
-
+    const [cityValue, SetCityValue] = useState('');
     const [dateValue, SetDateValue] = useState('');
     const [capacityValue, SetCapacityValue] = useState('');
     const [priceValue, SetPriceValue] = useState('');
@@ -26,6 +26,10 @@ const EventForm = ({ handleSetEventData, eventData }) => {
     };
     const handleAdress = (event) => {
         SetAdressValue(event.target.value);
+    };
+
+    const handleCity = (event) => {
+        SetCityValue(event.target.value);
     };
 
     const handleCapacity = (event) => {
@@ -48,6 +52,7 @@ const EventForm = ({ handleSetEventData, eventData }) => {
             capacity : capacityValue,
             date : dateValue,
             adress : adressValue,
+            city : cityValue,
             price : priceValue,
             category : categorieValue,
         }])
@@ -196,11 +201,26 @@ const EventForm = ({ handleSetEventData, eventData }) => {
                         className="event-input"
                         name="adress"
                         aria-describedby="adressHelp"
-                        placeholder="ex : 10 rue St Marc 69003 Lyon"
+                        placeholder="ex : 10 rue St Marc"
                     />
 
                     
                 
+                </div>
+
+                <div className="event-form-group">
+                    <label htmlFor="city" className="event-label">
+                        Ville
+                    </label>
+                    <input
+                        value={cityValue}
+                        onChange={handleCity}
+                        id="city"
+                        type="text"
+                        className="event-input"
+                        name="city"
+                        placeholder="Lyon, Paris, Toulouse"
+                    />
                 </div>
 
                 <button>Valider</button>

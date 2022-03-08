@@ -14,8 +14,8 @@ Event.init(
     capacity: DataTypes.INTEGER,
     price: DataTypes.STRING,
     adress: DataTypes.STRING,
+    city: DataTypes.STRING,
     category: DataTypes.STRING,
-
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,

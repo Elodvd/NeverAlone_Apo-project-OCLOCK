@@ -1,5 +1,5 @@
 import './App.scss';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
@@ -11,12 +11,26 @@ import Footer from '../Footer/Footer';
 import Error404 from '../Error404/Error404';
 import EventForm from '../EventForm/EventForm';
 import Profil from '../Profil/Profil';
+import { getAllEventsRequest } from '../../requests/getAllEvents';
 
 function App() {
     const [isConnected, SetIsConnected] = useState(false);
     const [userData, SetUserData] = useState([]);
 
     const [eventData, SetEventData] = useState([]);
+
+    const getAll = async() => {
+        const response = await getAllEventsRequest();
+        if(response.status === 200){
+            SetEventData(response.data);
+        }
+    };
+
+    useEffect(() => {
+        getAll();        
+    },[]);
+
+
 
     return (
         <div className="app">
