@@ -18,12 +18,10 @@
 
     &-button {
         display: block;
-        max-width: 40%;
+        max-width: 50%;
         margin: auto;
         background-color: vars.$font-tertiary;
-        text-align: center;
     }
-    // TODO: mettre le style dans le style card Event directement
     &-img {
         display: block;
         width: 90%;
