@@ -1,5 +1,4 @@
 import './eventDetail.scss';
-import Sport from '../../Doc/Image-Cat/sport.svg';
 
 import React from 'react'
 
@@ -16,26 +15,27 @@ const EventDetail = ({ oneEvent }) => {
 //   alert("L'évènement est complet");
 // }
 
+const image = require(`../../Doc/Image-Cat/${oneEvent.category}.svg`);
+
   return (
     <div className='cardevent-container'>
         <div className='cardevent-container-header'> 
             <div>
-            <p className='cardevent-title'>Sortie escalade</p>
+            <p className='cardevent-title'>{oneEvent.title}</p>
                 <div className='cardevent-categories'>
-                    <button className='cardevent-categories-item'>Sport</button>
-                    <button className='cardevent-categories-item'>Plein Air</button>
+                    <button className='cardevent-categories-item'>{oneEvent.category}</button>
                 </div>
             </div>
-            <img src={Sport} alt="categorie-sport" className='cardevent-img'/>
+            <img src={image} alt="categorie-sport" className='cardevent-img'/>
                 
             
         </div>
         
-        <p className='cardevent-description'>Je vous propose une sortie escalade en nature dans le massif de Bavella. Tous niveaux acceptés. Nous pourrons définir ensemble qui amène quel matériel afin de pouvoir équiper plusieurs voies en fonction du nombre d'inscrits. Prévoir ses chaussons et son baudrier. Et n'oubliez pas le pique-nique ! </p>
+        <p className='cardevent-description'>{oneEvent.description}</p>
         
-        <h2 className='cardevent-date'>Le samedi 06 mars à 10h</h2>
-        <p className='cardevent-adress'>Massif de Bavella - Corse</p>
-        <button className='cardevent-price'>GRATUIT</button>
+        <h2 className='cardevent-date'>{oneEvent.date_hours}</h2>
+        <p className='cardevent-adress'>{oneEvent.adress}, {oneEvent.city}</p>
+        <button className='cardevent-price'>{oneEvent.price}</button>
         {/* <p className='cardevent-capacity'>{counterValue} / 12 personnes </p> */}
         {/* <button onClick={handleClick} className='cardevent-participate'>JE PARTICIPE</button> */}
    {/* console.log(counterValue); */}
