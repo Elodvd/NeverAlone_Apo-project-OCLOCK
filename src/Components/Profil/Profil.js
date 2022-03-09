@@ -4,10 +4,8 @@ import React from 'react';
 import { deleteProfil } from '../../requests/deleteProfil';
 import { useNavigate } from 'react-router-dom'; 
 import { useState } from 'react';
-import ButtonModify from '../ButtonModify/ButtonModify';
 import Button from '../Button/Button';
 import { removeBearerToken } from '../../requests';
-
 
 // composant principale de la page /evenements
 
@@ -71,7 +69,7 @@ return(
             <div className="profil-informations">
                 <div className="profil-content">      
                     <p>{userData.first_name}</p>
-                    <ButtonModify action={handleFirstNameModify} />
+                    <Button action={handleFirstNameModify} route={`/profil/${userData.id}`} text={'🖊️'}/>
                 </div>
             </div>
         ) : (
@@ -90,7 +88,6 @@ return(
             <div className="profil-informations">
                 <div className="profil-content">        
                     <p>{userData.last_name}</p>
-    
                     <Button action={handleLastNameModify} route={`/profil/${userData.id}`} text={'🖊️'}/>
 
                 </div>
@@ -111,7 +108,7 @@ return(
             <div className="profil-informations">
                 <div className="profil-content">        
                     <p>{userData.pseudo}</p>
-                    <button className='btn-modify' onClick={handlePseudoModify}>Modifier</button>
+                    <Button action={handlePseudoModify} route={`/profil/${userData.id}`} text={'🖊️'}/>
                 </div>
             </div>
         ) : (
@@ -130,7 +127,7 @@ return(
             <div className="profil-informations">
                 <div className="profil-content">        
                     <p>{userData.birthday}</p>
-                    <button onClick={handleBirthdayModify}>Modifier</button>
+                    <Button action={handleBirthdayModify} route={`/profil/${userData.id}`} text={'🖊️'}/>
                 </div>
             </div>
         ) : (
@@ -149,7 +146,7 @@ return(
             <div className="profil-informations">
                 <div className="profil-content">        
                     <p>{userData.email}</p>
-                    <button onClick={handleEmailModify}>Modifier</button>
+                    <Button action={handleEmailModify} route={`/profil/${userData.id}`} text={'🖊️'}/>
                 </div>
             </div>
         ) : (
