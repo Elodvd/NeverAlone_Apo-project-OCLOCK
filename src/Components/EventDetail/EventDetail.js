@@ -1,46 +1,122 @@
 import './eventDetail.scss';
+import { useState } from 'react';
+import Button from '../Button/Button.js';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { deleteEvent } from '../../requests/deleteEvent';
 
-import React from 'react'
+const EventDetail = ({ oneEvent, getAll }) => {
+    // state pour le compteur/nombre de participants
+    const [counterValue, SetCounterValue] = useState(1);
+    // state pour gérer le fait qu'un évènement soit complet ou non
+    const [isFull, SetIsFull] = useState(false);
+    //state pour gérer le bouton se désinscrire
+    const [isRegister, SetIsRegister] = useState(false);
 
-const EventDetail = ({ oneEvent }) => {
+    const navigate = useNavigate();
 
-// const [counterValue, SetCounterValue] = useState(1);
-// const [capacityValue, SetCapacityValue] = useState(12);
+    const handleDelete =  async (event) => {
+        event.preventDefault();
+        const response = await deleteEvent(oneEvent.id);
+        if(response.status === 204){
+            alert("event supprimé");
+            getAll();
+            navigate("/events");
 
-// const handleClick = () =>{
-//   console.log('DEBUG')
-//   if(counterValue< capacityValue){
-//   SetCounterValue (counterValue+1);
-//   }
-//   alert("L'évènement est complet");
-// }
+        }
 
-const image = require(`../../Doc/Image-Cat/${oneEvent.category}.svg`);
+    }
 
-  return (
-    <div className='event-container'>
-        <div className='event-container-header'> 
-            <div>
-            <p className='event-title'>{oneEvent.title}</p>
-                <div className='event-categories'>
-                    <button className='event-categories-item'>{oneEvent.category}</button>
+    // action au click sur "JE PARTICIPE"
+    const handleClick = (event) => {
+        // on enpêche le rechargement au click
+        event.preventDefault();
+        console.log('DEBUG');
+        //console.log(oneEvent);
+        // tant que le nombre de participant n'est pas au maximum :
+        SetIsFull(false);
+        // Je passe en tant que participant, le bouton SE DESINSCRIRE apparait
+        SetIsRegister(true);
+        SetCounterValue(counterValue + 1);
+        console.log(counterValue);
+
+        // Quand le nombre de participant est au maximum :
+        if (counterValue >= oneEvent.capacity) {
+            return SetIsFull(true) && SetCounterValue(counterValue + 1);
+        }
+    };
+
+    // action au click sur "SE DESINSCRIRE"
+    const handleSub = (event) => {
+        event.preventDefault();
+        //Le compteur prend -1 participant
+        SetCounterValue(counterValue - 1);
+        // Ca n'est plus complet, je peux à nouveau participer
+        SetIsFull(false);
+        // Je me suis désinscrit, le bouton SE DESINSCRIRE disparait
+        SetIsRegister(false);
+    };
+
+    const image = require(`../../Doc/Image-Cat/${oneEvent.category}.svg`);
+    return (
+        <div className="event-container">
+            <div className="event-container-header">
+                <div>
+                    {isRegister && <p className="event-register">INSCRIT !</p>}
+                    <p className="event-title">{oneEvent.title}</p>
+                    <div className="event-categories">
+                        <button className="event-categories-item">
+                            {oneEvent.category}
+                        </button>
+                    </div>
                 </div>
+                <img src={image} alt="categorie-sport" className="event-img" />
             </div>
-            <img src={image} alt="categorie-sport" className='event-img'/>
-                
+            <p className="event-description">{oneEvent.description}</p>
+            <h2 className="event-date">{oneEvent.date_hours}</h2>
+            <p className="event-adress">
+                {oneEvent.adress}, {oneEvent.city}
+            </p>
+            <button className="event-price">{oneEvent.price}</button>
+            <p className="cardevent-capacity">
+                {counterValue - 1} / {oneEvent.capacity} personnes{' '}
+            </p>
+            {/* Gestion des affichages des trois Buttons en fonction des states */}
+            {isRegister ? (
+                <Button
+                    route={`/events/${oneEvent.id}`}
+                    action={handleSub}
+                    className={'cardevent-participate'}
+                    text={'SE DESINSCRIRE'}
+                />
+            ) : (
+                <Button
+                    route={`/events/${oneEvent.id}`}
+                    action={handleClick}
+                    className={'cardevent-participate'}
+                    text={'JE PARTICIPE'}
+                />
+            )}
+            {isFull && (
+                <Button
+                    route={`/events/${oneEvent.id}`}
+                    className={'cardevent-participate button-red'}
+                    text={'COMPLET'}
+                />
+            )}
+
+        <form 
+            className="profil-btn-group"
+            action={`/events/${oneEvent.id}`}
+            method="DELETE"
+            onSubmit={handleDelete}
+        >
+
+            <button className="profil-btn profil-btn-red">Supprimer mon profil</button>
             
+        </form>
+
         </div>
-        
-        <p className='event-description'>{oneEvent.description}</p>
-        
-        <h2 className='event-date'>{oneEvent.date_hours}</h2>
-        <p className='event-adress'>{oneEvent.adress}, {oneEvent.city}</p>
-        <button className='event-price'>{oneEvent.price}</button>
-        {/* <p className='cardevent-capacity'>{counterValue} / 12 personnes </p> */}
-        {/* <button onClick={handleClick} className='cardevent-participate'>JE PARTICIPE</button> */}
-   {/* console.log(counterValue); */}
-      </div>
-
-  )};
-
+    );
+};
 export default EventDetail;

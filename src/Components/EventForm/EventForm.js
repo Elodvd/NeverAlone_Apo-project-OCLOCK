@@ -131,6 +131,7 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
                         name="title"
                         aria-describedby="titleHelp"
                         placeholder="Match de tennis"
+                        required="required"
                     />
                 </div>
 
@@ -146,6 +147,7 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
                         className="event-input"
                         name="description"
                         aria-describedby="descriptionHelp"
+                        required="required"
                         placeholder="Détaillez l'évènement et donnez un maximum d'informations pour les autres utilisateurs"
                     />
                 </div>
@@ -158,6 +160,7 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
                         onChange={handleCategory}
                         name="category"
                         id="category-select"
+                        required="required"
                     >
                         <option value="">--Please choose an option--</option>
                         <option value="autre">Autre</option>
@@ -188,6 +191,7 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
                         name="date"
                         aria-describedby="dateHelp"
                         placeholder="Date et heure de l'évènement"
+                        required="required"
                     />
                 </div>
 
@@ -205,6 +209,7 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
                         name="capacity"
                         aria-describedby="capacityHelp"
                         placeholder="2"
+                        required="required"
                     />
                 </div>
 
@@ -219,6 +224,7 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
                             name="price"
                             value="gratuit"
                             aria-describedby="freeHelp"
+                            required="required"
                         />
                     </label>
                     <label className="event-form-radio-label">
@@ -231,6 +237,7 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
                             name="price"
                             value="payant"
                             aria-describedby="notfreeHelp"
+                            required="required"
                         />
                     </label>
                 </div>
@@ -248,6 +255,7 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
                         name="adress"
                         aria-describedby="adressHelp"
                         placeholder="ex : 10 rue St Marc"
+                        required="required"
                     />
                 </div>
 
@@ -263,6 +271,7 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
                         className="event-input"
                         name="city"
                         placeholder="Lyon, Paris, Toulouse"
+                        required="required"
                     />
                 </div>
                 <Button

@@ -6,11 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import ButtonModify from '../ButtonModify/ButtonModify';
 import Button from '../Button/Button';
+import { removeBearerToken } from '../../requests';
 
 
 // composant principale de la page /evenements
 
-const Profil = ({ userData, handleSetIsConnected }) => {
+const Profil = ({ userData, handleSetIsConnected, getAll }) => {
 
 const[firstnameModify, setFirstnameModify]=useState(false);
 const[lastnameModify, setLastnameModify]=useState(false);
@@ -25,7 +26,9 @@ const[emailModify, setEmailModify]=useState(false);
         const response = await deleteProfil(userData.id);
         if(response.status === 204){
             handleSetIsConnected(false);
+            removeBearerToken();
             alert("utilisateur supprimé");
+            getAll();
             navigate("/");
         }
     }
