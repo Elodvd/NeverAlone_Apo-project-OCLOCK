@@ -4,6 +4,9 @@ import React from 'react';
 import { deleteProfil } from '../../requests/deleteProfil';
 import { useNavigate } from 'react-router-dom'; 
 import { useState } from 'react';
+import ButtonModify from '../ButtonModify/ButtonModify';
+import Button from '../Button/Button';
+
 
 // composant principale de la page /evenements
 
@@ -25,7 +28,6 @@ const[emailModify, setEmailModify]=useState(false);
             alert("utilisateur supprimé");
             navigate("/");
         }
-
     }
 
 
@@ -66,7 +68,7 @@ return(
             <div className="profil-informations">
                 <div className="profil-content">      
                     <p>{userData.first_name}</p>
-                    <button onClick={handleFirstNameModify}>Modifier</button>
+                    <ButtonModify action={handleFirstNameModify} />
                 </div>
             </div>
         ) : (
@@ -85,7 +87,9 @@ return(
             <div className="profil-informations">
                 <div className="profil-content">        
                     <p>{userData.last_name}</p>
-                    <button onClick={handleLastNameModify}>Modifier</button>
+    
+                    <Button action={handleLastNameModify} route={`/profil/${userData.id}`} text={'🖊️'}/>
+
                 </div>
             </div>
         ) : (
@@ -104,7 +108,7 @@ return(
             <div className="profil-informations">
                 <div className="profil-content">        
                     <p>{userData.pseudo}</p>
-                    <button onClick={handlePseudoModify}>Modifier</button>
+                    <button className='btn-modify' onClick={handlePseudoModify}>Modifier</button>
                 </div>
             </div>
         ) : (
@@ -162,7 +166,7 @@ return(
             action={`/profils/${userData.id}`}
             method="PATCH"
         >
-            <button >Enregistrer les modifications</button>   
+            <button className="profil-btn">Enregistrer les modifications</button>   
         </form>
         <form
             className="profil-btn-group"
