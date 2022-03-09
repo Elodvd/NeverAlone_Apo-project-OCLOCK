@@ -3,6 +3,7 @@ import avatar from '../../Doc/avatar.svg'
 import React from 'react';
 import { deleteProfil } from '../../requests/deleteProfil';
 import { useNavigate } from 'react-router-dom'; 
+import { removeBearerToken } from '../../requests';
 
 // composant principale de la page /evenements
 
@@ -15,6 +16,7 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
         const response = await deleteProfil(userData.id);
         if(response.status === 204){
             handleSetIsConnected(false);
+            removeBearerToken();
             alert("utilisateur supprimé");
             getAll();
             navigate("/");
