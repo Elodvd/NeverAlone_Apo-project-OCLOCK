@@ -46,7 +46,7 @@ function App() {
         }
     }, []);
 
-    return (
+return (
         <div className="app">
             <Navbar
                 isConnected={isConnected}
@@ -57,55 +57,35 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/signin" element={<SignInForm />} />
 
-                <Route
-                    path="/login"
-                    element={
-                        <LogInForm
-                            handleSetIsConnected={SetIsConnected}
-                            handleSetUserData={SetUserData}
-                        />
-                    }
-                />
-                {isConnected && (
+                <Route path="/login" element={<LogInForm 
+                    handleSetIsConnected={SetIsConnected}
+                    handleSetUserData={SetUserData}
+                 />} />
+                {
+                    isConnected && 
                     <>
-                        <Route
-                            path="/events"
-                            element={
-                                <ListEvent
-                                    userData={userData}
-                                    eventData={eventData}
-                                    handleSetEventData={SetEventData}
-                                    handleSetOneEvent={SetOneEvent}
-                                />
-                            }
-                        />
-                        ,
-                        <Route
-                            path="/add-event"
-                            element={
-                                <EventForm
-                                    handleSetEventData={SetEventData}
-                                    eventData={eventData}
-                                    userData={userData}
-                                />
-                            }
-                        />
-                        ,
-                        <Route
-                            path={`/profil/${userData.id}`}
-                            element={
-                                <Profil
-                                    handleSetIsConnected={SetIsConnected}
-                                    userData={userData}
-                                />
-                            }
-                        />
-                        <Route
-                            path={`/events/${oneEvent.id}`}
-                            element={<EventDetail oneEvent={oneEvent} />}
-                        />
+                        <Route path="/events" element={<ListEvent
+                            userData={userData}
+                            eventData={eventData}
+                            handleSetEventData={SetEventData}
+                            handleSetOneEvent={SetOneEvent}
+                        />} />,
+                        <Route path="/add-event" element={<EventForm
+                            handleSetEventData={SetEventData}
+                            eventData={eventData}
+                            userData={userData}
+                        />} />,
+                        <Route path={`/profil/${userData.id}`} element={<Profil
+                            handleSetIsConnected={SetIsConnected}
+                            userData={userData}
+                            getAll={getAll}
+                        />} />
+                        <Route path={`/events/${oneEvent.id}`} element={<EventDetail
+                            oneEvent={oneEvent}
+                            getAll={getAll}
+                        />} />
                     </>
-                )}
+                }
                 <Route path="*" element={<Error404 />} />
             </Routes>
             <Footer />

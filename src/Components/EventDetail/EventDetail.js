@@ -2,14 +2,30 @@ import './eventDetail.scss';
 import { useState } from 'react';
 import Button from '../Button/Button.js';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { deleteEvent } from '../../requests/deleteEvent';
 
-const EventDetail = ({ oneEvent }) => {
+const EventDetail = ({ oneEvent, getAll }) => {
     // state pour le compteur/nombre de participants
     const [counterValue, SetCounterValue] = useState(1);
     // state pour gérer le fait qu'un évènement soit complet ou non
     const [isFull, SetIsFull] = useState(false);
     //state pour gérer le bouton se désinscrire
     const [isRegister, SetIsRegister] = useState(false);
+
+    const navigate = useNavigate();
+
+    const handleDelete =  async (event) => {
+        event.preventDefault();
+        const response = await deleteEvent(oneEvent.id);
+        if(response.status === 204){
+            alert("event supprimé");
+            getAll();
+            navigate("/events");
+
+        }
+
+    }
 
     // action au click sur "JE PARTICIPE"
     const handleClick = (event) => {
@@ -88,6 +104,18 @@ const EventDetail = ({ oneEvent }) => {
                     text={'COMPLET'}
                 />
             )}
+
+        <form 
+            className="profil-btn-group"
+            action={`/events/${oneEvent.id}`}
+            method="DELETE"
+            onSubmit={handleDelete}
+        >
+
+            <button className="profil-btn profil-btn-red">Supprimer mon profil</button>
+            
+        </form>
+
         </div>
     );
 };
