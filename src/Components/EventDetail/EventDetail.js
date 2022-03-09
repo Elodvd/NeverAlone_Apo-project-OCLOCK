@@ -76,13 +76,16 @@ const EventDetail = ({ oneEvent }) => {
             ) : (
                 <Button
                     route={`/events/${oneEvent.id}`}
-                    action={!isFull && handleClick}
-                    className={
-                        isFull
-                            ? 'cardevent-participate button-red'
-                            : 'cardevent-participate'
-                    }
-                    text={isFull ? 'COMPLET' : 'JE PARTICIPE'}
+                    action={handleClick}
+                    className={'cardevent-participate'}
+                    text={'JE PARTICIPE'}
+                />
+            )}
+            {isFull && (
+                <Button
+                    route={`/events/${oneEvent.id}`}
+                    className={'cardevent-participate button-red'}
+                    text={'COMPLET'}
                 />
             )}
         </div>
