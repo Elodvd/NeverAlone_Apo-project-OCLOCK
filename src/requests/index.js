@@ -7,20 +7,23 @@ const apiAxios = axios.create({
 export default apiAxios;
 
 
-export function setBearerToken (token) {
+export function setBearerToken (token, user) {
     apiAxios.defaults.headers.common.Authorization = `bearer ${token}`;
     localStorage.setItem("token", token);
+    localStorage.setItem("user", user);
 };
 
 export function removeBearerToken () {
     apiAxios.defaults.headers.common.Authorization = undefined;
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
 }
 
-export function getLocalBearerToken () {
+export function getLocalUser () {
     const localToken = localStorage.getItem("token");
+    const localUser = localStorage.getItem("user")
     if(localToken){
-        return localToken;
+        return localUser;
     }
     return undefined;
 }
