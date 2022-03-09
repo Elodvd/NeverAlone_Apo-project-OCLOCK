@@ -4,25 +4,49 @@ import Button from '../Button/Button.js';
 import React from 'react';
 
 const EventDetail = ({ oneEvent }) => {
-    const [counterValue, SetCounterValue] = useState(0);
+    // state pour le compteur/nombre de participants
+    const [counterValue, SetCounterValue] = useState(1);
+    // state pour gérer le fait qu'un évènement soit complet ou non
     const [isFull, SetIsFull] = useState(false);
+    //state pour gérer le bouton se désinscrire
+    const [isRegister, SetIsRegister] = useState(false);
 
+    // action au click sur "JE PARTICIPE"
     const handleClick = (event) => {
+        // on enpêche le rechargement au click
         event.preventDefault();
         console.log('DEBUG');
-        if (counterValue === oneEvent.capacity) {
-            SetIsFull(true);
-            return;
-        }
+        //console.log(oneEvent);
+        // tant que le nombre de participant n'est pas au maximum :
         SetIsFull(false);
+        // Je passe en tant que participant, le bouton SE DESINSCRIRE apparait
+        SetIsRegister(true);
         SetCounterValue(counterValue + 1);
         console.log(counterValue);
+
+        // Quand le nombre de participant est au maximum :
+        if (counterValue >= oneEvent.capacity) {
+            return SetIsFull(true) && SetCounterValue(counterValue + 1);
+        }
     };
+
+    // action au click sur "SE DESINSCRIRE"
+    const handleSub = (event) => {
+        event.preventDefault();
+        //Le compteur prend -1 participant
+        SetCounterValue(counterValue - 1);
+        // Ca n'est plus complet, je peux à nousveau participer
+        SetIsFull(false);
+        // Je me suis désinscrit, le bouton SE DESINSCRIRE disparait
+        SetIsRegister(false);
+    };
+
     const image = require(`../../Doc/Image-Cat/${oneEvent.category}.svg`);
     return (
         <div className="event-container">
             <div className="event-container-header">
                 <div>
+                    {isRegister && <p className="event-register">INSCRIT !</p>}
                     <p className="event-title">{oneEvent.title}</p>
                     <div className="event-categories">
                         <button className="event-categories-item">
@@ -39,18 +63,28 @@ const EventDetail = ({ oneEvent }) => {
             </p>
             <button className="event-price">{oneEvent.price}</button>
             <p className="cardevent-capacity">
-                {counterValue} / {oneEvent.capacity} personnes{' '}
+                {counterValue - 1} / {oneEvent.capacity} personnes{' '}
             </p>
-            <Button
-                route={`/events/${oneEvent.id}`}
-                action={handleClick}
-                className={
-                    isFull
-                        ? 'cardevent-participate button-red'
-                        : 'cardevent-participate'
-                }
-                text={isFull ? 'COMPLET' : 'JE PARTICIPE'}
-            />
+            {/* Gestion des affichages des deux Button en fonction des states */}
+            {isRegister ? (
+                <Button
+                    route={`/events/${oneEvent.id}`}
+                    action={handleSub}
+                    className={'cardevent-participate'}
+                    text={'SE DESINSCRIRE'}
+                />
+            ) : (
+                <Button
+                    route={`/events/${oneEvent.id}`}
+                    action={!isFull && handleClick}
+                    className={
+                        isFull
+                            ? 'cardevent-participate button-red'
+                            : 'cardevent-participate'
+                    }
+                    text={isFull ? 'COMPLET' : 'JE PARTICIPE'}
+                />
+            )}
         </div>
     );
 };
