@@ -35,7 +35,7 @@ const EventDetail = ({ oneEvent }) => {
         event.preventDefault();
         //Le compteur prend -1 participant
         SetCounterValue(counterValue - 1);
-        // Ca n'est plus complet, je peux à nousveau participer
+        // Ca n'est plus complet, je peux à nouveau participer
         SetIsFull(false);
         // Je me suis désinscrit, le bouton SE DESINSCRIRE disparait
         SetIsRegister(false);
@@ -65,7 +65,7 @@ const EventDetail = ({ oneEvent }) => {
             <p className="cardevent-capacity">
                 {counterValue - 1} / {oneEvent.capacity} personnes{' '}
             </p>
-            {/* Gestion des affichages des deux Button en fonction des states */}
+            {/* Gestion des affichages des trois Buttons en fonction des states */}
             {isRegister ? (
                 <Button
                     route={`/events/${oneEvent.id}`}
