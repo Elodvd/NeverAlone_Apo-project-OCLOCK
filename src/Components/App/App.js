@@ -70,9 +70,11 @@ function App() {
                         <Route path={`/profil/${userData.id}`} element={<Profil
                             handleSetIsConnected={SetIsConnected}
                             userData={userData}
+                            getAll={getAll}
                         />} />
                         <Route path={`/events/${oneEvent.id}`} element={<EventDetail
                             oneEvent={oneEvent}
+                            getAll={getAll}
                         />} />
                     </>
                 }

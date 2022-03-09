@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 // composant principale de la page /evenements
 
-const Profil = ({ userData, handleSetIsConnected }) => {
+const Profil = ({ userData, handleSetIsConnected, getAll }) => {
 
     const navigate = useNavigate();
 
@@ -16,6 +16,7 @@ const Profil = ({ userData, handleSetIsConnected }) => {
         if(response.status === 204){
             handleSetIsConnected(false);
             alert("utilisateur supprimé");
+            getAll();
             navigate("/");
         }
 
