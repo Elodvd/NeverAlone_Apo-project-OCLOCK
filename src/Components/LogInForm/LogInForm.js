@@ -37,7 +37,7 @@ const LogInForm = ({
             handleSetUserData(response.data.newUser);
             SetEmailValue('');
             SetPasswordValue('');
-            navigate('/events');                      
+            navigate('/events');                
         } 
         
     };
