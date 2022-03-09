@@ -12,10 +12,10 @@ import Error404 from '../Error404/Error404';
 import EventForm from '../EventForm/EventForm';
 import Profil from '../Profil/Profil';
 import { getAllEventsRequest } from '../../requests/getAllEvents';
+import { getLocalUser } from '../../requests/index.js';
 import EventDetail from '../EventDetail/EventDetail';
 
 function App() {
-
     //savoir si on est connecté
     const [isConnected, SetIsConnected] = useState(false);
     //recuperation de l'information du user
@@ -26,19 +26,27 @@ function App() {
     //recuperation de un seul evenement
     const [oneEvent, SetOneEvent] = useState([]);
 
-    const getAll = async() => {
+    const getAll = async () => {
         const response = await getAllEventsRequest();
-        if(response.status === 200){
+        if (response.status === 200) {
             SetEventData(response.data);
         }
     };
 
     //au lancement de l'app, on recupere dans le state tous les evenements de notre bdd
     useEffect(() => {
-        getAll();        
-    },[]);
+        getAll();
+        if (localStorage.getItem('user') !== null) {
+            const responseLocalUser = JSON.parse(getLocalUser());
+            console.log(responseLocalUser);
+            if (responseLocalUser) {
+                SetIsConnected(true);
+                SetUserData(responseLocalUser);
+            }
+        }
+    }, []);
 
-    return (
+return (
         <div className="app">
             <Navbar
                 isConnected={isConnected}

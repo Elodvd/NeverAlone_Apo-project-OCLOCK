@@ -33,11 +33,11 @@ const LogInForm = ({
 
         if(response.status === 200){
             handleSetIsConnected(true);
-            setBearerToken(response.data.token);
-            handleSetUserData(response.data.user);
+            setBearerToken(response.data.token, JSON.stringify(response.data.newUser));
+            handleSetUserData(response.data.newUser);
             SetEmailValue('');
             SetPasswordValue('');
-            navigate('/events');                      
+            navigate('/events');                
         } 
         
     };
