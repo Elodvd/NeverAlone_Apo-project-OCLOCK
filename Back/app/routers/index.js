@@ -15,18 +15,19 @@ router.post('/login', userController.loginAction);
 //signin path
 router.post('/signin', userController.signinAction);
 
-router.route('/events')
+router
+    .route('/events')
     .get(eventController.getAll)
     .post(eventController.create);
-    
-router.route('/events/:id')
-    .get(eventController.getOne)    
+
+router
+    .route('/events/:id')
+    .get(eventController.getOne)
     .patch(eventController.update)
     .delete(eventController.delete);
 
 //route pour le profil d'un utilisateur
 router.delete('/profils/:id', userController.deleteAction);
-
 
 router.use(errorController.error);
 
@@ -34,7 +35,3 @@ router.use(errorController.error);
 router.use(errorController.notFound);
 
 module.exports = router;
-
-
-
-

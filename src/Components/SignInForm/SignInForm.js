@@ -51,9 +51,17 @@ const SignInForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const response = await signinRequest(lastNameValue, firstNameValue, pseudoValue, dateValue, emailValue, passwordValue, confirmValue);
+        const response = await signinRequest(
+            lastNameValue,
+            firstNameValue,
+            pseudoValue,
+            dateValue,
+            emailValue,
+            passwordValue,
+            confirmValue
+        );
 
-        if(response.status === 200){
+        if (response.status === 200) {
             SetLastNameValue('');
             SetFirstNameValue('');
             SetPseudoValue('');
@@ -63,8 +71,6 @@ const SignInForm = () => {
             alert('utilisateur crée');
             navigate('/login');
         }
-
-        
     };
 
     return (

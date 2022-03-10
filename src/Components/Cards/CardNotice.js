@@ -2,8 +2,8 @@ import React from 'react';
 import etoile from '../../Doc/etoile.png';
 
 const CardNotice = () => {
-  return (
-         <div className="card-comment">
+    return (
+        <div className="card-comment">
             <div className="card-decoration">“</div>
             <p className="card-description">
                 {' '}
@@ -21,7 +21,7 @@ const CardNotice = () => {
 
             <p className="card-author"> Luko C. de Toulouse</p>
         </div>
-  )
-}
+    );
+};
 
-export default CardNotice
+export default CardNotice;

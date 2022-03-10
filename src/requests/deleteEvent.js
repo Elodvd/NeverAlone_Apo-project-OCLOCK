@@ -1,12 +1,11 @@
-import apiAxios from "./index";
+import apiAxios from './index';
 
 export async function deleteEvent(id) {
-
-    try{
+    try {
         const response = await apiAxios.delete(`/events/${id}`);
 
         return response;
-    }catch(err){
+    } catch (err) {
         return err.response;
     }
 }

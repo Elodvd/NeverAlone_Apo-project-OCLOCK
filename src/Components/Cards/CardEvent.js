@@ -15,7 +15,6 @@ const CardEvent = ({
     handleAction,
     text_button,
 }) => {
-    
     return (
         <div className="cardevent-container">
             <h2 className="cardevent-date">{date}</h2>
