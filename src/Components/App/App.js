@@ -28,7 +28,6 @@ function App() {
 
     const getAll = async () => {
         const response = await getAllEventsRequest();
-        console.log(response.data.date);
         if (response.status === 200) {
             response.data.sort(function compare(a, b) {
                 return new Date(a.date) - new Date(b.date);
