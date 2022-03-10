@@ -28,10 +28,18 @@ function App() {
 
     const getAll = async () => {
         const response = await getAllEventsRequest();
+        console.log(response.data.date)
         if (response.status === 200) {
+            response.data.sort(function compare(a, b) {
+                return new Date(a.date) - new Date(b.date);
+            });
+
+
             SetEventData(response.data);
         }
     };
+
+    
 
     //au lancement de l'app, on recupere dans le state tous les evenements de notre bdd
     useEffect(() => {
@@ -74,6 +82,7 @@ return (
                             handleSetEventData={SetEventData}
                             eventData={eventData}
                             userData={userData}
+                            getAll={getAll}
                         />} />,
                         <Route path={`/profil/${userData.id}`} element={<Profil
                             handleSetIsConnected={SetIsConnected}
