@@ -1,6 +1,5 @@
 import './Profil.scss';
 import avatar from '../../Doc/avatar.svg';
-import React, { useRef } from 'react';
 import { deleteProfil } from '../../requests/deleteProfil';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -11,13 +10,11 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
     //state pour la gestion du statut modifiable ou non de l'information
     const [profilModify, setProfilModify] = useState(false);
     const [profilData, setProfilData] = useState([]);
-
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [pseudo, setPseudo] = useState('');
     const [birthday, setBirthday] = useState('');
     const [email, setEmail] = useState('');
-    
 
     const navigate = useNavigate();
 
@@ -39,34 +36,22 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
         setProfilModify(true);
     };
     // Si l'email est valide alors le state passe à true
-    const [emailError, setEmailError] = useState(false)
+    const [emailError, setEmailError] = useState(false);
     const validateEmail = (e) => {
         const email = e.target.value;
         if (validator.isEmail(email)) {
-        setEmailError(true)
+            setEmailError(true);
         } else {
-            setEmailError(false)
-            setEmail(email)
+            setEmailError(false);
+            setEmail(email);
         }
-    }
+    };
 
     const handlePatchValue = (e) => {
         e.preventDefault();
-        if (
-            firstName,
-            lastName,
-            pseudo,
-            birthday,
-            email            
-        ) {
+        if ((firstName, lastName, pseudo, birthday, email)) {
             console.log(firstName);
-            setProfilData([
-                firstName,
-                lastName,
-                pseudo,
-                birthday,
-                email 
-            ]);
+            setProfilData([firstName, lastName, pseudo, birthday, email]);
             setProfilModify(false);
         } else {
             alert('Veuillez remplir tous les champs');
@@ -75,7 +60,7 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
     const handleErrorPatch = (e) => {
         e.preventDefault();
         alert('Veuillez remplir tous les champs de façon correcte');
-    }
+    };
 
     return (
         <div className="profil">
@@ -131,9 +116,9 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         <input
                             type="text"
                             className={
-                                !firstName?
-                                "signin-input profil-error" : 
-                                "signin-input profil-valid"
+                                !firstName
+                                    ? 'signin-input profil-error'
+                                    : 'signin-input profil-valid'
                             }
                             id="modifyfirstname"
                             name="modifyfirsttname"
@@ -146,9 +131,9 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         <input
                             type="text"
                             className={
-                                !lastName?
-                                "signin-input profil-error" : 
-                                "signin-input profil-valid"
+                                !lastName
+                                    ? 'signin-input profil-error'
+                                    : 'signin-input profil-valid'
                             }
                             id="modifylastname"
                             name="modifylasttname"
@@ -161,9 +146,9 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         <input
                             type="text"
                             className={
-                                !pseudo?
-                                "signin-input profil-error" : 
-                                "signin-input profil-valid"
+                                !pseudo
+                                    ? 'signin-input profil-error'
+                                    : 'signin-input profil-valid'
                             }
                             id="modifypseudo"
                             name="modifypseudo"
@@ -176,9 +161,9 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         <input
                             type="date"
                             className={
-                                !birthday?
-                                "signin-input profil-error" : 
-                                "signin-input profil-valid"
+                                !birthday
+                                    ? 'signin-input profil-error'
+                                    : 'signin-input profil-valid'
                             }
                             id="modifybirthday"
                             name="modifybirthday"
@@ -191,15 +176,17 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         <input
                             type="email"
                             className={
-                                !emailError?
-                                "signin-input profil-error" : 
-                                "signin-input profil-valid"
+                                !emailError
+                                    ? 'signin-input profil-error'
+                                    : 'signin-input profil-valid'
                             }
                             id="modifyemail"
                             name="modifyemail"
                             aria-describedby="modifyEmailHelp"
                             placeholder={userData.email}
-                            onChange={(e) => {validateEmail(e)}}
+                            onChange={(e) => {
+                                validateEmail(e);
+                            }}
                         />
                     </div>
 
@@ -207,7 +194,9 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         className="profil-btn-group"
                         action={`/profils/${userData.id}`}
                         method="PATCH"
-                        onSubmit={emailError ? handlePatchValue : handleErrorPatch}
+                        onSubmit={
+                            emailError ? handlePatchValue : handleErrorPatch
+                        }
                     >
                         <button className="profil-btn">
                             Enregistrer les modifications
