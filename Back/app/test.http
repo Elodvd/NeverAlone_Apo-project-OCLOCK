@@ -14,22 +14,21 @@ GET {{ endpoint }}/route404
 GET {{ endpoint }}/events
 
 ### récupération d'un évenement
-GET {{ endpoint }}/events/3
+GET {{ endpoint }}/events/2
 
 ### ajouter un évenement
 POST {{ endpoint }}/events
 content-type: application/x-www-form-urlencoded
 
-id=6&date_hour=2022-02-26T18:50:00&capacity=20&price=GRATUIT&adress=11 rue de la liberté 29400 pencran&image=http://&user_id=1&title=MUSIQUE&description=profiter des joies du foot&city=Paris&category=culture
-
+id=5&title=Match de foot à la télé&description=Soiree match Lille/PSG et apéro dans un bar à Paris XVII (lieu à définir ensemble)&date=2022-02-28T14:00:00.000Z&capacity=10&price=GRATUIT&adress=rue du parc&city=Paris&category=sport&counter=1&user_id=1
 ### modifier un évènement
 PATCH {{ endpoint }}/events/1
 content-type: application/x-www-form-urlencoded
 
-title=jouer au foot ensemble&description=profiter des joies du foot&date_hour=2022-02-26 18:50:00&capacity=20&price=GRATUIT&adress=11 rue de la liberté 29400 pencran&image=http://&user_id=1
+id=10&title=Match de foot à la télé&description=Soiree match Lille/PSG et apéro dans un bar à Paris XVII (lieu à définir ensemble)&date=2022-02-28T14:00:00.000Z&capacity=10&price=GRATUIT&adress=rue du parc&city=Paris&category=sport&counter=1&user_id=1
 
 ### supprimer un évènement
-DELETE {{ endpoint }}/events/1
+DELETE {{ endpoint }}/events/2
 
 ################################
 ###          login        ###

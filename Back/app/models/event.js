@@ -13,6 +13,7 @@ Event.init(
     adress: DataTypes.STRING,
     city: DataTypes.STRING,
     category: DataTypes.STRING,
+    counter: DataTypes.INTEGER,
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,

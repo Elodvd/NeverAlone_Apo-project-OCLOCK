@@ -4,10 +4,10 @@ INSERT INTO "user" ("id", "email", "first_name", "last_name", "pseudo", "passwor
 (1, 'test@test.test', 'test', 'test', 'toto', 'password', '1991-02-26 18:50:00', '93310', 'https://www.fillmurray.com/g/200/300');
 
 
-INSERT INTO "event" ("id", "title", "description", "date", "capacity", "price", "adress", "city","category", "user_id" ) VALUES
-(1,'Match de foot à la télé', 'Soiree match Lille/PSG et apéro dans un bar à Paris XVII (lieu à définir ensemble)', '2022-02-28T14:00:00.000Z', '10', 'GRATUIT','rue du parc', 'Paris','sport', 1),
-(2,'Balade en montagne', 'Je vous propose de faire une randonnée au Pic du Montcalm, niveau intermédiaire, avec pique-nique. Covoiturage possible ! ', '2022-02-28T14:00:00.000Z', '8', 'GRATUIT','rue des gravillons', 'Toulouse','rencontre', 1),
-(3,'Tennis en double', 'Match de tennis en double (niveau débutant) dans la commune de Saint Gilles', '2022-02-28T14:00:00.000Z', '4', 'PAYANT', 'rue des papillons','Saint Gilles', 'autre', 1);
+INSERT INTO "event" ("id", "title", "description", "date", "capacity", "price", "adress", "city","category", "counter", "user_id" ) VALUES
+(1,'Match de foot à la télé', 'Soiree match Lille/PSG et apéro dans un bar à Paris XVII (lieu à définir ensemble)', '2022-02-28T14:00:00.000Z', '10', 'GRATUIT','rue du parc', 'Paris','sport',0, 1),
+(2,'Balade en montagne', 'Je vous propose de faire une randonnée au Pic du Montcalm, niveau intermédiaire, avec pique-nique. Covoiturage possible ! ', '2022-02-28T14:00:00.000Z', '8', 'GRATUIT','rue des gravillons', 'Toulouse','rencontre',0, 1),
+(3,'Tennis en double', 'Match de tennis en double (niveau débutant) dans la commune de Saint Gilles', '2022-02-28T14:00:00.000Z', '4', 'PAYANT', 'rue des papillons','Saint Gilles', 'autre',0, 1);
 
 INSERT INTO "category" ("id", "name", "color", "image") VALUES 
 (1, 'Jeu', '#cd6155', '/src/Doc/Image-Cat/jeu.svg'),
