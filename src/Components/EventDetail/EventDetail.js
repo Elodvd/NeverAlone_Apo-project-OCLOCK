@@ -1,11 +1,11 @@
 import './eventDetail.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '../Button/Button.js';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { deleteEvent } from '../../requests/deleteEvent';
 
-const EventDetail = ({ oneEvent, getAll }) => {
+const EventDetail = ({ oneEvent, getAll, userData }) => {
     // state pour le compteur/nombre de participants
     const [counterValue, SetCounterValue] = useState(1);
     // state pour gérer le fait qu'un évènement soit complet ou non
@@ -13,7 +13,17 @@ const EventDetail = ({ oneEvent, getAll }) => {
     //state pour gérer le bouton se désinscrire
     const [isRegister, SetIsRegister] = useState(false);
 
+    const [displayDelete, SetDisplayDelete] = useState(false);
+
     const navigate = useNavigate();
+
+    
+    useEffect(() => {
+        if(userData.id === oneEvent.user_id){
+            SetDisplayDelete(true);
+        }
+    },[])
+    
 
     const handleDelete =  async (event) => {
         event.preventDefault();
@@ -105,16 +115,26 @@ const EventDetail = ({ oneEvent, getAll }) => {
                 />
             )}
 
-        <form 
-            className="profil-btn-group"
-            action={`/events/${oneEvent.id}`}
-            method="DELETE"
-            onSubmit={handleDelete}
-        >
 
-            <button className="profil-btn profil-btn-red">Supprimer mon profil</button>
+        
+
+            <form 
+                className="profil-btn-group"
+                action={`/events/${oneEvent.id}`}
+                method="DELETE"
+                onSubmit={handleDelete}
+            >
+                
+                  { displayDelete && 
+                    <button className="profil-btn profil-btn-red">Supprimer mon évènement</button>
+                  }
+                
+                        
+                    
             
-        </form>
+            </form>
+        
+        
 
         </div>
     );
