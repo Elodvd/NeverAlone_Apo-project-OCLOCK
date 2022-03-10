@@ -26,8 +26,10 @@ const LogInForm = ({ handleSetIsConnected, handleSetUserData }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const response = await loginRequest(emailValue, passwordValue);
+        
 
         if (response.status === 200) {
+            console.log(response.data.token);
             handleSetIsConnected(true);
             setBearerToken(
                 response.data.token,

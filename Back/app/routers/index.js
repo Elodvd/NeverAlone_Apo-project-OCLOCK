@@ -4,6 +4,9 @@ const userController = require('../controllers/userController');
 const errorController = require('../controllers/errorController');
 const eventController = require('../controllers/eventController');
 
+
+const midAuthToken = require('../middlewares/authToken');
+
 const router = express.Router();
 
 // home path
@@ -17,17 +20,17 @@ router.post('/signin', userController.signinAction);
 
 router
     .route('/events')
-    .get(eventController.getAll)
-    .post(eventController.create);
+    .get(midAuthToken, eventController.getAll)
+    .post(midAuthToken, eventController.create);
 
 router
     .route('/events/:id')
-    .get(eventController.getOne)
-    .patch(eventController.update)
-    .delete(eventController.delete);
+    .get(midAuthToken, eventController.getOne)
+    .patch(midAuthToken, eventController.update)
+    .delete(midAuthToken, eventController.delete);
 
 //route pour le profil d'un utilisateur
-router.delete('/profils/:id', userController.deleteAction);
+router.delete('/profils/:id', midAuthToken, userController.deleteAction);
 
 router.use(errorController.error);
 
