@@ -5,24 +5,19 @@ import { deleteProfil } from '../../requests/deleteProfil';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { removeBearerToken } from '../../requests';
+import validator from 'validator';
 
 const Profil = ({ userData, handleSetIsConnected, getAll }) => {
     //state pour la gestion du statut modifiable ou non de l'information
     const [profilModify, setProfilModify] = useState(false);
-    const [profilData, setProfilData] = useState([
-        userData.first_name,
-        userData.last_name,
-        userData.pseudo,
-        userData.birthday,
-        userData.email,
-    ]);
+    const [profilData, setProfilData] = useState([]);
 
-    // Hook useRef pour récupérer la valeur des inputs de manière ciblée au click sur enregistrer les modifications
-    const inputFirstName = useRef();
-    const inputLastName = useRef();
-    const inputPseudo = useRef();
-    const inputBirthday = useRef();
-    const inputEmail = useRef();
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [pseudo, setPseudo] = useState('');
+    const [birthday, setBirthday] = useState('');
+    const [email, setEmail] = useState('');
+    
 
     const navigate = useNavigate();
 
@@ -43,34 +38,44 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
         e.preventDefault();
         setProfilModify(true);
     };
+    // Si l'email est valide alors le state passe à true
+    const [emailError, setEmailError] = useState(false)
+    const validateEmail = (e) => {
+        const email = e.target.value;
+        if (validator.isEmail(email)) {
+        setEmailError(true)
+        } else {
+            setEmailError(false)
+            setEmail(email)
+        }
+    }
 
     const handlePatchValue = (e) => {
         e.preventDefault();
-        const newFirstName = inputFirstName.current.value;
-        const newLastName = inputLastName.current.value;
-        const newPseudo = inputPseudo.current.value;
-        const newBirthday = inputBirthday.current.value;
-        const newEmail = inputEmail.current.value;
-
         if (
-            newFirstName !== '' &&
-            newLastName !== '' &&
-            newPseudo !== '' &&
-            newBirthday !== '' &&
-            newEmail !== ''
+            firstName,
+            lastName,
+            pseudo,
+            birthday,
+            email            
         ) {
+            console.log(firstName);
             setProfilData([
-                newFirstName,
-                newLastName,
-                newPseudo,
-                newBirthday,
-                newEmail,
+                firstName,
+                lastName,
+                pseudo,
+                birthday,
+                email 
             ]);
             setProfilModify(false);
         } else {
             alert('Veuillez remplir tous les champs');
         }
     };
+    const handleErrorPatch = (e) => {
+        e.preventDefault();
+        alert('Veuillez remplir tous les champs de façon correcte');
+    }
 
     return (
         <div className="profil">
@@ -81,31 +86,31 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                     <p className="profil-color">Mon prénom :</p>
                     <div className="profil-informations">
                         <div className="profil-content">
-                            <p>{profilData[0]}</p>
+                            <p>{userData.first_name}</p>
                         </div>
                     </div>
                     <p className="profil-color">Mon nom :</p>
                     <div className="profil-informations">
                         <div className="profil-content">
-                            <p>{profilData[1]}</p>
+                            <p>{userData.last_name}</p>
                         </div>
                     </div>
                     <p className="profil-color">Mon pseudo :</p>
                     <div className="profil-informations">
                         <div className="profil-content">
-                            <p>{profilData[2]}</p>
+                            <p>{userData.pseudo}</p>
                         </div>
                     </div>
                     <p className="profil-color">Ma date de naissance :</p>
                     <div className="profil-informations">
                         <div className="profil-content">
-                            <p>{profilData[3]}</p>
+                            <p>{userData.birthday}</p>
                         </div>
                     </div>
                     <p className="profil-color">Mon email :</p>
                     <div className="profil-informations">
                         <div className="profil-content">
-                            <p>{profilData[4]}</p>
+                            <p>{userData.email}</p>
                         </div>
                     </div>
 
@@ -124,57 +129,77 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                 <div>
                     <div className="signin-form-group">
                         <input
-                            ref={inputFirstName}
                             type="text"
-                            className="signin-input"
+                            className={
+                                !firstName?
+                                "signin-input profil-error" : 
+                                "signin-input profil-valid"
+                            }
                             id="modifyfirstname"
                             name="modifyfirsttname"
                             aria-describedby="modifyFirstnameHelp"
                             placeholder={userData.first_name}
+                            onChange={(e) => setFirstName(e.target.value)}
                         />
                     </div>
                     <div className="signin-form-group">
                         <input
-                            ref={inputLastName}
                             type="text"
-                            className="signin-input"
+                            className={
+                                !lastName?
+                                "signin-input profil-error" : 
+                                "signin-input profil-valid"
+                            }
                             id="modifylastname"
                             name="modifylasttname"
                             aria-describedby="modifyLastnameHelp"
                             placeholder={userData.last_name}
+                            onChange={(e) => setLastName(e.target.value)}
                         />
                     </div>
                     <div className="signin-form-group">
                         <input
-                            ref={inputPseudo}
                             type="text"
-                            className="signin-input"
+                            className={
+                                !pseudo?
+                                "signin-input profil-error" : 
+                                "signin-input profil-valid"
+                            }
                             id="modifypseudo"
                             name="modifypseudo"
                             aria-describedby="modifyPseudoHelp"
                             placeholder={userData.pseudo}
+                            onChange={(e) => setPseudo(e.target.value)}
                         />
                     </div>
                     <div className="signin-form-group">
                         <input
-                            ref={inputBirthday}
                             type="date"
-                            className="signin-input"
+                            className={
+                                !birthday?
+                                "signin-input profil-error" : 
+                                "signin-input profil-valid"
+                            }
                             id="modifybirthday"
                             name="modifybirthday"
                             aria-describedby="modifyBirthdayHelp"
                             placeholder={userData.birthday}
+                            onChange={(e) => setBirthday(e.target.value)}
                         />
                     </div>
                     <div className="signin-form-group">
                         <input
-                            ref={inputEmail}
                             type="email"
-                            className="signin-input"
+                            className={
+                                !emailError?
+                                "signin-input profil-error" : 
+                                "signin-input profil-valid"
+                            }
                             id="modifyemail"
                             name="modifyemail"
                             aria-describedby="modifyEmailHelp"
                             placeholder={userData.email}
+                            onChange={(e) => {validateEmail(e)}}
                         />
                     </div>
 
@@ -182,7 +207,7 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         className="profil-btn-group"
                         action={`/profils/${userData.id}`}
                         method="PATCH"
-                        onSubmit={handlePatchValue}
+                        onSubmit={emailError ? handlePatchValue : handleErrorPatch}
                     >
                         <button className="profil-btn">
                             Enregistrer les modifications
