@@ -1,6 +1,6 @@
 import './Profil.scss';
 import avatar from '../../Doc/avatar.svg'
-import React from 'react';
+import React, {useRef}  from 'react';
 import { deleteProfil } from '../../requests/deleteProfil';
 import { useNavigate } from 'react-router-dom'; 
 import { useState } from 'react';
@@ -17,19 +17,51 @@ const[pseudoModify, setPseudoModify]=useState(false);
 const[birthdayModify, setBirthdayModify]=useState(false);
 const[emailModify, setEmailModify]=useState(false);
 
-    const navigate = useNavigate();
+const inputLastName = useRef(null);
+const inputFirstName = useRef(null);
 
-    const handleDelete =  async (event) => {
-        event.preventDefault();
-        const response = await deleteProfil(userData.id);
-        if(response.status === 204){
-            handleSetIsConnected(false);
-            removeBearerToken();
-            alert("utilisateur supprimé");
-            getAll();
-            navigate("/");
-        }
+
+const[firstnameValue, setFirstnameValue]=useState(userData.first_name);
+const[lastnameValue, setLastnameValue]=useState(userData.last_name);
+//const[pseudoValue, setPseudoValue]=useState(userData.pseudo);
+//const[birthdayValue, setBirthdayValue]=useState(userData.birthday);
+//const[emailValue, setEmailValue]=useState(userData.email);
+
+const navigate = useNavigate();
+
+const handleDelete =  async (event) => {
+    event.preventDefault();
+    const response = await deleteProfil(userData.id);
+    if(response.status === 204){
+        handleSetIsConnected(false);
+        removeBearerToken();
+        alert("utilisateur supprimé");
+        getAll();
+        navigate("/");
     }
+}
+
+const handleModify=(e)=>{
+    e.preventDefault();
+    if(firstnameModify === true){
+        console.log('modif réalisée sur first name');
+        const newLastName=inputLastName.current.value;
+        setFirstnameValue(newLastName);
+    }
+    else{
+        console.log('pas de modif sur first name ')
+    }
+    if(lastnameModify === true){
+        console.log('modif réalisée sur last name');
+        const newFirstName=inputFirstName.current.value;
+        setLastnameValue(newFirstName);
+    }
+    else{
+        console.log('pas de modif sur last name')
+    }
+    
+}
+
 
 
 const handleFirstNameModify =(e)=>{
@@ -75,6 +107,7 @@ return(
         ) : (
             <div className="signin-form-group">
                 <input
+                    ref={inputLastName}
                     type="text"
                     className="signin-input"
                     id="modifyfirstname"
@@ -95,6 +128,7 @@ return(
         ) : (
             <div className="signin-form-group">
                 <input
+                    ref={inputFirstName}
                     type="text"
                     className="signin-input"
                     id="modifylastname"
@@ -165,6 +199,7 @@ return(
             className="profil-btn-group"
             action={`/profils/${userData.id}`}
             method="PATCH"
+            onSubmit={handleModify}
         >
             <button className="profil-btn">Enregistrer les modifications</button>   
         </form>
