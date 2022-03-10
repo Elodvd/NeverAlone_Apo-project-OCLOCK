@@ -19,13 +19,15 @@ const[emailModify, setEmailModify]=useState(false);
 
 const inputLastName = useRef(null);
 const inputFirstName = useRef(null);
-
+const inputPseudo = useRef(null);
+const inputBirthday = useRef(null);
+const inputEmail = useRef(null);
 
 const[firstnameValue, setFirstnameValue]=useState(userData.first_name);
 const[lastnameValue, setLastnameValue]=useState(userData.last_name);
-//const[pseudoValue, setPseudoValue]=useState(userData.pseudo);
-//const[birthdayValue, setBirthdayValue]=useState(userData.birthday);
-//const[emailValue, setEmailValue]=useState(userData.email);
+const[pseudoValue, setPseudoValue]=useState(userData.pseudo);
+const[birthdayValue, setBirthdayValue]=useState(userData.birthday);
+const[emailValue, setEmailValue]=useState(userData.email);
 
 const navigate = useNavigate();
 
@@ -48,16 +50,26 @@ const handleModify=(e)=>{
         const newLastName=inputLastName.current.value;
         setFirstnameValue(newLastName);
     }
-    else{
-        console.log('pas de modif sur first name ')
-    }
+  
     if(lastnameModify === true){
         console.log('modif réalisée sur last name');
         const newFirstName=inputFirstName.current.value;
         setLastnameValue(newFirstName);
     }
-    else{
-        console.log('pas de modif sur last name')
+    if(pseudoModify === true){
+        console.log('modif réalisée sur pseudo');
+        const newPseudo=inputPseudo.current.value;
+        setPseudoValue(newPseudo);
+    }
+    if(birthdayModify === true){
+        console.log('modif réalisée sur birthday');
+        const newBirthday=inputBirthday.current.value;
+        setPseudoValue(newBirthday);
+    }
+    if(emailModify === true){
+        console.log('modif réalisée sur email');
+        const newEmail=inputEmail.current.value;
+        setEmailValue(newEmail);
     }
     
 }
@@ -148,6 +160,7 @@ return(
         ) : (
             <div className="signin-form-group">
                 <input
+                    ref={inputPseudo}
                     type="text"
                     className="signin-input"
                     id="modifypseudo"
@@ -167,6 +180,7 @@ return(
         ) : (
             <div className="signin-form-group">
                 <input
+                    ref={inputBirthday}
                     type="text"
                     className="signin-input"
                     id="modifybirthday"
@@ -186,6 +200,7 @@ return(
         ) : (
             <div className="signin-form-group">
                 <input
+                    ref={inputEmail}
                     type="text"
                     className="signin-input"
                     id="modifyemail"
