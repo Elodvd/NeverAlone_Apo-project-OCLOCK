@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 import Button from '../Button/Button';
 
 //formulaire de création d'un évènement
-const EventForm = ({ handleSetEventData, eventData, userData }) => {
+const EventForm = ({ handleSetEventData, eventData, userData, getAll }) => {
     const [titleValue, SetTitleValue] = useState('');
     const [descriptionValue, SetDescriptionValue] = useState('');
     const [categorieValue, SetCategoryValue] = useState('');
@@ -93,7 +93,7 @@ const EventForm = ({ handleSetEventData, eventData, userData }) => {
             SetCityValue('');
 
             alert('evenement crée');
-
+            getAll();
             navigate('/events');
         }
 
