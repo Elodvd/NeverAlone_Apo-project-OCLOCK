@@ -4,19 +4,19 @@ const sequelize = require('../client');
 class Category extends Model {}
 
 Category.init(
-  {
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
+    {
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+        },
+        color: DataTypes.STRING,
+        image: DataTypes.STRING,
     },
-    color: DataTypes.STRING,
-    image: DataTypes.STRING,
-  },
-  {
-    sequelize,
-    tableName: 'category',
-  }
+    {
+        sequelize,
+        tableName: 'category',
+    }
 );
 
 module.exports = Category;

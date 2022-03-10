@@ -1,16 +1,21 @@
 import './Profil.scss';
-import avatar from '../../Doc/avatar.svg'
-import React, {useRef}  from 'react';
+import avatar from '../../Doc/avatar.svg';
+import React, { useRef } from 'react';
 import { deleteProfil } from '../../requests/deleteProfil';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { removeBearerToken } from '../../requests';
 
-
 const Profil = ({ userData, handleSetIsConnected, getAll }) => {
     //state pour la gestion du statut modifiable ou non de l'information
-    const[profilModify, setProfilModify]=useState(false);
-    const[profilData, setProfilData] = useState ([userData.first_name,userData.last_name, userData.pseudo, userData.birthday, userData.email])
+    const [profilModify, setProfilModify] = useState(false);
+    const [profilData, setProfilData] = useState([
+        userData.first_name,
+        userData.last_name,
+        userData.pseudo,
+        userData.birthday,
+        userData.email,
+    ]);
 
     // Hook useRef pour récupérer la valeur des inputs de manière ciblée au click sur enregistrer les modifications
     const inputFirstName = useRef();
@@ -22,42 +27,52 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
     const navigate = useNavigate();
 
     //Fonction pour la suppression du profil en cas de click sur le bouton "supprimer mon profil"
-    const handleDelete =  async (event) => {
+    const handleDelete = async (event) => {
         event.preventDefault();
         const response = await deleteProfil(userData.id);
-        if(response.status === 204){
+        if (response.status === 204) {
             handleSetIsConnected(false);
             removeBearerToken();
-            alert("utilisateur supprimé");
+            alert('utilisateur supprimé');
             getAll();
-            navigate("/");
+            navigate('/');
         }
-    }
+    };
 
-    const handleModifyAll =(e)=>{
+    const handleModifyAll = (e) => {
         e.preventDefault();
-        setProfilModify(true)
-    }
+        setProfilModify(true);
+    };
 
-    const handlePatchValue=(e)=>{
+    const handlePatchValue = (e) => {
         e.preventDefault();
-        const newFirstName=inputFirstName.current.value;
-        const newLastName=inputLastName.current.value;
-        const newPseudo=inputPseudo.current.value;
-        const newBirthday=inputBirthday.current.value;
-        const newEmail=inputEmail.current.value;
+        const newFirstName = inputFirstName.current.value;
+        const newLastName = inputLastName.current.value;
+        const newPseudo = inputPseudo.current.value;
+        const newBirthday = inputBirthday.current.value;
+        const newEmail = inputEmail.current.value;
 
-        if((newFirstName !== '') && (newLastName !== '') && (newPseudo !== '') && (newBirthday !== '') && (newEmail !== ''))
-        {
-            setProfilData([newFirstName, newLastName, newPseudo, newBirthday, newEmail ]) ;
-            setProfilModify(false)
+        if (
+            newFirstName !== '' &&
+            newLastName !== '' &&
+            newPseudo !== '' &&
+            newBirthday !== '' &&
+            newEmail !== ''
+        ) {
+            setProfilData([
+                newFirstName,
+                newLastName,
+                newPseudo,
+                newBirthday,
+                newEmail,
+            ]);
+            setProfilModify(false);
+        } else {
+            alert('Veuillez remplir tous les champs');
         }
-        else{
-            alert('Veuillez remplir tous les champs')
-        }
-    }
+    };
 
-    return(
+    return (
         <div className="profil">
             <img src={avatar} alt="sport" className="profil-image" />
 
@@ -94,13 +109,15 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         </div>
                     </div>
 
-                    <form 
+                    <form
                         className="profil-btn-group"
                         action={`/profils/${userData.id}`}
                         method="PATCH"
                         onSubmit={handleModifyAll}
                     >
-                        <button className="profil-btn">Modifier mon profil</button>   
+                        <button className="profil-btn">
+                            Modifier mon profil
+                        </button>
                     </form>
                 </div>
             ) : (
@@ -114,7 +131,7 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                             name="modifyfirsttname"
                             aria-describedby="modifyFirstnameHelp"
                             placeholder={userData.first_name}
-                            />
+                        />
                     </div>
                     <div className="signin-form-group">
                         <input
@@ -124,7 +141,8 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                             id="modifylastname"
                             name="modifylasttname"
                             aria-describedby="modifyLastnameHelp"
-                            placeholder={userData.last_name} />
+                            placeholder={userData.last_name}
+                        />
                     </div>
                     <div className="signin-form-group">
                         <input
@@ -134,7 +152,8 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                             id="modifypseudo"
                             name="modifypseudo"
                             aria-describedby="modifyPseudoHelp"
-                            placeholder={userData.pseudo} />
+                            placeholder={userData.pseudo}
+                        />
                     </div>
                     <div className="signin-form-group">
                         <input
@@ -144,7 +163,8 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                             id="modifybirthday"
                             name="modifybirthday"
                             aria-describedby="modifyBirthdayHelp"
-                            placeholder={userData.birthday} />
+                            placeholder={userData.birthday}
+                        />
                     </div>
                     <div className="signin-form-group">
                         <input
@@ -154,29 +174,34 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                             id="modifyemail"
                             name="modifyemail"
                             aria-describedby="modifyEmailHelp"
-                            placeholder={userData.email} />
+                            placeholder={userData.email}
+                        />
                     </div>
 
-                    <form 
+                    <form
                         className="profil-btn-group"
                         action={`/profils/${userData.id}`}
                         method="PATCH"
                         onSubmit={handlePatchValue}
                     >
-                        <button className="profil-btn">Enregistrer les modifications</button>   
+                        <button className="profil-btn">
+                            Enregistrer les modifications
+                        </button>
                     </form>
-                    
                 </div>
-            )}    
+            )}
             <form
-                className='profil-btn-group'
+                className="profil-btn-group"
                 action={`/profils/${userData.id}`}
                 method="DELETE"
                 onSubmit={handleDelete}
             >
-                <button className="profil-btn profil-btn-red">Supprimer mon profil</button>
-            </form>     
+                <button className="profil-btn profil-btn-red">
+                    Supprimer mon profil
+                </button>
+            </form>
         </div>
-    )}
+    );
+};
 
 export default Profil;

@@ -106,11 +106,7 @@ const EventForm = ({ handleSetEventData, eventData, userData, getAll }) => {
                 Créer un <span className="green">E</span>vènement{' '}
             </h1>
 
-            <form
-                action="/events"
-                method="POST"
-                className="event-form"
-            >
+            <form action="/events" method="POST" className="event-form">
                 <input
                     type="hidden"
                     id="postId"

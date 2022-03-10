@@ -17,25 +17,21 @@ const EventDetail = ({ oneEvent, getAll, userData }) => {
 
     const navigate = useNavigate();
 
-    
     useEffect(() => {
-        if(userData.id === oneEvent.user_id){
+        if (userData.id === oneEvent.user_id) {
             SetDisplayDelete(true);
         }
-    },[oneEvent.user_id, userData.id])
-    
+    }, [oneEvent.user_id, userData.id]);
 
-    const handleDelete =  async (event) => {
+    const handleDelete = async (event) => {
         event.preventDefault();
         const response = await deleteEvent(oneEvent.id);
-        if(response.status === 204){
-            alert("event supprimé");
+        if (response.status === 204) {
+            alert('event supprimé');
             getAll();
-            navigate("/events");
-
+            navigate('/events');
         }
-
-    }
+    };
 
     // action au click sur "JE PARTICIPE"
     const handleClick = (event) => {
@@ -80,51 +76,37 @@ const EventDetail = ({ oneEvent, getAll, userData }) => {
     const image = require(`../../Doc/Image-Cat/${oneEvent.category}.svg`);
     return (
         <div className="event-container">
-
             <p className="event-title">{oneEvent.title.toUpperCase()}</p>
 
             <h2 className="event-date">{newDate}</h2>
 
             <div className="event-header">
+                <img src={image} alt="categorie-sport" className="event-img" />
 
-                                    
-                    <img src={image} alt="categorie-sport" className="event-img" />
+                <div className="event-main">
+                    <div>
+                        <button className="event-categories-item">
+                            {oneEvent.category.toUpperCase()}
+                        </button>
 
-                    <div className="event-main">
-
-                        <div>
-
-                            <button className="event-categories-item">
-                                {oneEvent.category.toUpperCase()}
-                            </button>
-
-                            <button className="event-price">
-                                {oneEvent.price.toUpperCase()}
-                            </button>
-
-                        </div>
-                        
-
-                        <p className="event-adress">
-                            {oneEvent.adress}, {oneEvent.city}
-                        </p>
-
-                        <p className="cardevent-capacity">
-                            {counterValue - 1} / {oneEvent.capacity} personne(s) 
-                            {/* {isRegister && <p className="event-register">INSCRIT !</p>} */}
-                        </p>
-
+                        <button className="event-price">
+                            {oneEvent.price.toUpperCase()}
+                        </button>
                     </div>
 
-                
+                    <p className="event-adress">
+                        {oneEvent.adress}, {oneEvent.city}
+                    </p>
 
-                
+                    <p className="cardevent-capacity">
+                        {counterValue - 1} / {oneEvent.capacity} personne(s)
+                        {/* {isRegister && <p className="event-register">INSCRIT !</p>} */}
+                    </p>
+                </div>
+            </div>
 
-            </div>            
-            
-            
             <p className="event-description">{oneEvent.description}</p>
-            
+
             {/* Gestion des affichages des trois Buttons en fonction des states */}
             {isRegister ? (
                 <Button
@@ -149,27 +131,18 @@ const EventDetail = ({ oneEvent, getAll, userData }) => {
                 />
             )}
 
-
-        
-
-            <form 
+            <form
                 className="profil-btn-group"
                 action={`/events/${oneEvent.id}`}
                 method="DELETE"
                 onSubmit={handleDelete}
             >
-                
-                  { displayDelete && 
-                    <button className="cardevent-participate button-red">Supprimer mon évènement</button>
-                  }
-                
-                        
-                    
-            
+                {displayDelete && (
+                    <button className="cardevent-participate button-red">
+                        Supprimer mon évènement
+                    </button>
+                )}
             </form>
-        
-        
-
         </div>
     );
 };

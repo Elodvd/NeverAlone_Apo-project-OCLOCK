@@ -28,18 +28,15 @@ function App() {
 
     const getAll = async () => {
         const response = await getAllEventsRequest();
-        console.log(response.data.date)
+        console.log(response.data.date);
         if (response.status === 200) {
             response.data.sort(function compare(a, b) {
                 return new Date(a.date) - new Date(b.date);
             });
 
-
             SetEventData(response.data);
         }
     };
-
-    
 
     //au lancement de l'app, on recupere dans le state tous les evenements de notre bdd
     useEffect(() => {
@@ -54,7 +51,7 @@ function App() {
         }
     }, []);
 
-return (
+    return (
         <div className="app">
             <Navbar
                 isConnected={isConnected}
@@ -65,37 +62,63 @@ return (
                 <Route path="/" element={<Home />} />
                 <Route path="/signin" element={<SignInForm />} />
 
-                <Route path="/login" element={<LogInForm 
-                    handleSetIsConnected={SetIsConnected}
-                    handleSetUserData={SetUserData}
-                 />} />
-                {
-                    isConnected && 
-                    <>
-                        <Route path="/events" element={<ListEvent
-                            userData={userData}
-                            eventData={eventData}
-                            handleSetEventData={SetEventData}
-                            handleSetOneEvent={SetOneEvent}
-                        />} />,
-                        <Route path="/add-event" element={<EventForm
-                            handleSetEventData={SetEventData}
-                            eventData={eventData}
-                            userData={userData}
-                            getAll={getAll}
-                        />} />,
-                        <Route path={`/profil/${userData.id}`} element={<Profil
+                <Route
+                    path="/login"
+                    element={
+                        <LogInForm
                             handleSetIsConnected={SetIsConnected}
-                            userData={userData}
-                            getAll={getAll}
-                        />} />
-                        <Route path={`/events/${oneEvent.id}`} element={<EventDetail
-                            oneEvent={oneEvent}
-                            getAll={getAll}
-                            userData={userData}
-                        />} />
+                            handleSetUserData={SetUserData}
+                        />
+                    }
+                />
+                {isConnected && (
+                    <>
+                        <Route
+                            path="/events"
+                            element={
+                                <ListEvent
+                                    userData={userData}
+                                    eventData={eventData}
+                                    handleSetEventData={SetEventData}
+                                    handleSetOneEvent={SetOneEvent}
+                                />
+                            }
+                        />
+                        ,
+                        <Route
+                            path="/add-event"
+                            element={
+                                <EventForm
+                                    handleSetEventData={SetEventData}
+                                    eventData={eventData}
+                                    userData={userData}
+                                    getAll={getAll}
+                                />
+                            }
+                        />
+                        ,
+                        <Route
+                            path={`/profil/${userData.id}`}
+                            element={
+                                <Profil
+                                    handleSetIsConnected={SetIsConnected}
+                                    userData={userData}
+                                    getAll={getAll}
+                                />
+                            }
+                        />
+                        <Route
+                            path={`/events/${oneEvent.id}`}
+                            element={
+                                <EventDetail
+                                    oneEvent={oneEvent}
+                                    getAll={getAll}
+                                    userData={userData}
+                                />
+                            }
+                        />
                     </>
-                }
+                )}
                 <Route path="*" element={<Error404 />} />
             </Routes>
             <Footer />

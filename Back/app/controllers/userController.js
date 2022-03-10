@@ -13,11 +13,9 @@ const userController = {
                 },
             });
             if (user) {
-                return res
-                    .status(401)
-                    .json({
-                        error: 'Cet email est déjà utilisé par un utilisateur.',
-                    });
+                return res.status(401).json({
+                    error: 'Cet email est déjà utilisé par un utilisateur.',
+                });
             }
             // if the email is invalid
             if (!emailValidator.validate(req.body.email)) {
@@ -91,14 +89,14 @@ const userController = {
             }
 
             const newUser = user;
-            //remplacer delete par excluded avec sequelize dans le model ? 
+            //remplacer delete par excluded avec sequelize dans le model ?
             // delete newUser.password;
             console.log('Retour de newUser:', newUser);
 
             res.status(200).json({
                 newUser,
                 token: jwt.sign(
-                    { user_id: user.id, },
+                    { user_id: user.id },
                     process.env.ACCESS_TOKEN_SECRET,
                     {
                         expiresIn: '24h',

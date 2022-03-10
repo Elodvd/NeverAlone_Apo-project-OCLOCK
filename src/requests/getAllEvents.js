@@ -1,12 +1,11 @@
-import apiAxios from "./index";
+import apiAxios from './index';
 
 export async function getAllEventsRequest() {
-
-    try{
-        const response = await apiAxios.get("/events");
+    try {
+        const response = await apiAxios.get('/events');
 
         return response;
-    }catch(err){
+    } catch (err) {
         return err.response;
     }
 }

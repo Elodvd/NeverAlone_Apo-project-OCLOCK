@@ -6,15 +6,11 @@ import { loginRequest } from '../../requests/loginRequest';
 import { setBearerToken } from '../../requests';
 
 //formulaire de login
-const LogInForm = ({ 
-    handleSetIsConnected,
-    handleSetUserData,
- }) => {
+const LogInForm = ({ handleSetIsConnected, handleSetUserData }) => {
     //valeur de base des inputs
     const [emailValue, SetEmailValue] = useState('');
     const [passwordValue, SetPasswordValue] = useState('');
     const [rememberValue, SetRememberValue] = useState(false);
-    
 
     const navigate = useNavigate();
 
@@ -31,15 +27,17 @@ const LogInForm = ({
         event.preventDefault();
         const response = await loginRequest(emailValue, passwordValue);
 
-        if(response.status === 200){
+        if (response.status === 200) {
             handleSetIsConnected(true);
-            setBearerToken(response.data.token, JSON.stringify(response.data.newUser));
+            setBearerToken(
+                response.data.token,
+                JSON.stringify(response.data.newUser)
+            );
             handleSetUserData(response.data.newUser);
             SetEmailValue('');
             SetPasswordValue('');
-            navigate('/events');                
-        } 
-        
+            navigate('/events');
+        }
     };
 
     const handleRemember = (event) => {

@@ -36,6 +36,7 @@
 
     &-btn-group{
         display: flex;
+        justify-content: space-around;
         margin: 1rem 1rem;
     }
 
@@ -49,6 +50,8 @@
         color: white;
         font-size: 14px;
         font-weight: 800;
+        min-width: 192px;
+        border: none;
 
         &-red{
             background-color: rgb(165, 3, 3);
@@ -59,5 +62,8 @@
         color: vars.$font-secondary;
         margin-bottom: 0.5rem;
         font-weight: 600;
+    }
+    & p {
+        text-align: center;
     }
 }
