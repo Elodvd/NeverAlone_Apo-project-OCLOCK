@@ -83,6 +83,7 @@ return (
                         <Route path={`/events/${oneEvent.id}`} element={<EventDetail
                             oneEvent={oneEvent}
                             getAll={getAll}
+                            userData={userData}
                         />} />
                     </>
                 }
