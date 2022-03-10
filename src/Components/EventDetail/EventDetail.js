@@ -22,7 +22,7 @@ const EventDetail = ({ oneEvent, getAll, userData }) => {
         if(userData.id === oneEvent.user_id){
             SetDisplayDelete(true);
         }
-    },[])
+    },[oneEvent.user_id, userData.id])
     
 
     const handleDelete =  async (event) => {
@@ -67,30 +67,64 @@ const EventDetail = ({ oneEvent, getAll, userData }) => {
         SetIsRegister(false);
     };
 
+    const dateFormat = (date) => {
+        return (
+            date.slice(0, 10).split('-').reverse().join('/') +
+            ' - ' +
+            date.toLocaleString().slice(11, 16)
+        );
+    };
+
+    const newDate = dateFormat(oneEvent.date);
+
     const image = require(`../../Doc/Image-Cat/${oneEvent.category}.svg`);
     return (
         <div className="event-container">
-            <div className="event-container-header">
-                <div>
-                    {isRegister && <p className="event-register">INSCRIT !</p>}
-                    <p className="event-title">{oneEvent.title}</p>
-                    <div className="event-categories">
-                        <button className="event-categories-item">
-                            {oneEvent.category}
-                        </button>
+
+            <p className="event-title">{oneEvent.title.toUpperCase()}</p>
+
+            <h2 className="event-date">{newDate}</h2>
+
+            <div className="event-header">
+
+                                    
+                    <img src={image} alt="categorie-sport" className="event-img" />
+
+                    <div className="event-main">
+
+                        <div>
+
+                            <button className="event-categories-item">
+                                {oneEvent.category.toUpperCase()}
+                            </button>
+
+                            <button className="event-price">
+                                {oneEvent.price.toUpperCase()}
+                            </button>
+
+                        </div>
+                        
+
+                        <p className="event-adress">
+                            {oneEvent.adress}, {oneEvent.city}
+                        </p>
+
+                        <p className="cardevent-capacity">
+                            {counterValue - 1} / {oneEvent.capacity} personne(s) 
+                            {/* {isRegister && <p className="event-register">INSCRIT !</p>} */}
+                        </p>
+
                     </div>
-                </div>
-                <img src={image} alt="categorie-sport" className="event-img" />
-            </div>
+
+                
+
+                
+
+            </div>            
+            
+            
             <p className="event-description">{oneEvent.description}</p>
-            <h2 className="event-date">{oneEvent.date_hours}</h2>
-            <p className="event-adress">
-                {oneEvent.adress}, {oneEvent.city}
-            </p>
-            <button className="event-price">{oneEvent.price}</button>
-            <p className="cardevent-capacity">
-                {counterValue - 1} / {oneEvent.capacity} personnes{' '}
-            </p>
+            
             {/* Gestion des affichages des trois Buttons en fonction des states */}
             {isRegister ? (
                 <Button
@@ -126,7 +160,7 @@ const EventDetail = ({ oneEvent, getAll, userData }) => {
             >
                 
                   { displayDelete && 
-                    <button className="profil-btn profil-btn-red">Supprimer mon évènement</button>
+                    <button className="cardevent-participate button-red">Supprimer mon évènement</button>
                   }
                 
                         
