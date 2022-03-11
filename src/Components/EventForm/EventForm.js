@@ -158,7 +158,6 @@ const EventForm = ({ handleSetEventData, eventData, userData, getAll }) => {
                         id="category-select"
                         required="required"
                     >
-                        <option value="">--Please choose an option--</option>
                         <option value="autre">Autre</option>
                         <option value="bienetre">Bien-Etre</option>
                         <option value="cuisine">Cuisine</option>

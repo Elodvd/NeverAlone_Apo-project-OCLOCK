@@ -4,8 +4,9 @@ import Button from '../Button/Button.js';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { deleteEvent } from '../../requests/deleteEvent';
+import { getOneEventRequest } from '../../requests/getOneEvent';
 
-const EventDetail = ({ oneEvent, getAll, userData }) => {
+const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
     // state pour le compteur/nombre de participants
     const [counterValue, SetCounterValue] = useState(1);
     // state pour gérer le fait qu'un évènement soit complet ou non
@@ -22,6 +23,19 @@ const EventDetail = ({ oneEvent, getAll, userData }) => {
             SetDisplayDelete(true);
         }
     }, [oneEvent.user_id, userData.id]);
+
+    // useEffect(() => {
+    //     getOne();
+    // },[]);
+
+    const getOne = async () => {
+        const response = await getOneEventRequest(oneEvent.id);
+        if (response.status === 200) {            
+            handleSetOneEvent(response.data);
+        }
+    };
+
+
 
     const handleDelete = async (event) => {
         event.preventDefault();

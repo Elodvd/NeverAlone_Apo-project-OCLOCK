@@ -1,10 +1,10 @@
 import './event.scss';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { getOneEventRequest } from '../../requests/getOneEvent';
 import { useNavigate } from 'react-router-dom';
 import CardEvent from '../Cards/CardEvent';
 
-const Event = ({ item, handleSetOneEvent }) => {
+const Event = ({ item, handleSetOneEvent, getAll }) => {
     const navigate = useNavigate();
 
     const handleClick = async (event) => {
@@ -24,6 +24,7 @@ const Event = ({ item, handleSetOneEvent }) => {
             date.toLocaleString().slice(11, 16)
         );
     };
+
 
     const newDate = dateFormat(item.date);
     const image = require(`../../Doc/Image-Cat/${item.category}.svg`);
