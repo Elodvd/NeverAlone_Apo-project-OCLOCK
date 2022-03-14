@@ -28,8 +28,9 @@ const About = () => {
     };
 
 return(
-<div>
+<div className='about'>
     <CardEvent
+        className={'about-card'}
         date={''}
         category={'Product Owner'}
         route_category={`/About`}
@@ -38,9 +39,10 @@ return(
         title={'Raphael'}
         city={'Paris (75)'}
         handleAction={handleClickRaphael}
-        text_button={'En savoir +'}
+        text_button={'Contacter'}
     />  
     <CardEvent
+        className={'about-card'}
         date={''}
         category={'Lead dev back'}
         route_category={`/About`}
@@ -49,9 +51,10 @@ return(
         title={'Candy'}
         city={'Pencran (29)'}
         handleAction={handleClickCandy}
-        text_button={'En savoir +'}
+        text_button={'Contacter'}
     />
     <CardEvent
+        className={'about-card'}
         date={''}
         category={'Scrum Master'}
         route_category={`/About`}
@@ -60,9 +63,10 @@ return(
         title={'Fabien'}
         city={'Lille (59)'}
         handleAction={handleClickFabien}
-        text_button={'En savoir +'}
+        text_button={'Contacter'}
     />
     <CardEvent
+        className={'about-card'}
         date={''}
         category={'Lead dev front'}
         route_category={`/About`}
@@ -71,7 +75,7 @@ return(
         title={'Elodie'}
         city={'Toulouse (31)'}
         handleAction={handleClickElodie}
-        text_button={'En savoir +'}
+        text_button={'Contacter'}
     />
 </div>
 
