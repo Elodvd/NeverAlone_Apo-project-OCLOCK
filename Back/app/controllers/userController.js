@@ -15,20 +15,20 @@ const userController = {
       if (user) {
         return res
             .status(401)
-            .json({error: 'Erreur de saisie du login et/ou du mot de passe.' });
+            .json({error: 'Utilisateur déjà enregistré.' });
       }
       // if the email is invalid
       if (!emailValidator.validate(req.body.email)) {
         return res
           .status(401)
-          .json({ error: 'Erreur de saisie du login et/ou du mot de passe.' });
+          .json({ error: 'L-email est invalide. Réessayez.' });
         }
 
       //if the password and password confirmation do not match
       if (req.body.password !== req.body.passwordConfirm) {
         return res
           .status(401)
-          .json({ error: 'Erreur de saisie du login et/ou du mot de passe.' });
+          .json({ error: 'Les mots de passe ne sont pas identiques. Réessayer.' });
       }
 
       // we will encrypt the password
@@ -68,16 +68,14 @@ const userController = {
       });
 
       if (!user) {
-        return res.status(401).json({ error: 'Erreur de récupération' });
+        return res.status(401).json({ error: 'Erreur de saisie du login et/ou du mot de passe' });
       }
 
       //if we have a user, we test if password is valid
 
       const validPwd = await bcrypt.compare(req.body.password, user.password);
       if (!validPwd) {
-        return res.render('login', {
-          error: 'Erreur de saisie du login et/ou du mot de passe',
-        });
+        return res.status(401).json({ error: 'Erreur de saisie du login et/ou du mot de passe' });
       }
 
       const newUser = user;
@@ -110,7 +108,7 @@ const userController = {
       if (!result) {
         return res
             .status(404)
-            .json({ error: `L'utilisateur n'exite pas` });
+            .json({ error: `L'utilisateur n'existe pas` });
       }
       res.status(204).json();
     } catch (err) {
