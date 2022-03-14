@@ -15,9 +15,10 @@ const CardEvent = ({
     city,
     handleAction,
     text_button,
+    className
 }) => {
     return (
-        <div className="cardevent-container">
+        <div className={`${className} cardevent-container`}>
             <h2 className="cardevent-date">{date}</h2>
             <div className="cardevent-header">
                 <Button
