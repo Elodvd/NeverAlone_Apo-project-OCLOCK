@@ -5,24 +5,27 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { deleteEvent } from '../../requests/deleteEvent';
 
+// Composant évènement détaillé qui contient toutes ses informations 
 const EventDetail = ({ oneEvent, getAll, userData }) => {
-    // state pour le compteur/nombre de participants
+    // Gestion du compteur/nombre de participants
     const [counterValue, SetCounterValue] = useState(1);
-    // state pour gérer le fait qu'un évènement soit complet ou non
+    // Gestion du statut complet ou non
     const [isFull, SetIsFull] = useState(false);
-    //state pour gérer le bouton se désinscrire
+    //Gestion du bouton se désinscrire
     const [isRegister, SetIsRegister] = useState(false);
-
+    // Affichage du bouton "supprimer l'évènement" seulement si l'user est l'auteur de celui-ci
     const [displayDelete, SetDisplayDelete] = useState(false);
 
     const navigate = useNavigate();
 
+    // A l'affichage de la page on vérifie le statut du user (auteur ou non) pour savoir si on affiche le bouton supprimer l'évènement ou pas
     useEffect(() => {
         if (userData.id === oneEvent.user_id) {
             SetDisplayDelete(true);
         }
     }, [oneEvent.user_id, userData.id]);
 
+    // Fonction pour la suppression de l'évènement
     const handleDelete = async (event) => {
         event.preventDefault();
         const response = await deleteEvent(oneEvent.id);

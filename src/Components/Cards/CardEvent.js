@@ -4,6 +4,7 @@ import './card.scss';
 import './cardEvent.scss';
 import Button from '../Button/Button';
 
+//Composant de type card réutilisable à plusieurs endroits de l'application
 const CardEvent = ({
     date,
     category,
