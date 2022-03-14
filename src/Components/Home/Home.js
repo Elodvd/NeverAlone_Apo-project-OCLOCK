@@ -1,5 +1,5 @@
 import './Home.scss';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../Button/Button';
 import sport from '../../Doc/Image-Cat/sport.svg';
 import bienetre from '../../Doc/Image-Cat/bienetre.svg';
@@ -10,7 +10,7 @@ import manuel from '../../Doc/Image-Cat/manuel.svg';
 import CardEvent from '../Cards/CardEvent';
 import CardNotice from '../Cards/CardNotice';
 
-// Page d'accueil de l'application 
+// Page d'accueil de l'application
 const Home = () => {
     const [width, setWidth] = useState(window.innerWidth);
     const breakpoint = 480;
@@ -30,16 +30,18 @@ const Home = () => {
     return (
         <div className="home">
             <div className="home-presentation">
-                <h1>
-                    CHERCHE,
-                    <br /> TROUVE &<br />
-                    <span> PARTICIPE !</span>
-                </h1>
-                <Button
-                    text={'Lance toi !'}
-                    route={'/signin'}
-                    className="home-button"
-                />
+                <div className="home-slogan">
+                    <h1>
+                        CHERCHE,
+                        <br /> TROUVE &<br />
+                        <span> PARTICIPE !</span>
+                    </h1>
+                    <Button
+                        text={'Lance toi !'}
+                        route={'/signin'}
+                        className="home-button"
+                    />
+                </div>
             </div>
             <h2 className="home-subtitle"> Ce que nous faisons </h2>
             <p className="home-content">
@@ -155,10 +157,7 @@ const Home = () => {
                 ) : (
                     <CardNotice />
                 )}
-                {width > breakpoint4 && (
-                    <CardNotice />
-                )}
-
+                {width > breakpoint4 && <CardNotice />}
             </div>
         </div>
     );

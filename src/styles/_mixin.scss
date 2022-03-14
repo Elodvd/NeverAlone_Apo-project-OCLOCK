@@ -1,7 +1,6 @@
 @use 'src/styles/vars';
 
 @mixin btn {
-    margin: auto;
     background-color: vars.$font-secondary ;
     color: white;
     font-size: 1rem;
