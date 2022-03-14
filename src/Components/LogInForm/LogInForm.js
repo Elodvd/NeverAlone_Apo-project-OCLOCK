@@ -11,6 +11,7 @@ const LogInForm = ({ handleSetIsConnected, handleSetUserData }) => {
     const [emailValue, SetEmailValue] = useState('');
     const [passwordValue, SetPasswordValue] = useState('');
     const [rememberValue, SetRememberValue] = useState(false);
+    const [errorMessage, SetErrorMessage] = useState('');
 
     const navigate = useNavigate();
 
@@ -27,6 +28,13 @@ const LogInForm = ({ handleSetIsConnected, handleSetUserData }) => {
         event.preventDefault();
         const response = await loginRequest(emailValue, passwordValue);
         
+        if (response.status !== 200) {
+            console.log(response);
+            SetErrorMessage(response.data.error);
+            SetEmailValue('');
+            SetPasswordValue('');
+            
+        }
 
         if (response.status === 200) {
             console.log(response.data.token);
@@ -36,9 +44,11 @@ const LogInForm = ({ handleSetIsConnected, handleSetUserData }) => {
                 JSON.stringify(response.data.newUser)
             );
             handleSetUserData(response.data.newUser);
-            SetEmailValue('');
             SetPasswordValue('');
-            navigate('/events');
+            setTimeout(() => {
+                navigate('/events');
+              }, 1500);
+            
         }
     };
 
@@ -89,7 +99,7 @@ const LogInForm = ({ handleSetIsConnected, handleSetUserData }) => {
                     />
                 </div>
                 {/* checkbox se souvenir de moi */}
-                <div className="login-form-remember">
+                {/* <div className="login-form-remember">
                     <input
                         onChange={handleRemember}
                         checked={rememberValue}
@@ -100,8 +110,15 @@ const LogInForm = ({ handleSetIsConnected, handleSetUserData }) => {
                     <p className="login-alert">
                         Se souvenir de<span className="green"> moi</span>
                     </p>
-                </div>
+                </div> */}
                 <div className="login-form-group">
+
+
+                {
+                    errorMessage &&
+
+                    <p className="signin-error"> {errorMessage} </p>
+                }
                     <button className="login-button">C'est parti !</button>
                 </div>
             </form>
