@@ -9,7 +9,9 @@ const Home = () => {
     // **************************
     const [width, setWidth] = React.useState(window.innerWidth);
     const breakpoint = 480;
-    const breakpoint2 = 750;
+    const breakpoint2 = 600;
+    const breakpoint3 = 750;
+    const breakpoint4 = 1000;
     React.useEffect(() => {
         const handleResizeWindow = () => setWidth(window.innerWidth);
         // subscribe to window resize event "onComponentDidMount"
@@ -108,7 +110,7 @@ const Home = () => {
                         />
                     </>
                 )}
-                {width > breakpoint2 && (
+                {width > breakpoint3 && (
                     <>
                         <CardEvent
                             date={'Vendredi 11 Mars à 18h'}
@@ -134,11 +136,26 @@ const Home = () => {
                 )}
             </main>
 
-            <h2 className="home-subtitle home-subtitle-last"> Ce qu'il se dit </h2>
+            <h2 className="home-subtitle home-subtitle-last">
+                Ce qu'il se dit
+            </h2>
             <p className="home-content">
                 Que disent nos utilisateurs à propos de nous ?
             </p>
-            <CardNotice />
+            <div className="home-notice">
+                {width > breakpoint2 ? (
+                    <>
+                        <CardNotice />
+                        <CardNotice />
+                    </>
+                ) : (
+                    <CardNotice />
+                )}
+                {width > breakpoint3 && (
+                    <CardNotice />
+                )}
+
+            </div>
         </div>
     );
 };

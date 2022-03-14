@@ -1,5 +1,6 @@
 import React from 'react';
 import etoile from '../../Doc/etoile.png';
+import './cardNotice.scss'
 
 const CardNotice = () => {
     return (

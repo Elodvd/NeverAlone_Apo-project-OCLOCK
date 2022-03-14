@@ -70,6 +70,12 @@
                 margin-top: 1rem;
             }
         }
+        &-notice {
+            width: 90%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
     }
     .home .home-button {
         margin-left: 1.5rem;
