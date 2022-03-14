@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useEffect } from 'react';
 import CardEvent from '../Cards/CardEvent';
 import './about.scss';
 
@@ -9,6 +10,11 @@ import Raphael from '../../Doc/Photos-team/Raphael.JPG';
 import Fabien from '../../Doc/Photos-team/Fabien.png';
 
 const About = () => {
+
+
+    useEffect(() => {
+        window.scrollTo(0,0)
+      }, []);
 
     const handleClickRaphael  =(event) => {
         event.preventDefault();
