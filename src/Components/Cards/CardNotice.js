@@ -1,5 +1,6 @@
 import React from 'react';
 import etoile from '../../Doc/etoile.png';
+import './cardNotice.scss'
 
 //Composant de type card utilisé pour les retours d'utilisateurs sur la page d'accueil 
 const CardNotice = () => {

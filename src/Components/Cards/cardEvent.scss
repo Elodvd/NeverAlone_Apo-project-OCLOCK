@@ -26,6 +26,8 @@
         display: block;
         width: 90%;
         margin: 1rem auto;
+        max-height: 160px;
+        min-height: 160px;
     }
     &-title {
         flex-wrap: wrap;
@@ -37,14 +39,8 @@
         margin: 2 * vars.$gutter 0.5 * vars.$gutter;
         text-align: justify;
     }
-    &-categories {
-        display: flex;
-        flex-direction: column;
-        &-item {
-            height: 2rem;
-            padding-top: 0.5rem;
-        }
-    }
+    
+    
     &-date {
         margin: 0 0 0.8rem 0;
         font-size: 22px;
@@ -53,7 +49,7 @@
         font-size: 1.2rem;
         margin: .7rem;
         color: vars.$font-secondary;
-        font-weight: bold
+        font-weight: bold;
     }
     &-price {
         @include tag;
@@ -74,5 +70,38 @@
         @include btn;
         border: none;
         padding: .5rem;
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    .cardevent {
+        &-date {
+            font-size: 15px;
+        }
+        &-button {
+            font-size: 1rem;
+            padding: .3rem;
+            margin-bottom: .4rem;
+            min-width: 130px;
+        }
+        &-img {
+            max-width: 90%;
+            max-height: 15vh;
+            margin: 1rem auto;
+        }
+        &-title {
+            font-size: 1.3rem;
+            margin-bottom: .6rem;
+        }
+        &-adress {
+            margin: .5rem 0 0 0 !important;
+            font-size: 1rem;
+        }
+        &-button-more{
+            font-size: 1rem;
+            padding: 0.3rem;
+            margin-top: 0;
+        }
+        
     }
 }
