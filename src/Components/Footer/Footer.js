@@ -14,14 +14,8 @@ const Footer = () => (
                 alt="Lien adresse de contact"
                 className="logo-item"
             />
-            <p>Contactez-nous</p>
         </div>
-        <div className="footer-contact">
-        <NavLink to="/About">
-            A <span>Propos</span>
-        </NavLink>
-        </div>
-      
+        <NavLink to={'/About'}>Nous-contactez</NavLink>
         <div className="footer-rs">
             <a href="https://www.facebook.com">
                 <img className="logo-item" src={fb} alt="Facebook page" />
