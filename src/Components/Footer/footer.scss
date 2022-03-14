@@ -50,11 +50,9 @@
 
 @media only screen and (min-width: 500px) {
     .footer {
-        margin: 0;
         justify-content: space-between;
         align-items: center;
         &-contact {
-            margin: 0;
             font-size: 1.1rem;
             width: 40%;
         }
