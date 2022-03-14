@@ -1,5 +1,5 @@
 import './Home.scss';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from '../Button/Button';
 import sport from '../../Doc/Image-Cat/sport.svg';
 import bienetre from '../../Doc/Image-Cat/bienetre.svg';
@@ -11,13 +11,12 @@ import CardEvent from '../Cards/CardEvent';
 import CardNotice from '../Cards/CardNotice';
 
 const Home = () => {
-    // **************************
-    const [width, setWidth] = React.useState(window.innerWidth);
+    const [width, setWidth] = useState(window.innerWidth);
     const breakpoint = 480;
     const breakpoint2 = 600;
     const breakpoint3 = 750;
     const breakpoint4 = 1000;
-    React.useEffect(() => {
+    useEffect(() => {
         const handleResizeWindow = () => setWidth(window.innerWidth);
         // subscribe to window resize event "onComponentDidMount"
         window.addEventListener('resize', handleResizeWindow);
@@ -26,7 +25,6 @@ const Home = () => {
             window.removeEventListener('resize', handleResizeWindow);
         };
     }, []);
-    // **************************
 
     return (
         <div className="home">
