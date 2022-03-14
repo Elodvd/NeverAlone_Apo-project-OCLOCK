@@ -9,13 +9,8 @@ import contact from '../../Doc/Logos-RS/contact_logo.png';
 const Footer = () => (
     <div className="footer">
         <div className="footer-contact">
-            <img
-                src={contact}
-                alt="Lien adresse de contact"
-                className="logo-item"
-            />
+        <NavLink to={'/About'} className={'contact-us'}>&gt; Nous contacter</NavLink>
         </div>
-        <NavLink to={'/About'}>Nous-contactez</NavLink>
         <div className="footer-rs">
             <a href="https://www.facebook.com">
                 <img className="logo-item" src={fb} alt="Facebook page" />
