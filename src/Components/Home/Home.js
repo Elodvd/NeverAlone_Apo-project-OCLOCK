@@ -10,6 +10,7 @@ import manuel from '../../Doc/Image-Cat/manuel.svg';
 import CardEvent from '../Cards/CardEvent';
 import CardNotice from '../Cards/CardNotice';
 
+// Page d'accueil de l'application 
 const Home = () => {
     const [width, setWidth] = useState(window.innerWidth);
     const breakpoint = 480;

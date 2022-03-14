@@ -82,6 +82,17 @@
         min-width: 200px;
         font-size: 20px;
     }
+
+    &-error {
+        padding: 1rem;
+        border-radius: 5px;
+        background-color: rgb(179, 11, 11);
+        font-size: 20px;
+        text-align: center;
+        color: white;
+        margin: 1rem;
+        width: 100%;
+    }
 }
 
 .green {

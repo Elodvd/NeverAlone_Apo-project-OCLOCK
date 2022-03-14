@@ -2,6 +2,7 @@ import './error404.scss';
 import React from 'react';
 import error404 from '../../Doc/error404.svg';
 
+//Page d'erreur 404
 const Error404 = () => (
     <div className="error404">
         <p className="error404-txt"> 

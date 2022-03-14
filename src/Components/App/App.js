@@ -14,31 +14,35 @@ import Profil from '../Profil/Profil';
 import { getAllEventsRequest } from '../../requests/getAllEvents';
 import { getLocalUser } from '../../requests/index.js';
 import EventDetail from '../EventDetail/EventDetail';
+import About from '../About/About';
 import { getOneEventRequest } from '../../requests/getOneEvent';
 
 function App() {
-    //savoir si on est connecté
+    //Gestion du statut connecté ou non du user
     const [isConnected, SetIsConnected] = useState(false);
-    //recuperation de l'information du user
+    //Récuperation des informations du user
     const [userData, SetUserData] = useState([]);
 
-    // recuperation de la liste de tous les evenements
+    // Récuperation de la liste de tous les évènements
     const [eventData, SetEventData] = useState([]);
-    //recuperation de un seul evenement
+    //Récuperation d'un seul évènement
     const [oneEvent, SetOneEvent] = useState([]);
 
+    //Fonction pour la mise à jour de la liste des évènements 
     const getAll = async () => {
+        //On appelle la fonction getAllEventsRequest pour récupérer la liste des events de l'API
         const response = await getAllEventsRequest();
         if (response.status === 200) {
             response.data.sort(function compare(a, b) {
                 return new Date(a.date) - new Date(b.date);
             });
-
+            //Après avoir comparé les données on met à jour la liste 
             SetEventData(response.data);
         }
     };
 
-    //au lancement de l'app, on recupere dans le state tous les evenements de notre bdd
+    //Au lancement de l'app, on vérifie que l'user dispose d'un token valide, si oui on passe son statut à connecté, on set ses données et 
+    // on récupère dans le state la liste de tous les évènements
     useEffect(() => {
         getAll();
         if (localStorage.getItem('user') !== null) {
@@ -61,6 +65,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/signin" element={<SignInForm />} />
+                
 
                 <Route
                     path="/login"
@@ -122,8 +127,10 @@ function App() {
                     </>
                 )}
                 <Route path="*" element={<Error404 />} />
+                <Route path="/About" element={<About />} />
             </Routes>
             <Footer />
+            
         </div>
     );
 }
