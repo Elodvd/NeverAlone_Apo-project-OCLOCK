@@ -14,6 +14,7 @@ import Profil from '../Profil/Profil';
 import { getAllEventsRequest } from '../../requests/getAllEvents';
 import { getLocalUser } from '../../requests/index.js';
 import EventDetail from '../EventDetail/EventDetail';
+import About from '../About/About';
 import { getOneEventRequest } from '../../requests/getOneEvent';
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/signin" element={<SignInForm />} />
+                
 
                 <Route
                     path="/login"
@@ -125,8 +127,10 @@ function App() {
                     </>
                 )}
                 <Route path="*" element={<Error404 />} />
+                <Route path="/About" element={<About />} />
             </Routes>
             <Footer />
+            
         </div>
     );
 }
