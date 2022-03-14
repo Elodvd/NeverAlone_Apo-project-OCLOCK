@@ -20,17 +20,17 @@ router.post('/signin', userController.signinAction);
 
 router
     .route('/events')
-    .get(midAuthToken, eventController.getAll)
-    .post(midAuthToken, eventController.create);
+    .get(eventController.getAll)
+    .post(eventController.create);
 
 router
     .route('/events/:id')
-    .get(midAuthToken, eventController.getOne)
-    .patch(midAuthToken, eventController.update)
-    .delete(midAuthToken, eventController.delete);
+    .get(eventController.getOne)
+    .patch(eventController.update)
+    .delete(eventController.delete);
 
 //route pour le profil d'un utilisateur
-router.delete('/profils/:id', midAuthToken, userController.deleteAction);
+router.delete('/profils/:id', userController.deleteAction);
 
 router.use(errorController.error);
 
