@@ -5,7 +5,7 @@ import { createEventRequest } from '../../requests/createEvent';
 import { useNavigate } from 'react-router';
 import Button from '../Button/Button';
 
-//formulaire de création d'un évènement
+//Formulaire de création d'un évènement
 const EventForm = ({ handleSetEventData, eventData, userData, getAll }) => {
     const [titleValue, SetTitleValue] = useState('');
     const [descriptionValue, SetDescriptionValue] = useState('');
@@ -20,6 +20,7 @@ const EventForm = ({ handleSetEventData, eventData, userData, getAll }) => {
 
     const navigate = useNavigate();
 
+    // Récupération des informations dans le state dès qu'un caractère est saisi dans un input
     const handleTitle = (event) => {
         SetTitleValue(event.target.value);
     };
@@ -50,11 +51,10 @@ const EventForm = ({ handleSetEventData, eventData, userData, getAll }) => {
         SetCategoryValue(event.target.value);
     };
 
-    console.log(dateValue);
-
+    // Fonction permettant de créer l'évènement au click sur le bouton valider 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+        // Au click, on envoie les infos à la BDD
         const response = await createEventRequest(
             titleValue,
             descriptionValue,
@@ -66,7 +66,7 @@ const EventForm = ({ handleSetEventData, eventData, userData, getAll }) => {
             capacityValue,
             user_id
         );
-
+        //  Si l'on obtient un code 200 alors l'évènement est créé et ajouté à la liste des évènements
         if (response.status === 200) {
             handleSetEventData([
                 ...eventData,
@@ -92,12 +92,11 @@ const EventForm = ({ handleSetEventData, eventData, userData, getAll }) => {
             SetPriceValue('');
             SetCityValue('');
 
+            // On obtient un message confirmant la création de l'évènement et on est redirigé vers la liste des évènements 
             alert('evenement crée');
             getAll();
             navigate('/events');
         }
-
-        console.log(response);
     };
 
     return (
