@@ -18,7 +18,7 @@
             width: auto;
         }
         &-button {
-            min-width: 70%;
+            min-width: 65%;
         }
         &-header:first-child {
             background-color: red;
@@ -26,11 +26,15 @@
     }
 }
 
-@media only screen and (min-width: 550px) {
-    .about {
-        .cardevent {
-            &-container {
-                max-width: 43%;
+@media only screen and (min-width: 480px) {
+    .about{
+        .cardevent{
+            &-adress{
+                margin: .7rem !important;
+            }
+            &-button {
+                min-width: 0;
+                max-width: 35%;
             }
         }
     }
@@ -41,6 +45,19 @@
         .cardevent {
             &-container {
                 max-width: 43%;
+            }
+            &-button {
+                max-width: 45%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .about {
+        .cardevent {
+            &-button {
+                max-width: 30%;
             }
         }
     }
