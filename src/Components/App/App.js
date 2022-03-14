@@ -14,6 +14,7 @@ import Profil from '../Profil/Profil';
 import { getAllEventsRequest } from '../../requests/getAllEvents';
 import { getLocalUser } from '../../requests/index.js';
 import EventDetail from '../EventDetail/EventDetail';
+import About from '../About/About';
 
 function App() {
     //savoir si on est connecté
@@ -60,6 +61,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/signin" element={<SignInForm />} />
+                <Route path="/About" element={<About />} />
 
                 <Route
                     path="/login"
@@ -121,6 +123,7 @@ function App() {
                 <Route path="*" element={<Error404 />} />
             </Routes>
             <Footer />
+            
         </div>
     );
 }

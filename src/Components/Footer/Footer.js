@@ -15,6 +15,9 @@ const Footer = () => (
             />
             <p>Contactez-nous</p>
         </div>
+        <div className="footer-contact">
+            <p>A propos</p>
+        </div>
 
         <div className="footer-rs">
             <a href="https://www.facebook.com">
