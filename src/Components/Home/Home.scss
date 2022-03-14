@@ -30,16 +30,20 @@
         font-size: 20px;
         font-weight: 400;
         color: vars.$font-secondary;
-        margin-top: 1.5rem;
         margin-bottom: 1rem;
+        margin-top: 1rem;
     }
 
     &-content {
         font-size: 20px;
         font-weight: 800;
         text-align: center;
-        margin-bottom: 1rem;
-        width: 80%;
+        margin-bottom: 4rem;
+    }
+}
+.events{
+    & :nth-child(2) {
+        margin-top: 1rem;
     }
 }
 
@@ -59,15 +63,36 @@
                 color: vars.$font-secondary;
             }
         }
+        &-subtitle {
+        margin-top: 0;
+            &-last{
+                margin-top: 1rem;
+            }
+        }
     }
     .home .home-button {
         margin-left: 1.5rem;
         font-size: 1.3rem;
     }
+    .events {
+        width: 90vw;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        & :nth-child(2) {
+            margin-top: 0;
+        }
+        & :nth-child(3) {
+            margin-top: 1rem;
+        }
+        & :nth-child(4) {
+            margin-top: 1rem;
+        }
+    }
     .cardevent {
         &-container {
             max-width: 40vw;
-            max-height: 40vh;
+            max-height: 50vh;
         }
     }
 }
@@ -97,16 +122,46 @@
 @media only screen and (min-width: 750px) {
     .home {
         &-presentation {
-            min-height: 70vh;
+            max-height: 20vh;
             background-size: 55%;
         }
+        &-subtitle{
+            font-size: 1.8rem;
+        }
+        &-content {
+            font-size: 1.5rem;
+        }
+        &-subtitle-last {
+                    margin-top: 3rem;
+                }
     }
+    .events {
+        & :nth-child(3) {
+            margin-top: 0;
+        }
+        & :nth-child(4) {
+            margin-top: 1rem;
+        }
+        & :nth-child(5) {
+            margin-top: 1rem;
+        }
+        & :nth-child(6) {
+            margin-top: 1rem;
+        }
+    }
+    .cardevent {
+        &-container {
+            max-width: 28vw;
+        }
+    }
+
+    
 }
 
 @media only screen and (min-width: 1000px) {
     .home {
         &-presentation {
-            min-height: 90vh;
+            height: 90px;
         }
 
         & h1 {
@@ -120,6 +175,11 @@
         .home .home-button {
             margin-left: 2.5rem;
             font-size: 1.7rem;
+        }
+    }
+    .cardevent {
+        &-container {
+            width: 40vw;
         }
     }
 }
