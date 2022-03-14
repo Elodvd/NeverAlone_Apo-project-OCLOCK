@@ -25,6 +25,12 @@
             color: vars.$font-secondary;
         }
     }
+    &-slogan{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: baseline;
+    }
 
     &-subtitle {
         text-align: center;
@@ -79,7 +85,6 @@
         }
     }
     .home .home-button {
-        margin-left: 1.5rem;
         font-size: 1.3rem;
     }
     .events {
@@ -122,7 +127,6 @@
         }
     }
     .home .home-button {
-        margin-left: 2rem;
         font-size: 1.5rem;
     }
 }
@@ -188,7 +192,6 @@
             }
         }
         .home .home-button {
-            margin-left: 2.5rem;
             font-size: 1.7rem;
         }
     }
@@ -208,15 +211,16 @@
             font-size: 4rem;
             margin-bottom: 5rem;
             margin-top: 5rem;
-            margin-left: 5rem;
             max-width: 55%;
             & span {
                 color: vars.$font-secondary;
             }
         }
+        &-slogan{
+            margin-left: 3rem;
+        }
     }
     .home .home-button {
-        margin-left: 14vw;
         font-size: 1.5rem;
     }
 }
@@ -224,24 +228,25 @@
 @media only screen and (min-width: 1335px) {
     .home {
         &-presentation {
-            background-size: 40%;
-            background-position: top -10vh;
+            background-size: 38%;
+            background-position: top 0px right 150px;
             min-height: 720px;
+        }
+        &-slogan{
+            margin-left: 9rem;
         }
 
         & h1 {
-            font-size: 6rem;
-            margin-bottom: 9rem;
-            margin-top: 6rem;
-            margin-left: 5rem;
-            max-width: 55%;
             & span {
                 color: vars.$font-secondary;
             }
+         }
+
+        &-content {
+            margin-bottom: 5rem;
         }
     }
     .home .home-button {
-        margin-left: 15vw;
-        font-size: 2.6rem;
-    }
+        font-size: 1.6rem;
+     }
 }
