@@ -7,16 +7,17 @@ import logo from '../../Doc/Image-Cat/logo.svg';
 import Hamburger from 'hamburger-react';
 import './Navbar.scss';
 
+// Composant navbar dont le contenu va varier selon que le visiteur ait un compte ou non
+
+// Par défaut, le visiteur n'est pas connecté, au click sur le menu on peut donc simplement "se connecter" ou "s'enregistrer"
 const Navbar = ({ isConnected, handleSetIsConnected, userData }) => {
     const [isOpen, setIsOpen] = useState(false);
 
-    const handleCloseModal = (event) => {
-        console.log(event);
+    const handleCloseModal = () => {
         setIsOpen(false);
     };
 
-    const handleLogOut = (event) => {
-        console.log(event);
+    const handleLogOut = () => {
         setIsOpen(false);
         handleSetIsConnected(false);
         removeBearerToken();
@@ -82,7 +83,7 @@ const Navbar = ({ isConnected, handleSetIsConnected, userData }) => {
                             </NavLink>
                         </div>
                     ) : (
-                        // sinon on affiche ces boutons/liens la
+                        // sinon on affiche ces boutons/liens 
                         <div className="btn-container">
                             <NavLink
                                 onClick={handleCloseModal}

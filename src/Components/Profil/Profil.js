@@ -7,9 +7,11 @@ import { removeBearerToken } from '../../requests';
 import validator from 'validator';
 
 const Profil = ({ userData, handleSetIsConnected, getAll }) => {
-    //state pour la gestion du statut modifiable ou non de l'information
+    //gestion du statut modifiable ou non de l'information
     const [profilModify, setProfilModify] = useState(false);
+    // gestion du contenu de toutes les informations liées au user en vue de l'envoi à la BDD pour éventuelle mise à jour
     const [profilData, setProfilData] = useState([]);
+    // gestion du contenu de chaque type d'information
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [pseudo, setPseudo] = useState('');
@@ -31,11 +33,12 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
         }
     };
 
+    // Au click sur le  bouton modifier on change l'affichage des données pour qu'elles passent en format formulaire
     const handleModifyAll = (e) => {
         e.preventDefault();
         setProfilModify(true);
     };
-    // Si l'email est valide alors le state passe à true
+    // Si l'email saisi est valide alors le state passe à true
     const [emailError, setEmailError] = useState(false);
     const validateEmail = (e) => {
         const email = e.target.value;
@@ -46,11 +49,10 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
             setEmail(email);
         }
     };
-
+    // Si tous les champs sont remplis alors on met à jour les données du user, sinon on fait apparaitre un message d'erreur
     const handlePatchValue = (e) => {
         e.preventDefault();
         if ((firstName, lastName, pseudo, birthday, email)) {
-            console.log(firstName);
             setProfilData([firstName, lastName, pseudo, birthday, email]);
             setProfilModify(false);
         } else {
@@ -65,12 +67,13 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
     return (
         <div className="profil">
             <img src={avatar} alt="sport" className="profil-image" />
-
+            {/* Les données apparaissent ainsi ou sous forme de formulaire si on a cliqué sur "modifier"*/}
             {profilModify === false ? (
                 <div>
                     <p className="profil-color">Mon prénom :</p>
                     <div className="profil-informations">
                         <div className="profil-content">
+                            {/* On récupère les informations de la BDD*/}
                             <p>{userData.first_name}</p>
                         </div>
                     </div>
