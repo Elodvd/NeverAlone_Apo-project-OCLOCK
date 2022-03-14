@@ -2,6 +2,11 @@ import './Home.scss';
 import React from 'react';
 import Button from '../Button/Button';
 import sport from '../../Doc/Image-Cat/sport.svg';
+import bienetre from '../../Doc/Image-Cat/bienetre.svg';
+import jeu from '../../Doc/Image-Cat/jeu.svg';
+import rencontre from '../../Doc/Image-Cat/rencontre.svg';
+import noctambule from '../../Doc/Image-Cat/noctambule.svg';
+import manuel from '../../Doc/Image-Cat/manuel.svg';
 import CardEvent from '../Cards/CardEvent';
 import CardNotice from '../Cards/CardNotice';
 
@@ -51,38 +56,38 @@ const Home = () => {
                             route_category={`/`}
                             img={sport}
                             alt={'personnes pratiquant du sport'}
-                            title={'Partie de foot amateur'}
+                            title={'Partie de foot'}
                             city={'Lille'}
                             text_button={'En savoir +'}
                         />
                         <CardEvent
                             date={'Vendredi 11 Mars à 18h'}
-                            category={'Sport'}
+                            category={'Bien être'}
                             route_category={`/`}
-                            img={sport}
-                            alt={'personnes pratiquant du sport'}
-                            title={'Partie de foot amateur'}
-                            city={'Lille'}
+                            img={bienetre}
+                            alt={'yoga'}
+                            title={'Après-midi SPA'}
+                            city={'Toulouse'}
                             text_button={'En savoir +'}
                         />
                         <CardEvent
                             date={'Vendredi 11 Mars à 18h'}
-                            category={'Sport'}
+                            category={'Noctambule'}
                             route_category={`/`}
-                            img={sport}
-                            alt={'personnes pratiquant du sport'}
-                            title={'Partie de foot amateur'}
-                            city={'Lille'}
+                            img={noctambule}
+                            alt={'nuit'}
+                            title={'Concert de Jazz'}
+                            city={'Paris'}
                             text_button={'En savoir +'}
                         />
                         <CardEvent
                             date={'Vendredi 11 Mars à 18h'}
-                            category={'Sport'}
+                            category={'Jeu'}
                             route_category={`/`}
-                            img={sport}
-                            alt={'personnes pratiquant du sport'}
-                            title={'Partie de foot amateur'}
-                            city={'Lille'}
+                            img={jeu}
+                            alt={'cartes'}
+                            title={'Poker à la maison'}
+                            city={'Toulon'}
                             text_button={'En savoir +'}
                         />
                     </>
@@ -100,12 +105,12 @@ const Home = () => {
                         />
                         <CardEvent
                             date={'Vendredi 11 Mars à 18h'}
-                            category={'Sport'}
+                            category={'Bien être'}
                             route_category={`/`}
-                            img={sport}
-                            alt={'personnes pratiquant du sport'}
-                            title={'Partie de foot amateur'}
-                            city={'Lille'}
+                            img={bienetre}
+                            alt={'yoga'}
+                            title={'Après-midi SPA'}
+                            city={'Touluse'}
                             text_button={'En savoir +'}
                         />
                     </>
@@ -114,22 +119,22 @@ const Home = () => {
                     <>
                         <CardEvent
                             date={'Vendredi 11 Mars à 18h'}
-                            category={'Sport'}
+                            category={'Manuel'}
                             route_category={`/`}
-                            img={sport}
-                            alt={'personnes pratiquant du sport'}
-                            title={'Partie de foot amateur'}
-                            city={'Lille'}
+                            img={manuel}
+                            alt={'peinture'}
+                            title={'Atelier dessin'}
+                            city={'Brest'}
                             text_button={'En savoir +'}
                         />
                         <CardEvent
                             date={'Vendredi 11 Mars à 18h'}
-                            category={'Sport'}
+                            category={'Rencontre'}
                             route_category={`/`}
-                            img={sport}
-                            alt={'personnes pratiquant du sport'}
-                            title={'Partie de foot amateur'}
-                            city={'Lille'}
+                            img={rencontre}
+                            alt={'Rencontre au restaurant'}
+                            title={'personnes'}
+                            city={'Bordeaux'}
                             text_button={'En savoir +'}
                         />
                     </>
@@ -151,7 +156,7 @@ const Home = () => {
                 ) : (
                     <CardNotice />
                 )}
-                {width > breakpoint3 && (
+                {width > breakpoint4 && (
                     <CardNotice />
                 )}
 
