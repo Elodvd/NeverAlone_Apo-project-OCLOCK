@@ -43,7 +43,7 @@
     }
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 480px) {
     .home {
         &-presentation {
             min-height: 40vh;
@@ -64,13 +64,19 @@
         margin-left: 1.5rem;
         font-size: 1.3rem;
     }
+    .cardevent {
+        &-container {
+            max-width: 40vw;
+            max-height: 40vh;
+        }
+    }
 }
-@media only screen and (min-width: 630px) {
+@media only screen and (min-width: 600px) {
     .home {
         &-presentation {
             min-height: 50vh;
             background-size: 50%;
-            background-position: right 2vw top 2vh;
+            background-position: right 4vw top 0vh;
         }
         & h1 {
             font-size: 2.7rem;
@@ -128,7 +134,7 @@
             font-size: 4rem;
             margin-bottom: 5rem;
             margin-top: 5rem;
-            margin-left: 1rem;
+            margin-left: 5rem;
             max-width: 55%;
             & span {
                 color: vars.$font-secondary;
@@ -136,23 +142,24 @@
         }
     }
     .home .home-button {
-        margin-left: 5vw;
-        font-size: 1rem;
+        margin-left: 14vw;
+        font-size: 1.5rem;
     }
 }
 
 @media only screen and (min-width: 1335px) {
     .home {
         &-presentation {
-            background-size: 45%;
+            background-size: 40%;
+            background-position: top -10vh;
             min-height: 100vh;
         }
 
         & h1 {
-            font-size: 6.5rem;
-            margin-bottom: 10rem;
-            margin-top: 10rem;
-            margin-left: 4rem;
+            font-size: 6rem;
+            margin-bottom: 9rem;
+            margin-top: 6rem;
+            margin-left: 5rem;
             max-width: 55%;
             & span {
                 color: vars.$font-secondary;
@@ -160,7 +167,7 @@
         }
     }
     .home .home-button {
-        margin-left: 12vw;
+        margin-left: 15vw;
         font-size: 2.6rem;
     }
 }

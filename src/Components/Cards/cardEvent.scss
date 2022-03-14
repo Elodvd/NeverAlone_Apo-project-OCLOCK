@@ -76,3 +76,35 @@
         padding: .5rem;
     }
 }
+
+@media only screen and (min-width: 480px) {
+    .cardevent {
+        &-date {
+            font-size: 15px;
+        }
+        &-button {
+            font-size: 1rem;
+            padding: .3rem;
+        }
+        &-img {
+            display: block;
+            max-width: 90%;
+            max-height: 10vh;
+            margin: 1rem auto;
+        }
+        &-categories {
+            max-width: 35vw;
+            // max-height: 5vh;
+        }
+        &-title {
+            font-size: 1.3rem;
+        }
+        &-adress {
+            font-size: 1rem;
+        }
+        &-button-more{
+            font-size: 1rem;
+            padding: 0.3rem;
+        }
+    }
+}
