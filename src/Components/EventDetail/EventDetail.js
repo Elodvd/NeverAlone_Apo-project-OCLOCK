@@ -6,14 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import { deleteEvent } from '../../requests/deleteEvent';
 import { getOneEventRequest } from '../../requests/getOneEvent';
 
-<<<<<<< HEAD
 // Composant évènement détaillé qui contient toutes ses informations 
-const EventDetail = ({ oneEvent, getAll, userData }) => {
-    // Gestion du compteur/nombre de participants
-=======
+
 const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
     // state pour le compteur/nombre de participants
->>>>>>> 35d3aabf536bcb99d20a2e79452312dcfd5c9436
+
     const [counterValue, SetCounterValue] = useState(1);
     // Gestion du statut complet ou non
     const [isFull, SetIsFull] = useState(false);
@@ -31,9 +28,8 @@ const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
         }
     }, [oneEvent.user_id, userData.id]);
 
-<<<<<<< HEAD
+
     // Fonction pour la suppression de l'évènement
-=======
     // useEffect(() => {
     //     getOne();
     // },[]);
@@ -45,9 +41,6 @@ const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
         }
     };
 
-
-
->>>>>>> 35d3aabf536bcb99d20a2e79452312dcfd5c9436
     const handleDelete = async (event) => {
         event.preventDefault();
         const response = await deleteEvent(oneEvent.id);

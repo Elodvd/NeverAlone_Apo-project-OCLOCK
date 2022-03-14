@@ -4,12 +4,10 @@ import { getOneEventRequest } from '../../requests/getOneEvent';
 import { useNavigate } from 'react-router-dom';
 import CardEvent from '../Cards/CardEvent';
 
-<<<<<<< HEAD
+
 //Composant évènement résumé (ne contient que les informations principales) qui apparait dans la liste des évènements
-const Event = ({ item, handleSetOneEvent }) => {
-=======
 const Event = ({ item, handleSetOneEvent, getAll }) => {
->>>>>>> 35d3aabf536bcb99d20a2e79452312dcfd5c9436
+
     const navigate = useNavigate();
 
     // Au click on est dirigé vers la carte détaillée de l'évènement
