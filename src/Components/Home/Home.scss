@@ -15,6 +15,7 @@
         background-position: right 0vw top 0vh;
         background-size: 50%;
         min-height: 30vh;
+        padding-top: 2rem;
     }
     & h1 {
         font-size: 1.5rem;
@@ -122,14 +123,14 @@
 @media only screen and (min-width: 750px) {
     .home {
         &-presentation {
-            max-height: 20vh;
+            min-height: 60vh;
             background-size: 55%;
         }
         &-subtitle{
-            font-size: 1.8rem;
+            font-size: 2rem;
         }
         &-content {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
         &-subtitle-last {
                     margin-top: 3rem;
@@ -157,11 +158,18 @@
 
     
 }
+@media only screen and (min-width: 840px) {
+    .home {
+        &-presentation {
+            min-height: 75vh;
+        }
+    }
+}
 
 @media only screen and (min-width: 1000px) {
     .home {
         &-presentation {
-            height: 90px;
+            min-height: 85vh;
         }
 
         & h1 {
@@ -186,7 +194,7 @@
 @media only screen and (min-width: 1100px) {
     .home {
         &-presentation {
-            background-size: 40%;
+            background-size: 48%;
             min-height: 90vh;
         }
 

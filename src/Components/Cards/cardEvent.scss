@@ -37,14 +37,8 @@
         margin: 2 * vars.$gutter 0.5 * vars.$gutter;
         text-align: justify;
     }
-    &-categories {
-        display: flex;
-        flex-direction: column;
-        &-item {
-            height: 2rem;
-            padding-top: 0.5rem;
-        }
-    }
+    
+    
     &-date {
         margin: 0 0 0.8rem 0;
         font-size: 22px;
@@ -53,7 +47,7 @@
         font-size: 1.2rem;
         margin: .7rem;
         color: vars.$font-secondary;
-        font-weight: bold
+        font-weight: bold;
     }
     &-price {
         @include tag;
@@ -92,14 +86,11 @@
             max-height: 15vh;
             margin: 1rem auto;
         }
-        &-categories {
-            max-width: 35vw;
-            // max-height: 5vh;
-        }
         &-title {
             font-size: 1.3rem;
         }
         &-adress {
+            margin: .5rem 0 0 0 !important;
             font-size: 1rem;
         }
         &-button-more{
