@@ -61,7 +61,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/signin" element={<SignInForm />} />
-                <Route path="/About" element={<About />} />
+                
 
                 <Route
                     path="/login"
@@ -121,6 +121,7 @@ function App() {
                     </>
                 )}
                 <Route path="*" element={<Error404 />} />
+                <Route path="/About" element={<About />} />
             </Routes>
             <Footer />
             
