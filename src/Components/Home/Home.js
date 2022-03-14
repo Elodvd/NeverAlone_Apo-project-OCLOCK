@@ -5,6 +5,7 @@ import sport from '../../Doc/Image-Cat/sport.svg';
 import CardEvent from '../Cards/CardEvent';
 import CardNotice from '../Cards/CardNotice';
 
+// Page d'accueil de l'application 
 const Home = () => (
     <div className="home">
         <div className="home-presentation">
