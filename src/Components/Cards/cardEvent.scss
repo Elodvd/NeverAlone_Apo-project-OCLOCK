@@ -26,6 +26,8 @@
         display: block;
         width: 90%;
         margin: 1rem auto;
+        max-height: 160px;
+        min-height: 160px;
     }
     &-title {
         flex-wrap: wrap;
