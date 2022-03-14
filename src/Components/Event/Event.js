@@ -1,11 +1,13 @@
 import './event.scss';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { getOneEventRequest } from '../../requests/getOneEvent';
 import { useNavigate } from 'react-router-dom';
 import CardEvent from '../Cards/CardEvent';
 
+
 //Composant évènement résumé (ne contient que les informations principales) qui apparait dans la liste des évènements
-const Event = ({ item, handleSetOneEvent }) => {
+const Event = ({ item, handleSetOneEvent, getAll }) => {
+
     const navigate = useNavigate();
 
     // Au click on est dirigé vers la carte détaillée de l'évènement
@@ -27,6 +29,7 @@ const Event = ({ item, handleSetOneEvent }) => {
             date.toLocaleString().slice(11, 16)
         );
     };
+
 
     const newDate = dateFormat(item.date);
 
