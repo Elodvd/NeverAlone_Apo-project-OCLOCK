@@ -107,7 +107,7 @@
 @media only screen and (min-width: 600px) {
     .home {
         &-presentation {
-            min-height: 50vh;
+            min-height: 400px;
             background-size: 50%;
             background-position: right 4vw top 0vh;
         }
@@ -130,7 +130,7 @@
 @media only screen and (min-width: 750px) {
     .home {
         &-presentation {
-            min-height: 60vh;
+            min-height: 500px;
             background-size: 55%;
         }
         &-subtitle{
@@ -168,7 +168,7 @@
 @media only screen and (min-width: 840px) {
     .home {
         &-presentation {
-            min-height: 75vh;
+            min-height: 570px;
         }
     }
 }
@@ -176,7 +176,7 @@
 @media only screen and (min-width: 1000px) {
     .home {
         &-presentation {
-            min-height: 75vh;
+            min-height: 650px;
         }
 
         & h1 {
@@ -226,7 +226,7 @@
         &-presentation {
             background-size: 40%;
             background-position: top -10vh;
-            min-height: 100vh;
+            min-height: 720px;
         }
 
         & h1 {
