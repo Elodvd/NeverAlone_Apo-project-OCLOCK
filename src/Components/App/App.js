@@ -14,6 +14,7 @@ import Profil from '../Profil/Profil';
 import { getAllEventsRequest } from '../../requests/getAllEvents';
 import { getLocalUser } from '../../requests/index.js';
 import EventDetail from '../EventDetail/EventDetail';
+import { getOneEventRequest } from '../../requests/getOneEvent';
 
 function App() {
     //Gestion du statut connecté ou non du user
@@ -83,6 +84,7 @@ function App() {
                                     eventData={eventData}
                                     handleSetEventData={SetEventData}
                                     handleSetOneEvent={SetOneEvent}
+                                    getAll={getAll}
                                 />
                             }
                         />
@@ -116,6 +118,7 @@ function App() {
                                     oneEvent={oneEvent}
                                     getAll={getAll}
                                     userData={userData}
+                                    handleSetOneEvent={SetOneEvent}
                                 />
                             }
                         />
