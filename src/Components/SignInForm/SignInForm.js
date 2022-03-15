@@ -69,7 +69,7 @@ const SignInForm = () => {
         }
 
         if (response.status === 200) {
-            SetErrorMessage(false)
+            SetErrorMessage(false);
             SetLastNameValue('');
             SetFirstNameValue('');
             SetPseudoValue('');
@@ -80,9 +80,7 @@ const SignInForm = () => {
 
             setTimeout(() => {
                 navigate('/login');
-              }, 2500);
-            
-            
+            }, 2500);
         }
     };
 
@@ -145,7 +143,6 @@ const SignInForm = () => {
                         aria-describedby="pseudoHelp"
                         placeholder="Votre pseudo"
                         required="required"
-                        minl
                         minLength="3"
                     />
                 </div>
@@ -166,7 +163,8 @@ const SignInForm = () => {
                         aria-describedby="dateHelp"
                         placeholder="Votre pseudo"
                         required="required"
-                        min="1900-01-01" max="2006-12-31"
+                        min="1900-01-01"
+                        max="2006-12-31"
                     />
                 </div>
 
@@ -215,32 +213,20 @@ const SignInForm = () => {
                     />
                 </div>
 
-                
-                
-                
-
-                
-
                 <div className="signin-form-group">
+                    {succesMessage && (
+                        <p className="signin-succes">
+                            Le compte à été crée, vous allez ếtre redirigé
+                        </p>
+                    )}
 
-                {
-                    succesMessage &&
-
-                    <p className="signin-succes"> Le compte à été crée, vous allez ếtre redirigé </p>
-                }
-
-                {
-                    errorMessage &&
-
-                    <p className="signin-error"> {errorMessage} </p>
-                }
+                    {errorMessage && (
+                        <p className="signin-error"> {errorMessage} </p>
+                    )}
                     <button className="signin-button" type="submit">
                         Je m'inscris
                     </button>
                 </div>
-
-                
-
             </form>
         </div>
     );
