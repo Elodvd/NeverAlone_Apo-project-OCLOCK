@@ -3,6 +3,17 @@
 
 
 .card-container {
-    width: 100vw;
-    padding: 1.5rem;
+    min-width: 100%;
+    padding:1rem;
+
+    & .cardevent-container{
+        min-width: 100%;
+    }
+}
+
+
+@media only screen and (min-width: 480px) {
+    .card-container {
+        min-width: 20%;
+    }
 }
