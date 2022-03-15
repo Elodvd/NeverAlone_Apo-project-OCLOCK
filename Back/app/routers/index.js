@@ -32,6 +32,11 @@ router
 //route pour le profil d'un utilisateur
 router.delete('/profils/:id', userController.deleteAction);
 
+//route pour le profil d'un utilisateur
+router.route('/profils/:id')
+  .patch( userController.updateAction)
+  .delete( userController.deleteAction);
+
 router.use(errorController.error);
 
 // Answer 404
