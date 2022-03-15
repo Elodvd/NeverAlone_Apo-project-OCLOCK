@@ -1,7 +1,8 @@
 const { Event } = require('../models');
 
 const eventController = {
-  //Recovery any events
+
+/* This is a function that will recover all events. */
   async getAll(req, res, next) {
     try {
       const events = await Event.findAll();
@@ -10,7 +11,7 @@ const eventController = {
       next(err);
     }
   },
-  //Recovery of one event
+  /* A function that will recover one event. */
   async getOne(req, res, next) {
     try {
       const id = parseInt(req.params.id, 10);
@@ -26,7 +27,8 @@ const eventController = {
       next(err);
     }
   },
-  //Creating an event
+
+  /* Creating an event. */
   async create(req, res, next) {
     try {
       const event = await Event.create(req.body, {
@@ -37,7 +39,7 @@ const eventController = {
       next(err);
     }
   },
-  //change of one event
+  /* A function that will update an event. */
   async update(req, res, next) {
     try {
       const id = parseInt(req.params.id, 10);
@@ -56,7 +58,7 @@ const eventController = {
       next(err);
     }
   },
-  //delete of one event
+  /* A function that will delete an event. */
   async delete(req, res, next) {
     try {
       const id = parseInt(req.params.id, 10);
@@ -74,7 +76,6 @@ const eventController = {
       next(err);
     }
   },
-
 };
 
 module.exports = eventController;

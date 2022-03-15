@@ -1,4 +1,4 @@
-require("dotenv").config();
+/*require("dotenv").config();
 const jwt = require('jsonwebtoken');
 
 function midAuthToken(req, res, next) {
@@ -22,4 +22,4 @@ function midAuthToken(req, res, next) {
 
 }
 
-module.exports = midAuthToken;
+module.exports = midAuthToken;*/

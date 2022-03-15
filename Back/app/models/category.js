@@ -1,3 +1,4 @@
+/* This class is a model that represents a category */
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../client');
 

@@ -1,3 +1,4 @@
+/* This class is used to create the event table in the database */
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../client');
 
