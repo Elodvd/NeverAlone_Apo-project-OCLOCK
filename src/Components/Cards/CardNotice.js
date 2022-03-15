@@ -26,4 +26,4 @@ const CardNotice = () => {
     );
 };
 
-export default CardNotice;
+export default React.memo(CardNotice);

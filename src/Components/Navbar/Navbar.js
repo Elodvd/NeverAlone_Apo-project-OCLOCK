@@ -107,4 +107,4 @@ const Navbar = ({ isConnected, handleSetIsConnected, userData }) => {
     );
 };
 
-export default Navbar;
+export default React.memo(Navbar);

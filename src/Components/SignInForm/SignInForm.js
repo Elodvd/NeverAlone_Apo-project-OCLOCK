@@ -232,4 +232,4 @@ const SignInForm = () => {
     );
 };
 
-export default SignInForm;
+export default React.memo(SignInForm);

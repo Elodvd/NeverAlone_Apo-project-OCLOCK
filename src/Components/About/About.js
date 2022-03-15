@@ -1,5 +1,6 @@
 import CardEvent from '../Cards/CardEvent';
 import './about.scss';
+import React from 'react';
 
 import Elodie from '../../Doc/Photos-team/Elodie.jpeg';
 import Candy from '../../Doc/Photos-team/Candy.jpg';
@@ -89,4 +90,4 @@ const About = () => {
     );
 };
 
-export default About;
+export default React.memo(About);

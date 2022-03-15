@@ -166,4 +166,4 @@ const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
         </div>
     );
 };
-export default EventDetail;
+export default React.memo(EventDetail);
