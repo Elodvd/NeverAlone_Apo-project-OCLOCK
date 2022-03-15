@@ -1,3 +1,4 @@
+/* This class is a sequelize model that represents the user table in the database */
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../client');
 
