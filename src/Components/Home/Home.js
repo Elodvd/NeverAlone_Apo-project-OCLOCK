@@ -34,7 +34,7 @@ const Home = () => {
                     <h1>
                         CHERCHE,
                         <br /> TROUVE &<br />
-                        <span> PARTICIPE !</span>
+                        <span> PARTICIPE</span>
                     </h1>
                     <Button
                         text={'Lance toi !'}
@@ -54,24 +54,18 @@ const Home = () => {
                         <CardEvent
                             date={'Vendredi 11 Mars à 18h'}
                             category={'Sport'}
-                            style_category={'red'}
+                            style_category={'sport'}
                             route_category={`/`}
                             img={sport}
                             alt={'personnes pratiquant du sport'}
                             title={'Partie de foot'}
                             city={'Lille'}
                             text_button={'En savoir +'}
-                            test={
-                                <Button
-                                    text="test"
-                                    route="/"
-                                    className="cardevent-button"
-                                />
-                            }
                         />
                         <CardEvent
                             date={'Vendredi 11 Mars à 18h'}
                             category={'Bien être'}
+                            style_category={'bienetre'}
                             route_category={`/`}
                             img={bienetre}
                             alt={'yoga'}
@@ -82,6 +76,7 @@ const Home = () => {
                         <CardEvent
                             date={'Vendredi 11 Mars à 18h'}
                             category={'Noctambule'}
+                            style_category={'noctambule'}
                             route_category={`/`}
                             img={noctambule}
                             alt={'nuit'}
@@ -92,6 +87,7 @@ const Home = () => {
                         <CardEvent
                             date={'Vendredi 11 Mars à 18h'}
                             category={'Jeu'}
+                            style_category={'jeu'}
                             route_category={`/`}
                             img={jeu}
                             alt={'cartes'}
@@ -115,6 +111,7 @@ const Home = () => {
                         <CardEvent
                             date={'Vendredi 11 Mars à 18h'}
                             category={'Bien être'}
+                            style_category={'bienetre'}
                             route_category={`/`}
                             img={bienetre}
                             alt={'yoga'}
@@ -129,6 +126,7 @@ const Home = () => {
                         <CardEvent
                             date={'Vendredi 11 Mars à 18h'}
                             category={'Manuel'}
+                            style_category={'manuel'}
                             route_category={`/`}
                             img={manuel}
                             alt={'peinture'}
@@ -139,6 +137,7 @@ const Home = () => {
                         <CardEvent
                             date={'Vendredi 11 Mars à 18h'}
                             category={'Rencontre'}
+                            style_category={'rencontre'}
                             route_category={`/`}
                             img={rencontre}
                             alt={'Rencontre au restaurant'}
