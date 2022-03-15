@@ -16,7 +16,6 @@ import { getLocalUser } from '../../requests/index.js';
 import EventDetail from '../EventDetail/EventDetail';
 import About from '../About/About';
 
-
 function App() {
     //Gestion du statut connecté ou non du user
     const [isConnected, SetIsConnected] = useState(false);
@@ -28,11 +27,11 @@ function App() {
     //Récuperation d'un seul évènement
     const [oneEvent, SetOneEvent] = useState([]);
 
-    //Fonction pour la mise à jour de la liste des évènements 
-   /**
-    * It calls the getAllEventsRequest function and then sorts the data by date.
-    * @returns a promise.
-    */
+    //Fonction pour la mise à jour de la liste des évènements
+    /**
+     * It calls the getAllEventsRequest function and then sorts the data by date.
+     * @returns a promise.
+     */
     const getAll = async () => {
         //On appelle la fonction getAllEventsRequest pour récupérer la liste des events de l'API
         const response = await getAllEventsRequest();
@@ -41,12 +40,12 @@ function App() {
             response.data.sort(function compare(a, b) {
                 return new Date(a.date) - new Date(b.date);
             });
-            //Après avoir comparé les données on met à jour la liste 
+            //Après avoir comparé les données on met à jour la liste
             SetEventData(response.data);
         }
     };
 
-   /* This is a function that will be called when the component is mounted. */
+    /* This is a function that will be called when the component is mounted. */
     useEffect(() => {
         getAll();
         /* It checks if the user is already connected. */
@@ -70,7 +69,6 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/signin" element={<SignInForm />} />
-                
 
                 <Route
                     path="/login"
@@ -78,6 +76,7 @@ function App() {
                         <LogInForm
                             handleSetIsConnected={SetIsConnected}
                             handleSetUserData={SetUserData}
+                            eventData={eventData}
                         />
                     }
                 />
@@ -135,7 +134,6 @@ function App() {
                 <Route path="/About" element={<About />} />
             </Routes>
             <Footer />
-            
         </div>
     );
 }
