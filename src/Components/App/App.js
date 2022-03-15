@@ -2,7 +2,7 @@ import './App.scss';
 import React, { useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import { Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useLocation } from 'react';
 import Home from '../Home/Home';
 import SignInForm from '../SignInForm/SignInForm';
 import LogInForm from '../LogInForm/LogInForm';
@@ -15,7 +15,7 @@ import { getAllEventsRequest } from '../../requests/getAllEvents';
 import { getLocalUser } from '../../requests/index.js';
 import EventDetail from '../EventDetail/EventDetail';
 import About from '../About/About';
-import { getOneEventRequest } from '../../requests/getOneEvent';
+
 
 function App() {
     //Gestion du statut connecté ou non du user
@@ -29,10 +29,15 @@ function App() {
     const [oneEvent, SetOneEvent] = useState([]);
 
     //Fonction pour la mise à jour de la liste des évènements 
+   /**
+    * It calls the getAllEventsRequest function and then sorts the data by date.
+    * @returns a promise.
+    */
     const getAll = async () => {
         //On appelle la fonction getAllEventsRequest pour récupérer la liste des events de l'API
         const response = await getAllEventsRequest();
         if (response.status === 200) {
+            /* It sorts the data by date. */
             response.data.sort(function compare(a, b) {
                 return new Date(a.date) - new Date(b.date);
             });
@@ -41,10 +46,10 @@ function App() {
         }
     };
 
-    //Au lancement de l'app, on vérifie que l'user dispose d'un token valide, si oui on passe son statut à connecté, on set ses données et 
-    // on récupère dans le state la liste de tous les évènements
+   /* This is a function that will be called when the component is mounted. */
     useEffect(() => {
         getAll();
+        /* It checks if the user is already connected. */
         if (localStorage.getItem('user') !== null) {
             const responseLocalUser = JSON.parse(getLocalUser());
             console.log(responseLocalUser);

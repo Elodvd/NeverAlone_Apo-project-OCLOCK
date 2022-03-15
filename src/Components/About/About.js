@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import CardEvent from '../Cards/CardEvent';
 import './about.scss';
 
@@ -8,15 +7,16 @@ import Raphael from '../../Doc/Photos-team/Raphael.JPG';
 import Fabien from '../../Doc/Photos-team/Fabien.png';
 
 const About = () => {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     const handleClickRaphael = (event) => {
         event.preventDefault();
         window.location =
             'https://www.linkedin.com/in/raphael-honigstein-b90730194/';
     };
+   /**
+    * This function will prevent the default action of the event from happening, and then it will
+    * redirect the user to the LinkedIn profile of Candy Catherine
+    * @param event - The event that triggered the function.
+    */
     const handleClickCandy = (event) => {
         event.preventDefault();
         window.location = 'https://www.linkedin.com/in/candy-catherine/';
@@ -26,6 +26,10 @@ const About = () => {
         window.location =
             'https://www.linkedin.com/in/fabien-callot-7a6526120/';
     };
+   /**
+    * It opens a new tab in the browser and takes the user to the LinkedIn profile of Elodie.
+    * @param event - The event that triggered the function.
+    */
     const handleClickElodie = (event) => {
         event.preventDefault();
         window.location = 'https://www.linkedin.com/in/elodie-david31/';
