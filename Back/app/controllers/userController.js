@@ -63,6 +63,7 @@ const userController = {
         }
     },
 
+    /* We are trying to recover the user who has a given email. */
     async loginAction(req, res) {
         try {
             //we're trying to recover user who has a given email
@@ -116,6 +117,7 @@ const userController = {
     },
 
     //delete a profil
+    /* A method that allows you to delete a user. */
     async deleteAction(req, res, next) {
         try {
             const id = parseInt(req.params.id, 10);
@@ -137,6 +139,7 @@ const userController = {
     },
 
     //change a profile
+    /* A method that allows you to update a user. */
     async updateAction(req, res, next) {
         try {
             const id = parseInt(req.params.id, 10);
