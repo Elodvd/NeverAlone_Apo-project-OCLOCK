@@ -54,12 +54,20 @@ const Home = () => {
                         <CardEvent
                             date={'Vendredi 11 Mars à 18h'}
                             category={'Sport'}
+                            style_category={'red'}
                             route_category={`/`}
                             img={sport}
                             alt={'personnes pratiquant du sport'}
                             title={'Partie de foot'}
                             city={'Lille'}
                             text_button={'En savoir +'}
+                            test={
+                                <Button
+                                    text="test"
+                                    route="/"
+                                    className="cardevent-button"
+                                />
+                            }
                         />
                         <CardEvent
                             date={'Vendredi 11 Mars à 18h'}

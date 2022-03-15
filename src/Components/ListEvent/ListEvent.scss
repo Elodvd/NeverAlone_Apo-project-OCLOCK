@@ -19,6 +19,12 @@
     }
 }
 
+.cardevent {
+    &-adress {
+        margin-bottom: .5rem !important;
+    }
+}
+
 .card-event {
     display: flex;
     flex-wrap: wrap;
