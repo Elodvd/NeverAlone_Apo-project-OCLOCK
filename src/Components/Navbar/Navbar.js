@@ -23,18 +23,6 @@ const Navbar = ({ isConnected, handleSetIsConnected, userData }) => {
         removeBearerToken();
     };
 
-   /* This is a function that will close the modal if the user click outside of the modal. */
-    document.addEventListener('mousedown', (event) => {
-        if (
-            event.target.matches('.modal-nav') ||
-            event.target.matches('.sign-btn')
-        ) {
-            setIsOpen(true);
-        } else {
-            setIsOpen(false);
-        }
-    });
-
     return (
         <nav className="navbar">
             <div className="navbar-left">
