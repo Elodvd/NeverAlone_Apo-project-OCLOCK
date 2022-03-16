@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { removeBearerToken } from '../../requests';
 //import validator from 'validator';
 import { updateProfil } from '../../requests/updateProfil';
+import validator from 'validator';
 
 const Profil = ({ userData, handleSetIsConnected, getAll }) => {
     //gestion du statut modifiable ou non de l'information
@@ -16,6 +17,7 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
     const [pseudo, setPseudo] = useState('');
     const [birthday, setBirthday] = useState('');
     const [email, setEmail] = useState('');
+    const [errorMessage, SetErrorMessage] = useState(false);
 
     const navigate = useNavigate();
 
@@ -31,9 +33,10 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
             navigate('/');
         }
     };
+
     const handlePatch = async (event) => {
         event.preventDefault();
-        if ((firstname, lastname, pseudo, birthday, email)) {
+        if (firstname && lastname && pseudo && birthday && email) {
             const response = await updateProfil(
                 userData.id,
                 firstname,
@@ -43,16 +46,13 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                 email
             );
             if (response.status === 200) {
-                alert('utilisateur modifié');
                 setProfilModify(false);
                 removeBearerToken();
                 handleSetIsConnected(false);
                 navigate('/login');
-            } else {
-                console.log(response);
-            }
+            } 
         } else {
-            alert('Veuillez remplir tous les champs');
+            SetErrorMessage(true);
         }
     };
 
@@ -180,16 +180,29 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                     <div className="signin-form-group">
                         <input
                             type="email"
-                            className={'signin-input profil-valid'}
-                            id="modifyemail"
+                            className={
+                                !email
+                                    ? 'signin-input profil-error'
+                                    : 'signin-input profil-valid'
+                            }
                             name="modifyemail"
                             aria-describedby="modifyEmailHelp"
                             placeholder={userData.email}
                             onChange={(e) => {
-                                setEmail(e.target.value);
-                            }}
+                                if (validator.isEmail(e.target.value)) {
+                                    setEmail(e.target.value);
+                                } else {
+                                    setEmail('');
+                                }
+                            }}                           
                         />
                     </div>
+
+                        <div className="login-form-group">
+                            {errorMessage && (
+                                <p className="signin-error"> Veuillez remplir tous les champs correctement </p>
+                            )}
+                        </div> 
 
                     <form
                         className="profil-btn-group"
@@ -203,6 +216,9 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                     </form>
                 </div>
             )}
+
+                                       
+
             <form
                 className="profil-btn-group"
                 action={`/profils/${userData.id}`}

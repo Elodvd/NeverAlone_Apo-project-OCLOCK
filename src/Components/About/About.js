@@ -52,7 +52,7 @@ const About = () => {
             <CardEvent
                 className={'about-card'}
                 date={''}
-                category={'Lead dev back'}
+                category={'Lead Dev Back'}
                 route_category={`/About`}
                 img={Candy}
                 alt={'photo Candy'}
@@ -76,7 +76,7 @@ const About = () => {
             <CardEvent
                 className={'about-card'}
                 date={''}
-                category={'Lead dev front'}
+                category={'Lead Dev Front'}
                 route_category={`/About`}
                 img={Elodie}
                 alt={'photo Elodie'}
