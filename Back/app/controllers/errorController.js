@@ -1,3 +1,5 @@
+/* The above code is creating a controller that will handle all the errors that might occur in the
+application. */
 const { UniqueConstraintError, ValidationError } = require('sequelize');
 
 const errorController = {

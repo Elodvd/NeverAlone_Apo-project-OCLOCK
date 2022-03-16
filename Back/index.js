@@ -9,7 +9,6 @@ const router = require('./app/routers/index.js');
 
 app.use(cors({ origin: true }));
 app.use(express.urlencoded({ extended: true }));
-// config de base pour récupération de caractères
 app.use(express.json());
 app.use(router);
 

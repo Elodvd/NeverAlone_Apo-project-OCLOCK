@@ -45,6 +45,7 @@ email=raf@raf.raf&password=rafifou
 ################################
 
 ### s'inscrire
+A signin request.
 POST {{ endpoint }}/signin
 content-type: application/x-www-form-urlencoded
 
@@ -53,6 +54,12 @@ email=alo@alo.allo&firstname=Jean&lastname=Bon&password=jambon&birthday=2000-01-
 ################################
 ###          Profil     ###
 ################################
+
+### modifier un profil
+PATCH {{ endpoint }}/profils/1
+content-type: application/x-www-form-urlencoded
+
+first_name=jeanne
 
 ### supprimer un profil
 DELETE  {{ endpoint }}/profils/4

@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const userController = {
     async signinAction(req, res) {
         try {
-            // if user already exists
+            /* This is a validation of the email. */
             const user = await User.findOne({
                 where: {
                     email: req.body.email,
@@ -17,14 +17,13 @@ const userController = {
                     .status(401)
                     .json({ error: 'Utilisateur déjà enregistré.' });
             }
-            // if the email is invalid
+           /* This is a validation of the email. */
             if (!emailValidator.validate(req.body.email)) {
                 return res
                     .status(401)
                     .json({ error: 'L-email est invalide. Réessayez.' });
             }
-
-            //if the password and password confirmation do not match
+            /* Checking if the password and the password confirmation are the same. */
             if (req.body.password !== req.body.passwordConfirm) {
                 return res
                     .status(401)
@@ -32,15 +31,13 @@ const userController = {
                         error: 'Les mots de passe ne sont pas identiques. Réessayer.',
                     });
             }
-
-            // we will encrypt the password
+            /* Encrypting the password. */
             const salt = await bcrypt.genSalt(10);
             const encryptedPassword = await bcrypt.hash(
                 req.body.password,
                 salt
             );
-
-            // we will created the user
+            /* It creates a new user with the data that we have in the request. */
             const newUser = new User({
                 first_name: req.body.firstname,
                 last_name: req.body.lastname,
@@ -50,10 +47,8 @@ const userController = {
                 birthday: req.body.birthday,
                 image: req.body.image,
             });
-
-            //we are waiting for the user to be registered
+            /* Saving the new user in the database. */
             await newUser.save();
-
             res.status(200).json({
                 message: 'compte crée',
             });
@@ -66,7 +61,6 @@ const userController = {
     /* We are trying to recover the user who has a given email. */
     async loginAction(req, res) {
         try {
-            //we're trying to recover user who has a given email
             const user = await User.findOne({
                 where: {
                     email: req.body.email,
@@ -80,9 +74,7 @@ const userController = {
                         error: 'Erreur de saisie du login et/ou du mot de passe',
                     });
             }
-
-            //if we have a user, we test if password is valid
-
+            /* This is a validation of the password. */
             const validPwd = await bcrypt.compare(
                 req.body.password,
                 user.password
@@ -96,10 +88,6 @@ const userController = {
             }
 
             const newUser = user;
-            //remplacer delete par excluded avec sequelize dans le model ?
-            // delete newUser.password;
-            console.log('Retour de newUser:', newUser);
-
             res.status(200).json({
                 newUser,
                 token: jwt.sign(
@@ -115,8 +103,6 @@ const userController = {
             res.status(500).send(err.message);
         }
     },
-
-    //delete a profil
     /* A method that allows you to delete a user. */
     async deleteAction(req, res, next) {
         try {
@@ -137,8 +123,6 @@ const userController = {
             next(err);
         }
     },
-
-    //change a profile
     /* A method that allows you to update a user. */
     async updateAction(req, res, next) {
         try {
