@@ -46,6 +46,7 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                 alert('utilisateur modifié');
                 setProfilModify(false);
                 removeBearerToken();
+                handleSetIsConnected(false);
                 navigate('/login');
             } else {
                 console.log(response);
@@ -60,10 +61,7 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
         e.preventDefault();
         setProfilModify(true);
     };
-    const handleErrorPatch = (e) => {
-        e.preventDefault();
-        alert('Veuillez remplir tous les champs de façon correcte');
-    };
+    
     return (
         <div className="profil">
             <div className="profil-image">
@@ -172,6 +170,8 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                             }
                             id="modifybirthday"
                             name="modifybirthday"
+                            min="1900-01-01"
+                            max="2006-12-31"
                             aria-describedby="modifyBirthdayHelp"
                             placeholder={userData.birthday}
                             onChange={(e) => setBirthday(e.target.value)}

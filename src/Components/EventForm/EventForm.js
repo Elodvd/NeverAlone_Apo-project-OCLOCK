@@ -9,7 +9,7 @@ import Button from '../Button/Button';
 const EventForm = ({ handleSetEventData, eventData, userData, getAll }) => {
     const [titleValue, SetTitleValue] = useState('');
     const [descriptionValue, SetDescriptionValue] = useState('');
-    const [categorieValue, SetCategoryValue] = useState('');
+    const [categorieValue, SetCategoryValue] = useState('autre');
     const [cityValue, SetCityValue] = useState('');
     const [dateValue, SetDateValue] = useState('');
     const [capacityValue, SetCapacityValue] = useState('');

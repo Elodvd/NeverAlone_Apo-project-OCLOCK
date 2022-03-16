@@ -102,21 +102,7 @@ const SignInForm = () => {
                 method="POST"
                 className="signin-form"
             >
-                <div className="signin-form-group">
-                    <input
-                        value={lastNameValue}
-                        onChange={handleLastName}
-                        type="text"
-                        className="signin-input"
-                        id="lastname"
-                        name="lastname"
-                        aria-describedby="lastnameHelp"
-                        placeholder="Votre nom"
-                        minLength="2"
-                        required="required"
-                    />
-                </div>
-
+                
                 <div className="signin-form-group">
                     <input
                         type="text"
@@ -127,6 +113,21 @@ const SignInForm = () => {
                         name="firstname"
                         aria-describedby="firstnameHelp"
                         placeholder="Votre prénom"
+                        minLength="2"
+                        required="required"
+                    />
+                </div>
+
+                <div className="signin-form-group">
+                    <input
+                        value={lastNameValue}
+                        onChange={handleLastName}
+                        type="text"
+                        className="signin-input"
+                        id="lastname"
+                        name="lastname"
+                        aria-describedby="lastnameHelp"
+                        placeholder="Votre nom"
                         minLength="2"
                         required="required"
                     />
