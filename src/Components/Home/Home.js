@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Button from '../Button/Button';
 import sport from '../../Doc/Image-Cat/sport.svg';
 import bienetre from '../../Doc/Image-Cat/bienetre.svg';
-import jeu from '../../Doc/Image-Cat/jeu.svg';
+import voyage from '../../Doc/Image-Cat/voyage.svg';
 import rencontre from '../../Doc/Image-Cat/rencontre.svg';
 import noctambule from '../../Doc/Image-Cat/noctambule.svg';
 import manuel from '../../Doc/Image-Cat/manuel.svg';
@@ -52,47 +52,47 @@ const Home = () => {
                 {width > breakpoint ? (
                     <>
                         <CardEvent
-                            date={'Vendredi 11 Mars à 18h'}
+                            date={'Vendredi 11 Mars'}
                             category={'Sport'}
                             style_category={'sport'}
                             route_category={`/`}
                             img={sport}
                             alt={'personnes pratiquant du sport'}
-                            title={'Partie de foot'}
-                            city={'Lille'}
+                            title={'Match de foot'}
+                            city={'Lille (59)'}
                             text_button={'En savoir +'}
                         />
                         <CardEvent
-                            date={'Vendredi 11 Mars à 18h'}
+                            date={'Mercredi 2 Juin'}
                             category={'Bien être'}
                             style_category={'bienetre'}
                             route_category={`/`}
                             img={bienetre}
                             alt={'yoga'}
                             title={'Après-midi SPA'}
-                            city={'Toulouse'}
+                            city={'Toulouse (31)'}
                             text_button={'En savoir +'}
                         />
                         <CardEvent
-                            date={'Vendredi 11 Mars à 18h'}
+                            date={'Samedi 21 Juin'}
                             category={'Noctambule'}
                             style_category={'noctambule'}
                             route_category={`/`}
                             img={noctambule}
                             alt={'nuit'}
                             title={'Concert de Jazz'}
-                            city={'Paris'}
+                            city={'Paris (75)'}
                             text_button={'En savoir +'}
                         />
                         <CardEvent
-                            date={'Vendredi 11 Mars à 18h'}
-                            category={'Jeu'}
-                            style_category={'jeu'}
+                            date={'Vendredi 16 Août'}
+                            category={'Voyage'}
+                            style_category={'voyage'}
                             route_category={`/`}
-                            img={jeu}
-                            alt={'cartes'}
-                            title={'Poker à la maison'}
-                            city={'Toulon'}
+                            img={voyage}
+                            alt={'voyage'}
+                            title={'Week-end Camping'}
+                            city={'Toulon (83)'}
                             text_button={'En savoir +'}
                         />
                     </>
@@ -124,25 +124,25 @@ const Home = () => {
                 {width > breakpoint3 && (
                     <>
                         <CardEvent
-                            date={'Vendredi 11 Mars à 18h'}
+                            date={'Vendredi 9 Octobre'}
                             category={'Manuel'}
                             style_category={'manuel'}
                             route_category={`/`}
                             img={manuel}
                             alt={'peinture'}
                             title={'Atelier dessin'}
-                            city={'Brest'}
+                            city={'Brest (29)'}
                             text_button={'En savoir +'}
                         />
                         <CardEvent
-                            date={'Vendredi 11 Mars à 18h'}
+                            date={'Vendredi 7 Décembre'}
                             category={'Rencontre'}
                             style_category={'rencontre'}
                             route_category={`/`}
                             img={rencontre}
                             alt={'Rencontre au restaurant'}
-                            title={'personnes'}
-                            city={'Bordeaux'}
+                            title={"Discussion autour d'un verre"}
+                            city={'Bordeaux (33)'}
                             text_button={'En savoir +'}
                         />
                     </>
@@ -158,13 +158,30 @@ const Home = () => {
             <div className="home-notice">
                 {width > breakpoint2 ? (
                     <>
-                        <CardNotice />
-                        <CardNotice />
+                        <CardNotice 
+                            description={"Never Alone est incontestablement une très belle application, on trouve son bonheur, les gens que j'ai pu rencontrer sont très agreables. Un grand merci à l'équipe de Never Alone"}
+                            author={"Luko (31)"}
+                        />
+                        
+                        <CardNotice
+                            description={"J'ai rencontré pleins de nouvelles personnes grâce à NeverAlone et testé de nouvelles activités ! Son utilisation est super simple! Je la recommande à 100%"}
+                            author={"Emma (75)"} 
+                        />
                     </>
                 ) : (
-                    <CardNotice />
+                    <CardNotice
+                        description={"NeverAlone m'a permis de me remettre au sport. Grâce à l'application j'ai rencontré pleins de personnes qui sont devenus des amis et avec qui je vais régulièrement jouer au foot ou au tennis."}
+                        author={"Karim (69)"} 
+                    />
+                    
                 )}
-                {width > breakpoint4 && <CardNotice />}
+                {
+                    width > breakpoint4 && 
+                    <CardNotice
+                        description={"NeverAlone m'a permis de me remettre au sport. Grâce à l'application j'ai rencontré pleins de personnes qui sont devenus des amis et avec qui je vais régulièrement jouer au foot ou au tennis."}
+                        author={"Karim (69)"} 
+                    />
+                }
             </div>
         </div>
     );
