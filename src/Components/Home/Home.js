@@ -100,24 +100,25 @@ const Home = () => {
                 ) : (
                     <>
                         <CardEvent
-                            date={'Vendredi 11 Mars à 18h'}
+                            date={'Vendredi 11 Mars'}
                             category={'Sport'}
+                            style_category={'sport'}
                             route_category={`/`}
                             img={sport}
                             alt={'personnes pratiquant du sport'}
-                            title={'Partie de foot amateur'}
-                            city={'Lille'}
+                            title={'Match de foot'}
+                            city={'Lille (59)'}
                             text_button={'En savoir +'}
                         />
                         <CardEvent
-                            date={'Vendredi 11 Mars à 18h'}
+                            date={'Mercredi 2 Juin'}
                             category={'Bien être'}
                             style_category={'bienetre'}
                             route_category={`/`}
                             img={bienetre}
                             alt={'yoga'}
                             title={'Après-midi SPA'}
-                            city={'Touluse'}
+                            city={'Toulouse (31)'}
                             text_button={'En savoir +'}
                         />
                     </>

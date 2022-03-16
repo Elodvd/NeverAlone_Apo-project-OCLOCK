@@ -1,16 +1,13 @@
 import './ListEvent.scss';
-import React, { useEffect } from 'react';
+import React from 'react';
 import Button from '../Button/Button';
 import Event from '../Event/Event';
 
 // Liste des évènements
 // On récupère le pseudo du user, les évènements qu'il a créé et on lui permet d'en créer un nouveau
-const ListEvent = ({ userData, eventData, handleSetOneEvent, getAll }) => {
+const ListEvent = ({ userData, eventData, handleSetOneEvent }) => {
     const data = eventData;
 
-    useEffect(() => {
-        getAll();
-    }, []);
 
     return (
         <div className="listevent">

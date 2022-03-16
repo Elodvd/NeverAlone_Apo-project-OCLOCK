@@ -9,8 +9,10 @@
         justify-content: center;
         border: 2px solid vars.$tertiary-bg;
         border-radius: 5px;
-        margin: 2 * vars.$gutter 0.5 * vars.$gutter;
         padding: 0.5 * vars.$gutter;
+        max-width: 80%;
+        margin: auto;
+        background-color: vars.$tertiary-bg;
     }
 
     &-header {
@@ -32,11 +34,18 @@
     }
     &-title {
         font-family: vars.$font-title;
-        font-size: 30px;
+        font-size: 28px;
+        font-weight: bold;
     }
     &-description {
-        margin: 2 * vars.$gutter 0.5 * vars.$gutter;
+        margin: 1.8rem auto;
+        padding: 0 2rem;
         text-align: justify;
+        font-style: italic;
+        font-weight: bold;
+        word-wrap: break-word;
+        font-size: 16px;
+        max-width: 100%; 
     }
     &-categories {
         &-item {
@@ -44,15 +53,22 @@
             background-color: vars.$font-tertiary;
             color: white;
             min-width: 80px;
-        margin-left: 2rem;
+            margin-left: 2rem;
+            font-weight: bold;
+            border-radius: 5px;
+            font-size: 12px;
 
         }
     }
     &-date {
         margin: 1rem auto;
+        font-weight: bold;
     }
     &-adress {
+        text-align: center;
         margin: 1rem auto;
+        font-weight: bold;
+        font-size: 12px;
     }
     &-price {
         @include tag;
@@ -60,9 +76,15 @@
         color: white;
         min-width: 80px;
         margin-left: 2rem;
+        font-weight: bold;
+        border-radius: 5px;
+        font-size: 12px;
     }
     &-capacity {
         font-style: italic;
+        text-align: center;
+        font-weight: bold;
+        font-size: 12px;
     }
     &-participate {
         @include btn;

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signinRequest } from '../../requests/signinRequest';
 import React from 'react';
+import Loading from '../Loading/Loading';
 
 const SignInForm = () => {
     //formulaire de sign in
@@ -17,6 +18,7 @@ const SignInForm = () => {
     const [confirmValue, SetConfirmValue] = useState('');
     const [errorMessage, SetErrorMessage] = useState('');
     const [succesMessage, SetSuccesMessage] = useState(false);
+    const [isLogged, setIsLogged] = useState(false);
 
     //utile pour la redirection des pages
     const navigate = useNavigate();
@@ -77,10 +79,10 @@ const SignInForm = () => {
             SetPasswordValue('');
             SetConfirmValue('');
             SetSuccesMessage(true);
-
+            setIsLogged(true);
             setTimeout(() => {
                 navigate('/login');
-            }, 2500);
+            }, 1500);
         }
     };
 
@@ -95,29 +97,19 @@ const SignInForm = () => {
                 <span className="green">Inscrivez</span> vous pour participer
                 aux évènements !
             </h2>
-
+            {isLogged ? (
+                    <Loading
+                        color={'#4682b4'}
+                        type={'spinningBubbles'}
+                    />
+            ) : (
+                <>
             <form
                 onSubmit={handleSubmit}
                 action="/signin"
                 method="POST"
                 className="signin-form"
             >
-                
-                <div className="signin-form-group">
-                    <input
-                        type="text"
-                        value={firstNameValue}
-                        onChange={handleFirstName}
-                        className="signin-input"
-                        id="firstname"
-                        name="firstname"
-                        aria-describedby="firstnameHelp"
-                        placeholder="Votre prénom"
-                        minLength="2"
-                        required="required"
-                    />
-                </div>
-
                 <div className="signin-form-group">
                     <input
                         value={lastNameValue}
@@ -128,6 +120,21 @@ const SignInForm = () => {
                         name="lastname"
                         aria-describedby="lastnameHelp"
                         placeholder="Votre nom"
+                        minLength="2"
+                        required="required"
+                    />
+                </div>
+
+                <div className="signin-form-group">
+                    <input
+                        type="text"
+                        value={firstNameValue}
+                        onChange={handleFirstName}
+                        className="signin-input"
+                        id="firstname"
+                        name="firstname"
+                        aria-describedby="firstnameHelp"
+                        placeholder="Votre prénom"
                         minLength="2"
                         required="required"
                     />
@@ -229,6 +236,8 @@ const SignInForm = () => {
                     </button>
                 </div>
             </form>
+            </>
+            )}
         </div>
     );
 };
