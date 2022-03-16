@@ -1,8 +1,11 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-// hook personalisé pour revenir en haut de page
-// à chaque changement de path
+
+/**
+ * When the location changes, scroll to the top of the page
+ * @returns Nothing is being returned.
+ */
 export default function ScrollToTop() {
     const { pathname } = useLocation();
   

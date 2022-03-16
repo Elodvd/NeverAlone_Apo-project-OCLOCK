@@ -17,6 +17,7 @@ const Home = () => {
     const breakpoint2 = 600;
     const breakpoint3 = 750;
     const breakpoint4 = 1000;
+    
     useEffect(() => {
         const handleResizeWindow = () => setWidth(window.innerWidth);
         // subscribe to window resize event "onComponentDidMount"
