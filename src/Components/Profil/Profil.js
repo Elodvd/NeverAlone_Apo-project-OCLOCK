@@ -1,5 +1,5 @@
 import './Profil.scss';
-import avatar from '../../Doc/avatar.svg';
+import avatar from '../../Doc/panda_avatar2.png';
 import { deleteProfil } from '../../requests/deleteProfil';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -34,13 +34,14 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
     const handlePatch = async (event) => {
         event.preventDefault();
         if ((firstname, lastname, pseudo, birthday, email)) {
-    
-            const response = await updateProfil(userData.id,
+            const response = await updateProfil(
+                userData.id,
                 firstname,
                 lastname,
                 pseudo,
                 birthday,
-                email);
+                email
+            );
             if (response.status === 200) {
                 alert('utilisateur modifié');
                 setProfilModify(false);
@@ -65,7 +66,9 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
     };
     return (
         <div className="profil">
-            <img src={avatar} alt="sport" className="profil-image" />
+            <div className="profil-image">
+                <img src={avatar} alt="sport" />
+            </div>
             {/* Les données apparaissent ainsi ou sous forme de formulaire si on a cliqué sur "modifier"*/}
             {profilModify === false ? (
                 <div>
