@@ -4,7 +4,6 @@ import Button from '../Button/Button.js';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { deleteEvent } from '../../requests/deleteEvent';
-import { getOneEventRequest } from '../../requests/getOneEvent';
 
 // Composant évènement détaillé qui contient toutes ses informations 
 const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
@@ -26,20 +25,6 @@ const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
             SetDisplayDelete(true);
         }
     }, [oneEvent.user_id, userData.id]);
-
-
-    // Fonction pour la suppression de l'évènement
-    // useEffect(() => {
-    //     getOne();
-    // },[]);
-
-    const getOne = async () => {
-        const response = await getOneEventRequest(oneEvent.id);
-        if (response.status === 200) {            
-            handleSetOneEvent(response.data);
-        }
-    };
-
 
     const handleDelete = async (event) => {
         event.preventDefault();
@@ -118,7 +103,7 @@ const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
                         {oneEvent.adress}, {oneEvent.city}
                     </p>
 
-                    <p className="cardevent-capacity">
+                    <p className="event-capacity">
                         {counterValue - 1} / {oneEvent.capacity} personne(s)
                         {/* {isRegister && <p className="event-register">INSCRIT !</p>} */}
                     </p>

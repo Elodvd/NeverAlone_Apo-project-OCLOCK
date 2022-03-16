@@ -11,7 +11,7 @@ const LogInForm = ({ handleSetIsConnected, handleSetUserData, eventData }) => {
     //valeur de base des inputs
     const [emailValue, SetEmailValue] = useState('');
     const [passwordValue, SetPasswordValue] = useState('');
-    const [rememberValue, SetRememberValue] = useState(false);
+    // const [rememberValue, SetRememberValue] = useState(false);
     const [errorMessage, SetErrorMessage] = useState('');
     const [isLogged, setIsLogged] = useState(false);
 
@@ -53,21 +53,14 @@ const LogInForm = ({ handleSetIsConnected, handleSetUserData, eventData }) => {
         }
     };
 
-    const handleRemember = (event) => {
-        console.log(event);
-        SetRememberValue(!rememberValue);
-    };
+    // TODO const handleRemember = (event) => {
+    //     console.log(event);
+    //     SetRememberValue(!rememberValue);
+    // };
 
     return (
         <div className="login">
-            {isLogged ? (
-                    <Loading
-                        color={'#4682b4'}
-                        type={'spinningBubbles'}
-                    />
-            ) : (
-                <>
-                    <h1 className="login-title">
+            <h1 className="login-title">
                         Se connecter sur Never
                         <span className="green">Alone</span>
                     </h1>
@@ -75,6 +68,14 @@ const LogInForm = ({ handleSetIsConnected, handleSetUserData, eventData }) => {
                         Une <span className="green">application</span> sympa
                         pour partager des bons moments !
                     </h2>
+            {isLogged ? (
+                    <Loading
+                        color={'#4682b4'}
+                        type={'spinningBubbles'}
+                    />
+            ) : (
+                <>
+                    
                     <form
                         onSubmit={handleSubmit}
                         action="/login"
