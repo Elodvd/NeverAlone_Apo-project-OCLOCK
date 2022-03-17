@@ -12,11 +12,16 @@
     justify-content: space-around;
 
     &-contact {
+        margin: auto;
         text-align: center;
         width: 60%;
         margin: 0.5rem;
         font-style: italic;
         font-weight: 400;
+
+        & p {
+            padding-left: 20px;
+        }
     }
 
     &-copyright {
@@ -42,6 +47,11 @@
             margin-left: 2rem;
         }
     }
+}
+
+.test {
+    display: flex;
+    align-items: center;
 }
 
 .logo-item {
