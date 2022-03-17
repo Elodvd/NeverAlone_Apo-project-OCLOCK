@@ -208,32 +208,10 @@ const EventForm = ({ handleSetEventData, eventData, userData, getAll }) => {
                 </div>
 
                 <div className="event-form-radio">
-                    <label className="event-form-radio-label">
-                        GRATUIT
-                        <input
-                            className="price"
-                            onChange={handlePrice}
-                            id="price"
-                            type="radio"
-                            name="price"
-                            value="gratuit"
-                            aria-describedby="freeHelp"
-                            required="required"
-                        />
-                    </label>
-                    <label className="event-form-radio-label">
-                        PAYANT
-                        <input
-                            onChange={handlePrice}
-                            className="price"
-                            id="price"
-                            type="radio"
-                            name="price"
-                            value="payant"
-                            aria-describedby="notfreeHelp"
-                            required="required"
-                        />
-                    </label>
+                    <input type="radio" name="demo2" className="demo2 demoyes demo2-a" id="demo2-a" checked />
+                    <label for="demo2-a">GRATUIT</label>
+                    <input type="radio" name="demo2" className="demo2 demono demo2-b test" id="demo2-b" />
+                    <label for="demo2-b">PAYANT</label>
                 </div>
 
                 <div className="event-form-group">
