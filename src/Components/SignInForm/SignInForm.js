@@ -90,11 +90,11 @@ const SignInForm = () => {
         <div className="signin">
             <h1 className="signin-title">
                 {' '}
-                S'inscrire sur Never <span className="green">Alone</span>{' '}
+                S'inscrire sur Never<span className="green">Alone</span>{' '}
             </h1>
 
             <h2 className="signin-subtitle">
-                <span className="green">Inscrivez</span> vous pour participer
+                <span className="green">Inscrivez</span>-vous pour participer
                 aux évènements !
             </h2>
             {isLogged ? (
