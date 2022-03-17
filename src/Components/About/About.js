@@ -3,7 +3,7 @@ import './about.scss';
 
 import Elodie from '../../Doc/Photos-team/Elodie.jpeg';
 import Candy from '../../Doc/Photos-team/Candy.jpg';
-import Raphael from '../../Doc/Photos-team/Raphael.JPG';
+import Raphael from '../../Doc/Photos-team/Raphael.jpg';
 import Fabien from '../../Doc/Photos-team/Fabien.png';
 
 const About = () => {
@@ -47,7 +47,7 @@ const About = () => {
                 title={'Raphael'}
                 city={'Paris (75)'}
                 handleAction={handleClickRaphael}
-                text_button={'Contacter'}
+                text_button={'LinkedIn'}
             />
             <CardEvent
                 className={'about-card'}
@@ -59,7 +59,7 @@ const About = () => {
                 title={'Candy'}
                 city={'Pencran (29)'}
                 handleAction={handleClickCandy}
-                text_button={'Contacter'}
+                text_button={'LinkedIn'}
             />
             <CardEvent
                 className={'about-card'}
@@ -71,7 +71,7 @@ const About = () => {
                 title={'Fabien'}
                 city={'Lille (59)'}
                 handleAction={handleClickFabien}
-                text_button={'Contacter'}
+                text_button={'LinkedIn'}
             />
             <CardEvent
                 className={'about-card'}
@@ -83,7 +83,7 @@ const About = () => {
                 title={'Elodie'}
                 city={'Toulouse (31)'}
                 handleAction={handleClickElodie}
-                text_button={'Contacter'}
+                text_button={'LinkedIn'}
             />
         </div>
     );

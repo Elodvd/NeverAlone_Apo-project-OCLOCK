@@ -7,6 +7,7 @@ import { removeBearerToken } from '../../requests';
 //import validator from 'validator';
 import { updateProfil } from '../../requests/updateProfil';
 import validator from 'validator';
+import Loading from '../Loading/Loading';
 
 const Profil = ({ userData, handleSetIsConnected, getAll }) => {
     //gestion du statut modifiable ou non de l'information
@@ -18,6 +19,8 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
     const [birthday, setBirthday] = useState('');
     const [email, setEmail] = useState('');
     const [errorMessage, SetErrorMessage] = useState(false);
+    const [isLogged, setIsLogged] = useState(false);
+    
 
     const navigate = useNavigate();
 
@@ -26,11 +29,12 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
         event.preventDefault();
         const response = await deleteProfil(userData.id);
         if (response.status === 204) {
-            handleSetIsConnected(false);
-            removeBearerToken();
-            alert('utilisateur supprimé');
-            getAll();
-            navigate('/');
+            setIsLogged(true);
+            setTimeout(() => {
+                navigate('/');
+                handleSetIsConnected(false);
+                removeBearerToken();
+            }, 1500);
         }
     };
 
@@ -67,9 +71,19 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
             <div className="profil-image">
                 <img src={avatar} alt="sport" />
             </div>
+            {isLogged ? (
+                <>
+                    <Loading
+                        color={'#4682b4'}
+                        type={'spinningBubbles'}
+                    />
+                    <p className="signin-delete">Utilisateur supprimé</p>
+                    </>
+            ) : (
+                <>
             {/* Les données apparaissent ainsi ou sous forme de formulaire si on a cliqué sur "modifier"*/}
             {profilModify === false ? (
-                <div>
+                <div className="abc">
                     <p className="profil-color">Mon prénom :</p>
                     <div className="profil-informations">
                         <div className="profil-content">
@@ -114,8 +128,9 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                     </form>
                 </div>
             ) : (
-                <div>
+                <div className="abc">
                     <div className="signin-form-group">
+                        <p className="profil-color">Mon prénom :</p>
                         <input
                             type="text"
                             className={
@@ -131,6 +146,7 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         />
                     </div>
                     <div className="signin-form-group">
+                    <p className="profil-color">Mon nom :</p>
                         <input
                             type="text"
                             className={
@@ -146,6 +162,7 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         />
                     </div>
                     <div className="signin-form-group">
+                    <p className="profil-color">Mon pseudo :</p>
                         <input
                             type="text"
                             className={
@@ -161,6 +178,7 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         />
                     </div>
                     <div className="signin-form-group">
+                    <p className="profil-color">Ma date de naissance :</p>
                         <input
                             type="date"
                             className={
@@ -178,6 +196,7 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         />
                     </div>
                     <div className="signin-form-group">
+                        <p className="profil-color">Mon e-mail :</p>
                         <input
                             type="email"
                             className={
@@ -200,7 +219,7 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
 
                         <div className="login-form-group">
                             {errorMessage && (
-                                <p className="signin-error"> Veuillez remplir tous les champs correctement </p>
+                                <p className="signin-errora"> Veuillez remplir tous les champs correctement </p>
                             )}
                         </div> 
 
@@ -229,6 +248,8 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                     Supprimer mon profil
                 </button>
             </form>
+            </>
+            )}
         </div>
     );
 };

@@ -32,7 +32,7 @@ const Navbar = ({ isConnected, handleSetIsConnected, userData }) => {
                     alt="logo en forme de fusée"
                 />
                 <NavLink className="navbar-title" to="/">
-                    Never <span>Alone</span>{' '}
+                    Never<span className="logo-span">Alone</span>{' '}
                 </NavLink>
             </div>
             <div className="navbar-right">

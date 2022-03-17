@@ -4,6 +4,7 @@ import Button from '../Button/Button.js';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { deleteEvent } from '../../requests/deleteEvent';
+import Loading from '../Loading/Loading';
 
 // Composant évènement détaillé qui contient toutes ses informations 
 const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
@@ -16,6 +17,7 @@ const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
     const [isRegister, SetIsRegister] = useState(false);
     // Affichage du bouton "supprimer l'évènement" seulement si l'user est l'auteur de celui-ci
     const [displayDelete, SetDisplayDelete] = useState(false);
+    const [isLogged, setIsLogged] = useState(false);
 
     const navigate = useNavigate();
 
@@ -31,9 +33,11 @@ const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
         const response = await deleteEvent(oneEvent.id);
         if (response.status === 204) {
             // on affiche un message et on redirige vers la liste de tous les évènements
-            alert('event supprimé');
+            setIsLogged(true);
             getAll();
-            navigate('/events');
+            setTimeout(() => {
+                navigate('/events');
+            }, 1500);
         }
     };
 
@@ -80,7 +84,17 @@ const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
     const image = require(`../../Doc/Image-Cat/${oneEvent.category}.svg`);
 
     return (
+        
         <div className="event-container">
+            {isLogged ? (
+            <>
+                <Loading
+                    color={'#4682b4'}
+                    type={'spinningBubbles'}
+                />
+                <p className="signin-delete">Evènement supprimé</p>
+                </>
+        ) : ( <>
             <p className="event-title">{oneEvent.title.toUpperCase()}</p>
 
             <h2 className="event-date">{newDate}</h2>
@@ -89,7 +103,7 @@ const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
                 <img src={image} alt="categorie-sport" className="event-img" />
 
                 <div className="event-main">
-                    <div>
+                    <div className="event-group⁻label">
                         <button className="event-categories-item">
                             {oneEvent.category.toUpperCase()}
                         </button>
@@ -148,6 +162,7 @@ const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
                     </button>
                 )}
             </form>
+            </>)}
         </div>
     );
 };
