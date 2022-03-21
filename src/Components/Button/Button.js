@@ -1,15 +1,14 @@
 import React from 'react';
 import './button.scss';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const Button = ({text, route}) => {
+//Composant de type bouton réutilisable à plusieurs endroits de l'application en personnalisant son texte, ce qu'il déclenche au click, la route vers laquelle il mène et une className
+const Button = ({ text, route, className, action }) => {
     return (
-        <div>
-            <NavLink to={route} className="button">
-                {text}
-            </NavLink>
-        </div>
+        <Link onClick={action} to={route} className={`button ${className}`}>
+            {text}
+        </Link>
     );
 };
 
-export default Button;
+export default React.memo(Button);

@@ -16,10 +16,13 @@
     }
 
     &-image{
-        border: 1px solid vars.$font-secondary;
-        width: 75px;
+        display: block;
         border-radius: 50%;
-        margin: 1rem;
+        margin: auto;
+        & img {
+            width: 90px;
+            margin: auto;
+        }
     }
 
     &-informations{
@@ -36,6 +39,7 @@
 
     &-btn-group{
         display: flex;
+        justify-content: space-around;
         margin: 1rem 1rem;
     }
 
@@ -49,7 +53,8 @@
         color: white;
         font-size: 14px;
         font-weight: 800;
-        width: 50%;
+        min-width: 192px;
+        border: none;
 
         &-red{
             background-color: rgb(165, 3, 3);
@@ -60,5 +65,15 @@
         color: vars.$font-secondary;
         margin-bottom: 0.5rem;
         font-weight: 600;
+    }
+    & p {
+        text-align: center;
+    }
+
+    &-error{
+       background-color: rgba(255, 0, 0, 0.25);
+    }
+    &-valid{
+        background-color: rgba(0, 128, 0, 0.15);
     }
 }
