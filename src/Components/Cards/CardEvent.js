@@ -41,7 +41,7 @@ const CardEvent = ({
     );
 };
 
-export default CardEvent;
+export default React.memo(CardEvent);
 
 // CardEvent.propTypes = {
 //     date_hour: PropTypes.string.isRequired,

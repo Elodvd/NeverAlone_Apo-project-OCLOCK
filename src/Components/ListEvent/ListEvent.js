@@ -4,9 +4,15 @@ import Button from '../Button/Button';
 import Event from '../Event/Event';
 
 // Liste des évènements
-// On récupère le pseudo du user, les évènements qu'il a créé et on lui permet d'en créer un nouveau
-const ListEvent = ({ userData, eventData, handleSetOneEvent }) => {
+
+// On récupère le pseudo du user, les évènements qu'il a créé et on lui permet d'en créer un nouveau 
+const ListEvent = ({ userData, eventData, handleSetOneEvent, getAll }) => {
     const data = eventData;
+    console.log(data);
+
+    useEffect(() => {
+        getAll();
+    },[]);
 
 
     return (
@@ -29,4 +35,4 @@ const ListEvent = ({ userData, eventData, handleSetOneEvent }) => {
     );
 };
 
-export default ListEvent;
+export default React.memo(ListEvent);

@@ -54,4 +54,4 @@ const Event = ({ item, handleSetOneEvent, getAll }) => {
     );
 };
 
-export default Event;
+export default React.memo(Event);

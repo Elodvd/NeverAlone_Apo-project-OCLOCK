@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import fb from '../../Doc/Logos-RS/fb_logo.png';
 import twitter from '../../Doc/Logos-RS/twitter_logo.png';
 import instagram from '../../Doc/Logos-RS/insta_logo.png';
-import contact from '../../Doc/Logos-RS/contact_logo.png';
 
 const Footer = () => (
     <div className="footer">
@@ -36,4 +35,4 @@ const Footer = () => (
     </div>
 );
 
-export default Footer;
+export default React.memo(Footer);
