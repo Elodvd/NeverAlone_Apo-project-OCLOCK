@@ -1,5 +1,5 @@
 import './event.scss';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { getOneEventRequest } from '../../requests/getOneEvent';
 import { useNavigate } from 'react-router-dom';
 import CardEvent from '../Cards/CardEvent';
@@ -54,4 +54,4 @@ const Event = ({ item, handleSetOneEvent, getAll }) => {
     );
 };
 
-export default Event;
+export default React.memo(Event);

@@ -1,3 +1,4 @@
+import React from 'react';
 import './Profil.scss';
 import avatar from '../../Doc/panda_avatar2.png';
 import { deleteProfil } from '../../requests/deleteProfil';
@@ -233,4 +234,4 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
     );
 };
 
-export default Profil;
+export default React.memo(Profil);

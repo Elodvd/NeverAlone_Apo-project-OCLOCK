@@ -23,4 +23,4 @@ const CardNotice = ( {author, description}) => {
     );
 };
 
-export default CardNotice;
+export default React.memo(CardNotice);

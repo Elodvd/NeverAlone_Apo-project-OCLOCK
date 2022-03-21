@@ -134,4 +134,4 @@ const LogInForm = ({ handleSetIsConnected, handleSetUserData, eventData }) => {
     );
 };
 
-export default LogInForm;
+export default React.memo(LogInForm);

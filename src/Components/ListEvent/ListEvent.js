@@ -35,4 +35,4 @@ const ListEvent = ({ userData, eventData, handleSetOneEvent, getAll }) => {
     );
 };
 
-export default ListEvent;
+export default React.memo(ListEvent);
