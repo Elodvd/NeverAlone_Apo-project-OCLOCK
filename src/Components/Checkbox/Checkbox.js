@@ -1,7 +1,9 @@
 import './checkbox.scss';
 import React from 'react';
 
+
 //Composant de type checkbox utilisé dans les formulaires 
+
 const Checkbox = ({ isChecked, label, checkHandler, index }) => {
     return (
         <div>
