@@ -7,10 +7,11 @@
     align-items: center;
     margin: 1rem;
 
-    &-title {
+    &-titleb {
         text-align: center;
         font-size: 40px;
         margin: 0 0 1rem 0;
+        //font-family: vars.$font-txt;
     }
     &-label {
         font-size: 18px;
@@ -108,4 +109,9 @@ label.importimage input[type='file'] {
     margin: 5px;
     background: #dddddd;
     display: inline-block;
+}
+
+input[type=radio]{
+height: 20px;
+width: 20px;
 }

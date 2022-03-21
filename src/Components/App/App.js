@@ -2,7 +2,7 @@ import './App.scss';
 import React, { useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import { Routes, Route } from 'react-router-dom';
-import { useState, useLocation } from 'react';
+import { useState} from 'react';
 import Home from '../Home/Home';
 import SignInForm from '../SignInForm/SignInForm';
 import LogInForm from '../LogInForm/LogInForm';

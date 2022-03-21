@@ -8,7 +8,11 @@ import instagram from '../../Doc/Logos-RS/insta_logo.png';
 const Footer = () => (
     <div className="footer">
         <div className="footer-contact">
-        <NavLink to={'/About'} className={'contact-us'}>&gt; Nous contacter</NavLink>
+            <NavLink to={'/About'} className={'contact-us'}>
+                <div className="test">
+                    <img src={contact} alt="contact logo" /> <p>Nous contacter</p>
+                </div>
+            </NavLink>
         </div>
         <div className="footer-rs">
             <a href="https://www.facebook.com">

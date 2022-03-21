@@ -106,7 +106,7 @@ const EventForm = ({ handleSetEventData, eventData, userData, getAll }) => {
 
     return (
         <div className="event">
-            <h1 className="event-title">
+            <h1 className="event-titleb">
                 Créer un <span className="green">E</span>vènement{' '}
             </h1>
 
@@ -296,4 +296,6 @@ const EventForm = ({ handleSetEventData, eventData, userData, getAll }) => {
         </div>
     );
 };
+
 export default React.memo(EventForm);
+
