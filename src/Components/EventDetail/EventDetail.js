@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { deleteEvent } from '../../requests/deleteEvent';
 
 // Composant évènement détaillé qui contient toutes ses informations 
+
 const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
     // state pour le compteur/nombre de participants
 
@@ -25,6 +26,19 @@ const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
             SetDisplayDelete(true);
         }
     }, [oneEvent.user_id, userData.id]);
+
+
+    // Fonction pour la suppression de l'évènement
+    // useEffect(() => {
+    //     getOne();
+    // },[]);
+
+    const getOne = async () => {
+        const response = await getOneEventRequest(oneEvent.id);
+        if (response.status === 200) {            
+            handleSetOneEvent(response.data);
+        }
+    };
 
     const handleDelete = async (event) => {
         event.preventDefault();
