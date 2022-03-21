@@ -6,11 +6,7 @@ const Event = require('./app/models/event');
 const Category = require('./app/models/category');
 
 
-User.findOne({
-  where: {
-    email: "raf@raf.raf"
-  }
-}).then(user => {
-  console.log(user)
+Event.findByPk(1).then(event => {
+  console.log(event)
 })
 

@@ -4,113 +4,144 @@ const emailValidator = require('email-validator');
 const bcrypt = require('bcrypt');
 
 const userController = {
-  async signinAction(req, res) {
-    try {
-      // if user already exists
-      const user = await User.findOne({
-        where: {
-          email: req.body.email,
-        },
-      });
-      if (user) {
-        return res
-          .status(401)
-          .json({ error: 'Cet email est déjà utilisé par un utilisateur.' });
-      }
-      // if the email is invalid
-      if (!emailValidator.validate(req.body.email)) {
-        return res.status(401).json({ error: "Cet email n'est pas valide." });
-      }
+    async signinAction(req, res) {
+        try {
+            /* This is a validation of the email. */
+            const user = await User.findOne({
+                where: {
+                    email: req.body.email,
+                },
+            });
+            if (user) {
+                return res
+                    .status(401)
+                    .json({ error: 'Utilisateur déjà enregistré.' });
+            }
+           /* This is a validation of the email. */
+            if (!emailValidator.validate(req.body.email)) {
+                return res
+                    .status(401)
+                    .json({ error: 'L-email est invalide. Réessayez.' });
+            }
+            /* Checking if the password and the password confirmation are the same. */
+            if (req.body.password !== req.body.passwordConfirm) {
+                return res
+                    .status(401)
+                    .json({
+                        error: 'Les mots de passe ne sont pas identiques. Réessayer.',
+                    });
+            }
+            /* Encrypting the password. */
+            const salt = await bcrypt.genSalt(10);
+            const encryptedPassword = await bcrypt.hash(
+                req.body.password,
+                salt
+            );
+            /* It creates a new user with the data that we have in the request. */
+            const newUser = new User({
+                first_name: req.body.firstname,
+                last_name: req.body.lastname,
+                pseudo: req.body.pseudo,
+                email: req.body.email,
+                password: encryptedPassword,
+                birthday: req.body.birthday,
+                image: req.body.image,
+            });
+            /* Saving the new user in the database. */
+            await newUser.save();
+            res.status(200).json({
+                message: 'compte crée',
+            });
+        } catch (err) {
+            console.trace(err);
+            res.status(500).send(err.message);
+        }
+    },
 
-      //if the password and password confirmation do not match
-      if (req.body.password !== req.body.passwordConfirm) {
-        return res.status(401).json({
-          error: 'La confirmation du mot de passe ne correspond pas.',
-        });
-      }
+    /* We are trying to recover the user who has a given email. */
+    async loginAction(req, res) {
+        try {
+            const user = await User.findOne({
+                where: {
+                    email: req.body.email,
+                },
+            });
 
-      // we will encrypt the password
-      const salt = await bcrypt.genSalt(10);
-      const encryptedPassword = await bcrypt.hash(req.body.password, salt);
+            if (!user) {
+                return res
+                    .status(401)
+                    .json({
+                        error: 'Erreur de saisie du login et/ou du mot de passe',
+                    });
+            }
+            /* This is a validation of the password. */
+            const validPwd = await bcrypt.compare(
+                req.body.password,
+                user.password
+            );
+            if (!validPwd) {
+                return res
+                    .status(401)
+                    .json({
+                        error: 'Erreur de saisie du login et/ou du mot de passe',
+                    });
+            }
 
-      // we will created the user
-      const newUser = new User({
-        first_name: req.body.firstname,
-        last_name: req.body.lastname,
-        pseudo: req.body.pseudo,
-        email: req.body.email,
-        password: encryptedPassword,
-        birthday: req.body.birthday,
-        image: req.body.image,
-      });
-
-      //we are waiting for the user to be registered
-      await newUser.save();
-
-      res.status(200).json({
-        message : "tu as crée ton compte"
-      });
-    } catch (err) {
-      console.trace(err);
-      res.status(500).send(err.message);
-    }
-  },
-
-  async loginAction(req, res) {
-    try {
-      //we're trying to recover user who has a given email
-      const user = await User.findOne({
-        where: {
-          email: req.body.email,
-        },
-      });
-
-      if (!user) {
-        return res.status(401).json({ error: 'Erreur de récupération' });
-      }
-
-      //if we have a user, we test if password is valid
-      
-       const validPwd = await bcrypt.compare(req.body.password, user.password);
-       if (!validPwd) {
-         return res.render('login', {
-           error: "Ce n'est pas le bon mot de passe.",
-         });
-       }
-
-       const newUser = user;
-       delete newUser.password;
-
-      res.status(200).json({
-        user,
-        token: jwt.sign({ user_id: user.id }, process.env.ACCESS_TOKEN_SECRET, {
-          expiresIn: '24h',
-        }),
-      });
-    } catch (err) {
-      console.trace(err);
-      res.status(500).send(err.message);
-    }
-  },
-
-  //delete a profil
-  /*async deleteAction(req, res, next) {
-    try {
-      const id = parseInt(req.params.id, 10);
-      if (isNaN(id) || id < 1) {
-        return next();
-      }
-      const result = await User.destroy({
-        where: { id },
-      });
-      if (!result) {
-        return res.status(404).json({ error: `le profil n'existe pas` });
-      }
-      res.status(204).json();
-    } catch (err) {
-      next(err);
-    }
-  },*/
+            const newUser = user;
+            res.status(200).json({
+                newUser,
+                token: jwt.sign(
+                    { user_id: user.id },
+                    process.env.ACCESS_TOKEN_SECRET,
+                    {
+                        expiresIn: '24h',
+                    }
+                ),
+            });
+        } catch (err) {
+            console.trace(err);
+            res.status(500).send(err.message);
+        }
+    },
+    /* A method that allows you to delete a user. */
+    async deleteAction(req, res, next) {
+        try {
+            const id = parseInt(req.params.id, 10);
+            if (isNaN(id) || id < 1) {
+                return next();
+            }
+            const result = await User.destroy({
+                where: { id },
+            });
+            if (!result) {
+                return res
+                    .status(404)
+                    .json({ error: `L'utilisateur n'existe pas` });
+            }
+            res.status(204).json();
+        } catch (err) {
+            next(err);
+        }
+    },
+    /* A method that allows you to update a user. */
+    async updateAction(req, res, next) {
+        try {
+            const id = parseInt(req.params.id, 10);
+            if (isNaN(id) || id < 1) {
+                return next();
+            }
+            const result = await User.update(req.body, {
+                where: {
+                    id,
+                },
+                returning: true,
+            });
+            const user = result[1][0];
+            res.json(user);
+        } catch (err) {
+            next(err);
+        }
+    },
 };
 
 module.exports = userController;

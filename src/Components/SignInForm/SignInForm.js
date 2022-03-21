@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signinRequest } from '../../requests/signinRequest';
 import React from 'react';
+import Loading from '../Loading/Loading';
 
 const SignInForm = () => {
     //formulaire de sign in
@@ -15,6 +16,9 @@ const SignInForm = () => {
     const [emailValue, SetEmailValue] = useState('');
     const [passwordValue, SetPasswordValue] = useState('');
     const [confirmValue, SetConfirmValue] = useState('');
+    const [errorMessage, SetErrorMessage] = useState('');
+    const [succesMessage, SetSuccesMessage] = useState(false);
+    const [isLogged, setIsLogged] = useState(false);
 
     //utile pour la redirection des pages
     const navigate = useNavigate();
@@ -51,20 +55,35 @@ const SignInForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const response = await signinRequest(lastNameValue, firstNameValue, pseudoValue, dateValue, emailValue, passwordValue, confirmValue);
+        const response = await signinRequest(
+            lastNameValue,
+            firstNameValue,
+            pseudoValue,
+            dateValue,
+            emailValue,
+            passwordValue,
+            confirmValue
+        );
 
-        if(response.status === 200){
+        if (response.status !== 200) {
+            console.log(response);
+            SetErrorMessage(response.data.error);
+        }
+
+        if (response.status === 200) {
+            SetErrorMessage(false);
             SetLastNameValue('');
             SetFirstNameValue('');
             SetPseudoValue('');
             SetEmailValue('');
             SetPasswordValue('');
             SetConfirmValue('');
-            alert('utilisateur crée');
-            navigate('/login');
+            SetSuccesMessage(true);
+            setIsLogged(true);
+            setTimeout(() => {
+                navigate('/login');
+            }, 1500);
         }
-
-        
     };
 
     return (
@@ -78,7 +97,13 @@ const SignInForm = () => {
                 <span className="green">Inscrivez</span> vous pour participer
                 aux évènements !
             </h2>
-
+            {isLogged ? (
+                    <Loading
+                        color={'#4682b4'}
+                        type={'spinningBubbles'}
+                    />
+            ) : (
+                <>
             <form
                 onSubmit={handleSubmit}
                 action="/signin"
@@ -95,6 +120,8 @@ const SignInForm = () => {
                         name="lastname"
                         aria-describedby="lastnameHelp"
                         placeholder="Votre nom"
+                        minLength="2"
+                        required="required"
                     />
                 </div>
 
@@ -108,6 +135,8 @@ const SignInForm = () => {
                         name="firstname"
                         aria-describedby="firstnameHelp"
                         placeholder="Votre prénom"
+                        minLength="2"
+                        required="required"
                     />
                 </div>
 
@@ -121,12 +150,14 @@ const SignInForm = () => {
                         name="pseudo"
                         aria-describedby="pseudoHelp"
                         placeholder="Votre pseudo"
+                        required="required"
+                        minLength="3"
                     />
                 </div>
 
                 <div className="signin-form-group">
                     <p className="signin-alert">
-                        Indiquez votre date de{' '}
+                        Indiquez votre date de
                         <span className="green"> naissance</span>
                     </p>
 
@@ -139,6 +170,9 @@ const SignInForm = () => {
                         name="date"
                         aria-describedby="dateHelp"
                         placeholder="Votre pseudo"
+                        required="required"
+                        min="1900-01-01"
+                        max="2006-12-31"
                     />
                 </div>
 
@@ -168,6 +202,8 @@ const SignInForm = () => {
                         id="password"
                         name="password"
                         placeholder="Votre mot de passe"
+                        required="required"
+                        minLength="3"
                     />
                 </div>
 
@@ -180,15 +216,28 @@ const SignInForm = () => {
                         id="passwordConfirm"
                         name="passwordConfirm"
                         placeholder="Confirmez votre mot de passe"
+                        required="required"
+                        minLength="3"
                     />
                 </div>
 
                 <div className="signin-form-group">
+                    {succesMessage && (
+                        <p className="signin-succes">
+                            Le compte à été crée, vous allez ếtre redirigé
+                        </p>
+                    )}
+
+                    {errorMessage && (
+                        <p className="signin-error"> {errorMessage} </p>
+                    )}
                     <button className="signin-button" type="submit">
                         Je m'inscris
                     </button>
                 </div>
             </form>
+            </>
+            )}
         </div>
     );
 };

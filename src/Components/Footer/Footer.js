@@ -1,5 +1,6 @@
 import './footer.scss';
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import fb from '../../Doc/Logos-RS/fb_logo.png';
 import twitter from '../../Doc/Logos-RS/twitter_logo.png';
 import instagram from '../../Doc/Logos-RS/insta_logo.png';
@@ -8,14 +9,8 @@ import contact from '../../Doc/Logos-RS/contact_logo.png';
 const Footer = () => (
     <div className="footer">
         <div className="footer-contact">
-            <img
-                src={contact}
-                alt="Lien adresse de contact"
-                className="logo-item"
-            />
-            <p>Contactez-nous</p>
+        <NavLink to={'/About'} className={'contact-us'}>&gt; Nous contacter</NavLink>
         </div>
-
         <div className="footer-rs">
             <a href="https://www.facebook.com">
                 <img className="logo-item" src={fb} alt="Facebook page" />
