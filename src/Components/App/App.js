@@ -2,7 +2,7 @@ import './App.scss';
 import React, { useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import { Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useLocation } from 'react';
 import Home from '../Home/Home';
 import SignInForm from '../SignInForm/SignInForm';
 import LogInForm from '../LogInForm/LogInForm';
@@ -14,7 +14,7 @@ import Profil from '../Profil/Profil';
 import { getAllEventsRequest } from '../../requests/getAllEvents';
 import { getLocalUser } from '../../requests/index.js';
 import EventDetail from '../EventDetail/EventDetail';
-import { getOneEventRequest } from '../../requests/getOneEvent';
+import About from '../About/About';
 
 function App() {
     //Gestion du statut connecté ou non du user
@@ -27,23 +27,28 @@ function App() {
     //Récuperation d'un seul évènement
     const [oneEvent, SetOneEvent] = useState([]);
 
-    //Fonction pour la mise à jour de la liste des évènements 
+    //Fonction pour la mise à jour de la liste des évènements
+    /**
+     * It calls the getAllEventsRequest function and then sorts the data by date.
+     * @returns a promise.
+     */
     const getAll = async () => {
         //On appelle la fonction getAllEventsRequest pour récupérer la liste des events de l'API
         const response = await getAllEventsRequest();
         if (response.status === 200) {
+            /* It sorts the data by date. */
             response.data.sort(function compare(a, b) {
                 return new Date(a.date) - new Date(b.date);
             });
-            //Après avoir comparé les données on met à jour la liste 
+            //Après avoir comparé les données on met à jour la liste
             SetEventData(response.data);
         }
     };
 
-    //Au lancement de l'app, on vérifie que l'user dispose d'un token valide, si oui on passe son statut à connecté, on set ses données et 
-    // on récupère dans le state la liste de tous les évènements
+    /* This is a function that will be called when the component is mounted. */
     useEffect(() => {
         getAll();
+        /* It checks if the user is already connected. */
         if (localStorage.getItem('user') !== null) {
             const responseLocalUser = JSON.parse(getLocalUser());
             console.log(responseLocalUser);
@@ -71,6 +76,7 @@ function App() {
                         <LogInForm
                             handleSetIsConnected={SetIsConnected}
                             handleSetUserData={SetUserData}
+                            eventData={eventData}
                         />
                     }
                 />
@@ -125,6 +131,7 @@ function App() {
                     </>
                 )}
                 <Route path="*" element={<Error404 />} />
+                <Route path="/About" element={<About />} />
             </Routes>
             <Footer />
         </div>

@@ -1,8 +1,55 @@
 @use 'src/styles/vars';
 @import 'src/styles/mixin';
 
-
 .card-container {
-    width: 100vw;
-    padding: 1.5rem;
+    min-width: 100%;
+    padding: 1rem;
+
+    & .cardevent-container {
+        min-width: 100%;
+    }
+}
+
+.event-button{
+    margin: auto;
+}
+
+.noctambule {
+    background-color: #41768a;
+}
+.culture {
+    background-color: #b5acde;
+}
+.bienetre {
+    background-color: #aa88c7;
+}
+.cuisine {
+    background-color: #AD221C;
+}
+.jeu {
+    background-color: #000;
+}
+.manuel {
+    background-color: #70C9FF;
+}
+.musique {
+    background-color: #AD00AD;
+}
+.plein-air {
+    background-color: #777777;
+}
+.rencontre {
+    background-color: #C37A02;
+}
+.voyage {
+    background-color: #F50057;
+}
+.autre {
+    background-color: #3E6F7F;
+}
+
+@media only screen and (min-width: 480px) {
+    .card-container {
+        min-width: 20%;
+    }
 }

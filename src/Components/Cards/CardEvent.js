@@ -9,21 +9,23 @@ const CardEvent = ({
     date,
     category,
     route_category,
+    style_category,
     img,
     alt,
     title,
     city,
     handleAction,
     text_button,
+    className,
 }) => {
     return (
-        <div className="cardevent-container">
+        <div className={`${className} cardevent-container`}>
             <h2 className="cardevent-date">{date}</h2>
             <div className="cardevent-header">
                 <Button
                     text={category}
                     route={route_category}
-                    className="cardevent-button"
+                    className={style_category + " cardevent-button"}
                 />
                 <img src={img} alt={alt} className="cardevent-img" />
             </div>
@@ -31,6 +33,7 @@ const CardEvent = ({
                 <p className="cardevent-title"> {title} </p>
                 <p className="cardevent-adress">{city}</p>
             </div>
+            {/* TODO:  Dégager le button en prop pour avoir le choix de le mettre ou non*/}
             <button className="cardevent-button-more" onClick={handleAction}>
                 {text_button}
             </button>

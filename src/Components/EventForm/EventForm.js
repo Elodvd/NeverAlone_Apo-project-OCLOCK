@@ -4,17 +4,19 @@ import React from 'react';
 import { createEventRequest } from '../../requests/createEvent';
 import { useNavigate } from 'react-router';
 import Button from '../Button/Button';
+import Loading from '../Loading/Loading';
 
 //Formulaire de création d'un évènement
 const EventForm = ({ handleSetEventData, eventData, userData, getAll }) => {
     const [titleValue, SetTitleValue] = useState('');
     const [descriptionValue, SetDescriptionValue] = useState('');
-    const [categorieValue, SetCategoryValue] = useState('');
+    const [categorieValue, SetCategoryValue] = useState('autre');
     const [cityValue, SetCityValue] = useState('');
     const [dateValue, SetDateValue] = useState('');
     const [capacityValue, SetCapacityValue] = useState('');
     const [priceValue, SetPriceValue] = useState('');
     const [adressValue, SetAdressValue] = useState('');
+    const [isLogged, setIsLogged] = useState(false);
 
     const user_id = userData.id;
 
@@ -93,9 +95,12 @@ const EventForm = ({ handleSetEventData, eventData, userData, getAll }) => {
             SetCityValue('');
 
             // On obtient un message confirmant la création de l'évènement et on est redirigé vers la liste des évènements 
-            alert('evenement crée');
+            
             getAll();
-            navigate('/events');
+            setIsLogged(true);
+            setTimeout(() => {
+                navigate('/events');
+            }, 1500);
         }
     };
 
@@ -105,6 +110,13 @@ const EventForm = ({ handleSetEventData, eventData, userData, getAll }) => {
                 Créer un <span className="green">E</span>vènement{' '}
             </h1>
 
+            {isLogged ? (
+                    <Loading
+                        color={'#4682b4'}
+                        type={'spinningBubbles'}
+                    />
+            ) :(
+                <>
             <form action="/events" method="POST" className="event-form">
                 <input
                     type="hidden"
@@ -148,10 +160,13 @@ const EventForm = ({ handleSetEventData, eventData, userData, getAll }) => {
                 </div>
 
                 <div className="event-form-group">
-                    <label htmlFor="category-select">
+                    <label 
+                    htmlFor="category-select"
+                    className="event-label">
                         Choisis une catégorie
                     </label>
                     <select
+                        className="event-input"
                         onChange={handleCategory}
                         name="category"
                         id="category-select"
@@ -275,6 +290,9 @@ const EventForm = ({ handleSetEventData, eventData, userData, getAll }) => {
                     className={'event-button'}
                 />
             </form>
+            </>
+            )}
+        
         </div>
     );
 };

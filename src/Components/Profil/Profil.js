@@ -1,22 +1,23 @@
 import './Profil.scss';
-import avatar from '../../Doc/avatar.svg';
+import avatar from '../../Doc/panda_avatar2.png';
 import { deleteProfil } from '../../requests/deleteProfil';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { removeBearerToken } from '../../requests';
+//import validator from 'validator';
+import { updateProfil } from '../../requests/updateProfil';
 import validator from 'validator';
 
 const Profil = ({ userData, handleSetIsConnected, getAll }) => {
     //gestion du statut modifiable ou non de l'information
     const [profilModify, setProfilModify] = useState(false);
-    // gestion du contenu de toutes les informations liées au user en vue de l'envoi à la BDD pour éventuelle mise à jour
-    const [profilData, setProfilData] = useState([]);
     // gestion du contenu de chaque type d'information
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
+    const [firstname, setFirstName] = useState('');
+    const [lastname, setLastName] = useState('');
     const [pseudo, setPseudo] = useState('');
     const [birthday, setBirthday] = useState('');
     const [email, setEmail] = useState('');
+    const [errorMessage, SetErrorMessage] = useState(false);
 
     const navigate = useNavigate();
 
@@ -33,40 +34,39 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
         }
     };
 
+    const handlePatch = async (event) => {
+        event.preventDefault();
+        if (firstname && lastname && pseudo && birthday && email) {
+            const response = await updateProfil(
+                userData.id,
+                firstname,
+                lastname,
+                pseudo,
+                birthday,
+                email
+            );
+            if (response.status === 200) {
+                setProfilModify(false);
+                removeBearerToken();
+                handleSetIsConnected(false);
+                navigate('/login');
+            } 
+        } else {
+            SetErrorMessage(true);
+        }
+    };
+
     // Au click sur le  bouton modifier on change l'affichage des données pour qu'elles passent en format formulaire
     const handleModifyAll = (e) => {
         e.preventDefault();
         setProfilModify(true);
     };
-    // Si l'email saisi est valide alors le state passe à true
-    const [emailError, setEmailError] = useState(false);
-    const validateEmail = (e) => {
-        const email = e.target.value;
-        if (validator.isEmail(email)) {
-            setEmailError(true);
-        } else {
-            setEmailError(false);
-            setEmail(email);
-        }
-    };
-    // Si tous les champs sont remplis alors on met à jour les données du user, sinon on fait apparaitre un message d'erreur
-    const handlePatchValue = (e) => {
-        e.preventDefault();
-        if ((firstName, lastName, pseudo, birthday, email)) {
-            setProfilData([firstName, lastName, pseudo, birthday, email]);
-            setProfilModify(false);
-        } else {
-            alert('Veuillez remplir tous les champs');
-        }
-    };
-    const handleErrorPatch = (e) => {
-        e.preventDefault();
-        alert('Veuillez remplir tous les champs de façon correcte');
-    };
-
+    
     return (
         <div className="profil">
-            <img src={avatar} alt="sport" className="profil-image" />
+            <div className="profil-image">
+                <img src={avatar} alt="sport" />
+            </div>
             {/* Les données apparaissent ainsi ou sous forme de formulaire si on a cliqué sur "modifier"*/}
             {profilModify === false ? (
                 <div>
@@ -119,12 +119,12 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         <input
                             type="text"
                             className={
-                                !firstName
+                                !firstname
                                     ? 'signin-input profil-error'
                                     : 'signin-input profil-valid'
                             }
                             id="modifyfirstname"
-                            name="modifyfirsttname"
+                            name="first_name"
                             aria-describedby="modifyFirstnameHelp"
                             placeholder={userData.first_name}
                             onChange={(e) => setFirstName(e.target.value)}
@@ -134,12 +134,12 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         <input
                             type="text"
                             className={
-                                !lastName
+                                !lastname
                                     ? 'signin-input profil-error'
                                     : 'signin-input profil-valid'
                             }
                             id="modifylastname"
-                            name="modifylasttname"
+                            name="lastname"
                             aria-describedby="modifyLastnameHelp"
                             placeholder={userData.last_name}
                             onChange={(e) => setLastName(e.target.value)}
@@ -170,6 +170,8 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                             }
                             id="modifybirthday"
                             name="modifybirthday"
+                            min="1900-01-01"
+                            max="2006-12-31"
                             aria-describedby="modifyBirthdayHelp"
                             placeholder={userData.birthday}
                             onChange={(e) => setBirthday(e.target.value)}
@@ -179,27 +181,34 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         <input
                             type="email"
                             className={
-                                !emailError
+                                !email
                                     ? 'signin-input profil-error'
                                     : 'signin-input profil-valid'
                             }
-                            id="modifyemail"
                             name="modifyemail"
                             aria-describedby="modifyEmailHelp"
                             placeholder={userData.email}
                             onChange={(e) => {
-                                validateEmail(e);
-                            }}
+                                if (validator.isEmail(e.target.value)) {
+                                    setEmail(e.target.value);
+                                } else {
+                                    setEmail('');
+                                }
+                            }}                           
                         />
                     </div>
+
+                        <div className="login-form-group">
+                            {errorMessage && (
+                                <p className="signin-error"> Veuillez remplir tous les champs correctement </p>
+                            )}
+                        </div> 
 
                     <form
                         className="profil-btn-group"
                         action={`/profils/${userData.id}`}
                         method="PATCH"
-                        onSubmit={
-                            emailError ? handlePatchValue : handleErrorPatch
-                        }
+                        onSubmit={handlePatch}
                     >
                         <button className="profil-btn">
                             Enregistrer les modifications
@@ -207,6 +216,9 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                     </form>
                 </div>
             )}
+
+                                       
+
             <form
                 className="profil-btn-group"
                 action={`/profils/${userData.id}`}

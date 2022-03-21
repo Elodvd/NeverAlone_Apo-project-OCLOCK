@@ -48,6 +48,7 @@ const Event = ({ item, handleSetOneEvent, getAll }) => {
                 city={item.city}
                 handleAction={handleClick}
                 text_button={'En savoir +'}
+                style_category={item.category}
             />
         </div>
     );

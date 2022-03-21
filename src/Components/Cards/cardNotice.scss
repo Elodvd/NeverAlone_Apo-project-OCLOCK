@@ -1,0 +1,19 @@
+@use 'src/styles/vars';
+@import 'src/styles/mixin';
+
+
+@media only screen and (min-width: 600px) {
+
+.card-comment {
+    max-width: 40vw;
+    min-height: 30vh;
+}
+}
+
+@media only screen and (min-width: 1000px) {
+
+    .card-comment {
+        max-width: 28vw;
+        min-height: 30vh;
+    }
+    }

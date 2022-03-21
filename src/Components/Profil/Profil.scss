@@ -16,10 +16,13 @@
     }
 
     &-image{
-        border: 1px solid vars.$font-secondary;
-        width: 75px;
+        display: block;
         border-radius: 50%;
-        margin: 1rem;
+        margin: auto;
+        & img {
+            width: 90px;
+            margin: auto;
+        }
     }
 
     &-informations{

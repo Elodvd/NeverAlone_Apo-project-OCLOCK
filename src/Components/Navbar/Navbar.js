@@ -22,15 +22,18 @@ const Navbar = ({ isConnected, handleSetIsConnected, userData }) => {
         handleSetIsConnected(false);
         removeBearerToken();
     };
-    //TODO: Trouver une solution pour le click out pour fermer la modal
-    // tout en pouvant clicker sur les liens de la modal
-    // const closeModal = document.querySelector('.sign-up-btn');
 
-    // document.addEventListener('mousedown', (event) => {
-
-    //    closeModal && setIsOpen(false);
-
-    // });
+   /* This is a function that will close the modal if the user click outside of the modal. */
+    document.addEventListener('mousedown', (event) => {
+        if (
+            event.target.matches('.modal-nav') ||
+            event.target.matches('.sign-btn')
+        ) {
+            setIsOpen(true);
+        } else {
+            setIsOpen(false);
+        }
+    });
 
     return (
         <nav className="navbar">
@@ -83,7 +86,7 @@ const Navbar = ({ isConnected, handleSetIsConnected, userData }) => {
                             </NavLink>
                         </div>
                     ) : (
-                        // sinon on affiche ces boutons/liens 
+                        // sinon on affiche ces boutons/liens
                         <div className="btn-container">
                             <NavLink
                                 onClick={handleCloseModal}
