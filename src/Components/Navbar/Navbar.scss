@@ -16,7 +16,13 @@
     &-title {
         padding-top: 0.5rem;
         font-size: 40px;
+<<<<<<< HEAD
         
+=======
+        & span {
+            color: vars.$font-secondary;
+        }
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
     }
 }
 
@@ -129,8 +135,11 @@
        
     }
 }
+<<<<<<< HEAD
 
 
 .logo-span {
     color: vars.$font-secondary;
 }
+=======
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05

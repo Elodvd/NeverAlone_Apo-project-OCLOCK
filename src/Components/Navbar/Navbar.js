@@ -22,6 +22,21 @@ const Navbar = ({ isConnected, handleSetIsConnected, userData }) => {
         handleSetIsConnected(false);
         removeBearerToken();
     };
+<<<<<<< HEAD
+=======
+
+   /* This is a function that will close the modal if the user click outside of the modal. */
+    document.addEventListener('mousedown', (event) => {
+        if (
+            event.target.matches('.modal-nav') ||
+            event.target.matches('.sign-btn')
+        ) {
+            setIsOpen(true);
+        } else {
+            setIsOpen(false);
+        }
+    });
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
 
     return (
         <nav className="navbar">
@@ -32,7 +47,11 @@ const Navbar = ({ isConnected, handleSetIsConnected, userData }) => {
                     alt="logo en forme de fusée"
                 />
                 <NavLink className="navbar-title" to="/">
+<<<<<<< HEAD
                     Never<span className="logo-span">Alone</span>{' '}
+=======
+                    Never <span>Alone</span>{' '}
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
                 </NavLink>
             </div>
             <div className="navbar-right">
@@ -98,4 +117,4 @@ const Navbar = ({ isConnected, handleSetIsConnected, userData }) => {
     );
 };
 
-export default Navbar;
+export default React.memo(Navbar);

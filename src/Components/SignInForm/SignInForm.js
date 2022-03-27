@@ -139,7 +139,24 @@ const SignInForm = () => {
                     />
                 </div>
 
+<<<<<<< HEAD
                 
+=======
+                <div className="signin-form-group">
+                    <input
+                        type="text"
+                        value={firstNameValue}
+                        onChange={handleFirstName}
+                        className="signin-input"
+                        id="firstname"
+                        name="firstname"
+                        aria-describedby="firstnameHelp"
+                        placeholder="Votre prénom"
+                        minLength="2"
+                        required="required"
+                    />
+                </div>
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
 
                 <div className="signin-form-group">
                     <input
@@ -243,4 +260,4 @@ const SignInForm = () => {
     );
 };
 
-export default SignInForm;
+export default React.memo(SignInForm);

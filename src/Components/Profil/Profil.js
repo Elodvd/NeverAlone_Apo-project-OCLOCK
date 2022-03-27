@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import React from 'react';
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
 import './Profil.scss';
 import avatar from '../../Doc/panda_avatar2.png';
 import { deleteProfil } from '../../requests/deleteProfil';
@@ -7,7 +11,10 @@ import { removeBearerToken } from '../../requests';
 //import validator from 'validator';
 import { updateProfil } from '../../requests/updateProfil';
 import validator from 'validator';
+<<<<<<< HEAD
 import Loading from '../Loading/Loading';
+=======
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
 
 const Profil = ({ userData, handleSetIsConnected, getAll }) => {
     //gestion du statut modifiable ou non de l'information
@@ -19,8 +26,11 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
     const [birthday, setBirthday] = useState('');
     const [email, setEmail] = useState('');
     const [errorMessage, SetErrorMessage] = useState(false);
+<<<<<<< HEAD
     const [isLogged, setIsLogged] = useState(false);
     
+=======
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
 
     const navigate = useNavigate();
 
@@ -29,6 +39,7 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
         event.preventDefault();
         const response = await deleteProfil(userData.id);
         if (response.status === 204) {
+<<<<<<< HEAD
             setIsLogged(true);
             setTimeout(() => {
                 navigate('/');
@@ -36,6 +47,13 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                 removeBearerToken();
                 getAll();
             }, 1500);
+=======
+            handleSetIsConnected(false);
+            removeBearerToken();
+            alert('utilisateur supprimé');
+            getAll();
+            navigate('/');
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
         }
     };
 
@@ -72,6 +90,7 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
             <div className="profil-image">
                 <img src={avatar} alt="sport" />
             </div>
+<<<<<<< HEAD
             {isLogged ? (
                 <>
                     <Loading
@@ -85,6 +104,11 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
             {/* Les données apparaissent ainsi ou sous forme de formulaire si on a cliqué sur "modifier"*/}
             {profilModify === false ? (
                 <div className="abc">
+=======
+            {/* Les données apparaissent ainsi ou sous forme de formulaire si on a cliqué sur "modifier"*/}
+            {profilModify === false ? (
+                <div>
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
                     <p className="profil-color">Mon prénom :</p>
                     <div className="profil-informations">
                         <div className="profil-content">
@@ -129,9 +153,14 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                     </form>
                 </div>
             ) : (
+<<<<<<< HEAD
                 <div className="abc">
                     <div className="signin-form-group">
                         <p className="profil-color">Mon prénom :</p>
+=======
+                <div>
+                    <div className="signin-form-group">
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
                         <input
                             type="text"
                             className={
@@ -147,7 +176,10 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         />
                     </div>
                     <div className="signin-form-group">
+<<<<<<< HEAD
                     <p className="profil-color">Mon nom :</p>
+=======
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
                         <input
                             type="text"
                             className={
@@ -163,7 +195,10 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         />
                     </div>
                     <div className="signin-form-group">
+<<<<<<< HEAD
                     <p className="profil-color">Mon pseudo :</p>
+=======
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
                         <input
                             type="text"
                             className={
@@ -179,7 +214,10 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         />
                     </div>
                     <div className="signin-form-group">
+<<<<<<< HEAD
                     <p className="profil-color">Ma date de naissance :</p>
+=======
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
                         <input
                             type="date"
                             className={
@@ -197,7 +235,10 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                         />
                     </div>
                     <div className="signin-form-group">
+<<<<<<< HEAD
                         <p className="profil-color">Mon e-mail :</p>
+=======
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
                         <input
                             type="email"
                             className={
@@ -220,7 +261,11 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
 
                         <div className="login-form-group">
                             {errorMessage && (
+<<<<<<< HEAD
                                 <p className="signin-errora"> Veuillez remplir tous les champs correctement </p>
+=======
+                                <p className="signin-error"> Veuillez remplir tous les champs correctement </p>
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
                             )}
                         </div> 
 
@@ -249,10 +294,13 @@ const Profil = ({ userData, handleSetIsConnected, getAll }) => {
                     Supprimer mon profil
                 </button>
             </form>
+<<<<<<< HEAD
             </>
             )}
+=======
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
         </div>
     );
 };
 
-export default Profil;
+export default React.memo(Profil);

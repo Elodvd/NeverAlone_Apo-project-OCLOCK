@@ -53,7 +53,11 @@ const Home = () => {
                 {width > breakpoint ? (
                     <>
                         <CardEvent
+<<<<<<< HEAD
                             date={'Vendredi 18 Mars'}
+=======
+                            date={'Vendredi 11 Mars'}
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
                             category={'Sport'}
                             style_category={'sport'}
                             route_category={`/`}
@@ -100,7 +104,11 @@ const Home = () => {
                 ) : (
                     <>
                         <CardEvent
+<<<<<<< HEAD
                             date={'Vendredi 18 Mars'}
+=======
+                            date={'Vendredi 11 Mars'}
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
                             category={'Sport'}
                             style_category={'sport'}
                             route_category={`/`}
@@ -162,7 +170,11 @@ const Home = () => {
                     <>
                         <CardNotice 
                             description={"Never Alone est incontestablement une très belle application, on trouve son bonheur, les gens que j'ai pu rencontrer sont très agreables. Un grand merci à l'équipe de Never Alone"}
+<<<<<<< HEAD
                             author={"Karim (69)"}
+=======
+                            author={"Luko (31)"}
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
                         />
                         
                         <CardNotice
@@ -173,7 +185,11 @@ const Home = () => {
                 ) : (
                     <CardNotice
                         description={"NeverAlone m'a permis de me remettre au sport. Grâce à l'application j'ai rencontré pleins de personnes qui sont devenus des amis et avec qui je vais régulièrement jouer au foot ou au tennis."}
+<<<<<<< HEAD
                         author={"Luko (31)"} 
+=======
+                        author={"Karim (69)"} 
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
                     />
                     
                 )}
@@ -181,11 +197,19 @@ const Home = () => {
                     width > breakpoint4 && 
                     <CardNotice
                         description={"NeverAlone m'a permis de me remettre au sport. Grâce à l'application j'ai rencontré pleins de personnes qui sont devenus des amis et avec qui je vais régulièrement jouer au foot ou au tennis."}
+<<<<<<< HEAD
                         author={"Luko (31)"} 
+=======
+                        author={"Karim (69)"} 
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
                     />
                 }
             </div>
         </div>
     );
 };
+<<<<<<< HEAD
 export default Home;
+=======
+export default React.memo(Home);
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05

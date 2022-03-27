@@ -1,9 +1,17 @@
 import CardEvent from '../Cards/CardEvent';
 import './about.scss';
+<<<<<<< HEAD
 
 import Elodie from '../../Doc/Photos-team/Elodie.jpeg';
 import Candy from '../../Doc/Photos-team/Candy.jpg';
 import Raphael from '../../Doc/Photos-team/Raphael.jpg';
+=======
+import React from 'react';
+
+import Elodie from '../../Doc/Photos-team/Elodie.jpeg';
+import Candy from '../../Doc/Photos-team/Candy.jpg';
+import Raphael from '../../Doc/Photos-team/Raphael.JPG';
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
 import Fabien from '../../Doc/Photos-team/Fabien.png';
 
 const About = () => {
@@ -47,7 +55,11 @@ const About = () => {
                 title={'Raphael'}
                 city={'Paris (75)'}
                 handleAction={handleClickRaphael}
+<<<<<<< HEAD
                 text_button={'LinkedIn'}
+=======
+                text_button={'Contacter'}
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
             />
             <CardEvent
                 className={'about-card'}
@@ -59,7 +71,11 @@ const About = () => {
                 title={'Candy'}
                 city={'Pencran (29)'}
                 handleAction={handleClickCandy}
+<<<<<<< HEAD
                 text_button={'LinkedIn'}
+=======
+                text_button={'Contacter'}
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
             />
             <CardEvent
                 className={'about-card'}
@@ -71,7 +87,11 @@ const About = () => {
                 title={'Fabien'}
                 city={'Lille (59)'}
                 handleAction={handleClickFabien}
+<<<<<<< HEAD
                 text_button={'LinkedIn'}
+=======
+                text_button={'Contacter'}
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
             />
             <CardEvent
                 className={'about-card'}
@@ -83,10 +103,18 @@ const About = () => {
                 title={'Elodie'}
                 city={'Toulouse (31)'}
                 handleAction={handleClickElodie}
+<<<<<<< HEAD
                 text_button={'LinkedIn'}
+=======
+                text_button={'Contacter'}
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
             />
         </div>
     );
 };
 
+<<<<<<< HEAD
 export default About;
+=======
+export default React.memo(About);
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05

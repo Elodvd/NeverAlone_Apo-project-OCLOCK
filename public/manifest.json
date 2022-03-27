@@ -1,6 +1,26 @@
 {
   "short_name": "Never Alone",
   "name": "Web site for regroop people",
+<<<<<<< HEAD
+=======
+  "icons": [
+    {
+      "src": "logo.svg",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

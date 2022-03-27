@@ -11,4 +11,4 @@ const Button = ({ text, route, className, action }) => {
     );
 };
 
-export default Button;
+export default React.memo(Button);

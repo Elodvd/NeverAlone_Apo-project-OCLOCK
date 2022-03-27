@@ -23,4 +23,8 @@ const CardNotice = ( {author, description}) => {
     );
 };
 
+<<<<<<< HEAD
 export default CardNotice;
+=======
+export default React.memo(CardNotice);
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05

@@ -14,9 +14,13 @@
             margin: 1rem;
         }
         &-img {
+<<<<<<< HEAD
             box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
                 rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
             border-radius: 5px;
+=======
+            border-radius: 60%;
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
             width: auto;
         }
         &-button {
@@ -29,10 +33,17 @@
 }
 
 @media only screen and (min-width: 480px) {
+<<<<<<< HEAD
     .about {
         .cardevent {
             &-adress {
                 margin: 0.7rem !important;
+=======
+    .about{
+        .cardevent{
+            &-adress{
+                margin: .7rem !important;
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
             }
             &-button {
                 min-width: 0;
@@ -63,4 +74,8 @@
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05

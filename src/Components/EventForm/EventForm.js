@@ -296,4 +296,8 @@ const EventForm = ({ handleSetEventData, eventData, userData, getAll }) => {
         </div>
     );
 };
+<<<<<<< HEAD
 export default EventForm;
+=======
+export default React.memo(EventForm);
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05

@@ -4,6 +4,7 @@ import Button from '../Button/Button.js';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { deleteEvent } from '../../requests/deleteEvent';
+<<<<<<< HEAD
 import Loading from '../Loading/Loading';
 
 // Composant évènement détaillé qui contient toutes ses informations 
@@ -11,13 +12,25 @@ const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
     // state pour le compteur/nombre de participants
 
     const [counterValue, SetCounterValue] = useState(2);
+=======
+
+// Composant évènement détaillé qui contient toutes ses informations 
+
+const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
+    // state pour le compteur/nombre de participants
+
+    const [counterValue, SetCounterValue] = useState(1);
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
     // Gestion du statut complet ou non
     const [isFull, SetIsFull] = useState(false);
     //Gestion du bouton se désinscrire
     const [isRegister, SetIsRegister] = useState(false);
     // Affichage du bouton "supprimer l'évènement" seulement si l'user est l'auteur de celui-ci
     const [displayDelete, SetDisplayDelete] = useState(false);
+<<<<<<< HEAD
     const [isLogged, setIsLogged] = useState(false);
+=======
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
 
     const navigate = useNavigate();
 
@@ -28,16 +41,38 @@ const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
         }
     }, [oneEvent.user_id, userData.id]);
 
+<<<<<<< HEAD
+=======
+
+    // Fonction pour la suppression de l'évènement
+    // useEffect(() => {
+    //     getOne();
+    // },[]);
+
+    const getOne = async () => {
+        const response = await getOneEventRequest(oneEvent.id);
+        if (response.status === 200) {            
+            handleSetOneEvent(response.data);
+        }
+    };
+
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
     const handleDelete = async (event) => {
         event.preventDefault();
         const response = await deleteEvent(oneEvent.id);
         if (response.status === 204) {
             // on affiche un message et on redirige vers la liste de tous les évènements
+<<<<<<< HEAD
             setIsLogged(true);
             getAll();
             setTimeout(() => {
                 navigate('/events');
             }, 1500);
+=======
+            alert('event supprimé');
+            getAll();
+            navigate('/events');
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
         }
     };
 
@@ -84,6 +119,7 @@ const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
     const image = require(`../../Doc/Image-Cat/${oneEvent.category}.svg`);
 
     return (
+<<<<<<< HEAD
         
         <div className="event-container">
             {isLogged ? (
@@ -95,6 +131,9 @@ const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
                 <p className="signin-delete">Evènement supprimé</p>
                 </>
         ) : ( <>
+=======
+        <div className="event-container">
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
             <p className="event-title">{oneEvent.title.toUpperCase()}</p>
 
             <h2 className="event-date">{newDate}</h2>
@@ -103,7 +142,11 @@ const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
                 <img src={image} alt="categorie-sport" className="event-img" />
 
                 <div className="event-main">
+<<<<<<< HEAD
                     <div className="event-group⁻label">
+=======
+                    <div>
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
                         <button className="event-categories-item">
                             {oneEvent.category.toUpperCase()}
                         </button>
@@ -162,8 +205,15 @@ const EventDetail = ({ oneEvent, getAll, userData, handleSetOneEvent }) => {
                     </button>
                 )}
             </form>
+<<<<<<< HEAD
             </>)}
         </div>
     );
 };
 export default EventDetail;
+=======
+        </div>
+    );
+};
+export default React.memo(EventDetail);
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05

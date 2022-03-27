@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
 //import PropTypes from 'prop-types';
+=======
+import PropTypes from 'prop-types';
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
 import './card.scss';
 import './cardEvent.scss';
 import Button from '../Button/Button';
@@ -41,7 +45,11 @@ const CardEvent = ({
     );
 };
 
+<<<<<<< HEAD
 export default CardEvent;
+=======
+export default React.memo(CardEvent);
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
 
 // CardEvent.propTypes = {
 //     date_hour: PropTypes.string.isRequired,

@@ -2,7 +2,11 @@ import './App.scss';
 import React, { useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import { Routes, Route } from 'react-router-dom';
+<<<<<<< HEAD
 import { useState} from 'react';
+=======
+import { useState, useLocation } from 'react';
+>>>>>>> f04faf2e0d128a6087e15b25a234c174cbeada05
 import Home from '../Home/Home';
 import SignInForm from '../SignInForm/SignInForm';
 import LogInForm from '../LogInForm/LogInForm';
@@ -138,4 +142,4 @@ function App() {
     );
 }
 
-export default App;
+export default React.memo(App);
