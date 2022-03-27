@@ -1,0 +1,66 @@
+@use 'src/styles/vars';
+
+.about {
+    background-position: right 0vw top 0vh;
+    background-size: cover;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    & .cardevent {
+        &-container {
+            width: 80%;
+            margin: 1rem;
+        }
+        &-img {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+                rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            border-radius: 5px;
+            width: auto;
+        }
+        &-button {
+            min-width: 65%;
+        }
+        &-header:first-child {
+            background-color: red;
+        }
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    .about {
+        .cardevent {
+            &-adress {
+                margin: 0.7rem !important;
+            }
+            &-button {
+                min-width: 0;
+                max-width: 35%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 550px) {
+    .about {
+        .cardevent {
+            &-container {
+                max-width: 43%;
+            }
+            &-button {
+                max-width: 45%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .about {
+        .cardevent {
+            &-button {
+                max-width: 30%;
+            }
+        }
+    }
+}

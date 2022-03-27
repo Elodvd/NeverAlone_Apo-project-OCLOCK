@@ -1,51 +1,48 @@
-import './Navbar.scss';
+import React from 'react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { removeBearerToken } from '../../requests';
-import React from 'react';
+import logo from '../../Doc/Image-Cat/logo.svg';
 // package pour menu burger
 import Hamburger from 'hamburger-react';
+import './Navbar.scss';
 
-const Navbar = ({ 
-    isConnected,
-    handleSetIsConnected,
-}) => {
+// Composant navbar dont le contenu va varier selon que le visiteur ait un compte ou non
+
+// Par défaut, le visiteur n'est pas connecté, au click sur le menu on peut donc simplement "se connecter" ou "s'enregistrer"
+const Navbar = ({ isConnected, handleSetIsConnected, userData }) => {
     const [isOpen, setIsOpen] = useState(false);
 
-
-    const handleCloseModal = (event) => {
-        console.log(event);
+    const handleCloseModal = () => {
         setIsOpen(false);
     };
 
-    const handleLogOut = (event) => {
-        console.log(event);
+    const handleLogOut = () => {
         setIsOpen(false);
         handleSetIsConnected(false);
         removeBearerToken();
     };
-    //TODO: Trouver une solution pour le click out pour fermer la modal
-    // tout en pouvant clicker sur les liens de la modal
-    // const closeModal = document.querySelector('.sign-up-btn');
-
-    // document.addEventListener('mousedown', (event) => {
-
-    //    closeModal && setIsOpen(false);
-
-    // });
 
     return (
         <nav className="navbar">
-            <NavLink className="logo" to="/">
-                {' '}
-                Never <span className="logo-span">Alone</span>{' '}
-            </NavLink>
-            <Hamburger
-                rounded
-                duration={0.6}
-                toggled={isOpen}
-                toggle={setIsOpen}
-            />
+            <div className="navbar-left">
+                <img
+                    src={logo}
+                    className="navbar-logo"
+                    alt="logo en forme de fusée"
+                />
+                <NavLink className="navbar-title" to="/">
+                    Never<span className="logo-span">Alone</span>{' '}
+                </NavLink>
+            </div>
+            <div className="navbar-right">
+                <Hamburger
+                    rounded
+                    duration={0.6}
+                    toggled={isOpen}
+                    toggle={setIsOpen}
+                />
+            </div>
 
             {isOpen && ( //si on clique sur la modale ca ouvre ceci
                 <div className="modal-nav">
@@ -54,7 +51,7 @@ const Navbar = ({
                             <NavLink
                                 onClick={handleCloseModal}
                                 className="sign-btn sign-up-btn"
-                                to="/profil"
+                                to={`/profil/${userData.id}`}
                             >
                                 <span className="logo-span">M</span>on Profil
                             </NavLink>
@@ -77,7 +74,7 @@ const Navbar = ({
                             </NavLink>
                         </div>
                     ) : (
-                        // sinon on affiche ces boutons/liens la
+                        // sinon on affiche ces boutons/liens
                         <div className="btn-container">
                             <NavLink
                                 onClick={handleCloseModal}

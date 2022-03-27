@@ -7,13 +7,14 @@
     align-items: center;
     margin: 1rem;
 
-    &-title {
+    &-titleb {
         text-align: center;
         font-size: 40px;
-        margin: 2rem;
+        margin: 0 0 1rem 0;
+        //font-family: vars.$font-txt;
     }
-    &-label{
-        font-size: 14px;
+    &-label {
+        font-size: 18px;
         font-weight: bold;
         font-family: vars.$font-txt;
     }
@@ -22,7 +23,7 @@
         text-align: center;
         margin: 0.5rem 2rem;
     }
-    
+
     &-form {
         width: 90%;
         margin: auto 4rem;
@@ -30,6 +31,7 @@
     }
 
     &-input {
+        background-color: white;
         margin: 1rem;
         padding: 1rem 0.5rem;
         border: 1px solid black;
@@ -55,13 +57,20 @@
     }
     &-form-radio {
         display: flex;
+        justify-content: center;
         align-items: center;
         width: 50%;
         margin: 2rem auto;
-        &-label{
-        font-size: 14px;
-        font-weight: bold;
-        font-family: vars.$font-txt;
+        & :first-child{
+            margin-right: 2rem;
+        }
+        &-label {
+            font-size: 14px;
+            font-weight: bold;
+            font-family: vars.$font-txt;
+                & input {
+                    margin-top: 0.5rem;
+                }
         }
     }
     &-alert {
@@ -70,26 +79,28 @@
     }
 
     &-button {
-        margin-top: 3rem;
-        border: 1px solid black;
+        display: block;
+        margin-top: 1rem;
         border-radius: 4px;
-        padding: 1rem 4rem;
         background-color: vars.$font-secondary;
-        color: white;
-        min-width: 200px;
+        max-width: 60%;
         font-size: 20px;
+        text-align: center;
     }
+}
+
+.price {
+    margin: auto 1.5rem;
 }
 
 .green {
     color: vars.$font-secondary;
 }
 
-
-label.importimage input[type="file"] {
+label.importimage input[type='file'] {
     position: absolute;
     top: -1000px;
-  }
+}
 .importimage {
     cursor: pointer;
     border: 1px solid #cccccc;
@@ -98,5 +109,9 @@ label.importimage input[type="file"] {
     margin: 5px;
     background: #dddddd;
     display: inline-block;
-  }
-  
+}
+
+input[type=radio]{
+height: 20px;
+width: 20px;
+}

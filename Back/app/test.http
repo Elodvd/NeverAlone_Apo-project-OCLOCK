@@ -1,5 +1,7 @@
 ### On peut définir des variables de cette façon
+
 @endpoint = http://localhost:3001
+
 
 ################################
 ###          evenements          ###
@@ -11,22 +13,21 @@ GET {{ endpoint }}/route404
 ### récupération des évenements
 GET {{ endpoint }}/events
 
-### récupération d'un évenements
-GET {{ endpoint }}/events/1
+### récupération d'un évenement
+GET {{ endpoint }}/events/2
 
 ### ajouter un évenement
 POST {{ endpoint }}/events
 content-type: application/x-www-form-urlencoded
 
-title=evenement à ajouter
-
+id=5&title=Match de foot à la télé&description=Soiree match Lille/PSG et apéro dans un bar à Paris XVII (lieu à définir ensemble)&date=2022-02-28T14:00:00.000Z&capacity=10&price=GRATUIT&adress=rue du parc&city=Paris&category=sport&counter=1&user_id=1
 ### modifier un évènement
 PATCH {{ endpoint }}/events/1
 content-type: application/x-www-form-urlencoded
 
-title=nouveau titre pour l'évenement 1
+id=10&title=Match de foot à la télé&description=Soiree match Lille/PSG et apéro dans un bar à Paris XVII (lieu à définir ensemble)&date=2022-02-28T14:00:00.000Z&capacity=10&price=GRATUIT&adress=rue du parc&city=Paris&category=sport&counter=1&user_id=1
 
-### supprimer un évènements
+### supprimer un évènement
 DELETE {{ endpoint }}/events/2
 
 ################################
@@ -44,27 +45,23 @@ email=raf@raf.raf&password=rafifou
 ################################
 
 ### s'inscrire
+A signin request.
 POST {{ endpoint }}/signin
 content-type: application/x-www-form-urlencoded
 
-email=allo@alo.allo&firstname=Jean&lastname=Bon&password=jambon&birthday=2000-01-01&image=www.image.fr&pseudo=lalala&passwordConfirm=jambon
+email=alo@alo.allo&firstname=Jean&lastname=Bon&password=jambon&birthday=2000-01-01&image=www.image.fr&pseudo=lalala&passwordConfirm=jambon
 
 ################################
 ###          Profil     ###
 ################################
 
-### récupération des profils
-GET {{ endpoint }}/profil
-
-### récupération d'un profil
-GET {{ endpoint }}/profil/1
-
 ### modifier un profil
-PATCH {{ endpoint }}/profil/1
+PATCH {{ endpoint }}/profils/1
 content-type: application/x-www-form-urlencoded
 
-Johnny=nouveau nom pour le profil1
+first_name=jeanne
 
 ### supprimer un profil
-DELETE {{ endpoint }}/profil/2
+DELETE  {{ endpoint }}/profils/4
+
 
